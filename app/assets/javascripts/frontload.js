@@ -10,4 +10,4 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_tree ../../../vendor/assets/javascripts/vendor/.
+//= require vendor/jquery-1.11.3.min
