@@ -82,4 +82,5 @@ production:
   <<: *default
   database: transistor_production
   username: transistor
-  password: <%= ENV['TRANSISTOR_DATABASE_PASSWORD'] %>
+  password: transistorpsql2016
+  host: localhost

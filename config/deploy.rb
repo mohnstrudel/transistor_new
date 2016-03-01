@@ -1,5 +1,5 @@
 # Change these
-server '46.101.168.82', port: 4644, roles: [:web, :app, :db], primary: true
+server '46.101.168.82', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:mohnstrudel/evetrader.git'
 set :application,     'transistor'
