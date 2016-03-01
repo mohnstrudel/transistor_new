@@ -12,5 +12,5 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( cocoon.js )
 Rails.application.config.assets.precompile += %w( frontload.js )
 
-Rails.application.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')  
-Rails.application.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
+Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')  
+Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
