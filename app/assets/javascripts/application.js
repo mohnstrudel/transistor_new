@@ -11,16 +11,14 @@
 // about supported directives.
 //
 
-//= require jquery.turbolinks
-//= require jquery_ujs
-//= require turbolinks
+
 
 //= require vendor/jquery-ui.min
 //= require vendor/modernizr-2.8.3.min
 //= require vendor/jquery-1.11.3.min
 //= require_tree ../../../vendor/assets/javascripts/plugins/.
 //= require_tree ../../../vendor/assets/javascripts/awe/.
-//= require turbolinks
 
-//= require_tree .
+
+
 //= require cocoon

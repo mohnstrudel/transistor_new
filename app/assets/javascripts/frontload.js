@@ -11,3 +11,9 @@
 // about supported directives.
 //
 //= require vendor/jquery-1.11.3.min
+
+//= require jquery.turbolinks
+//= require jquery_ujs
+//= require turbolinks
+
+//= require_tree .
