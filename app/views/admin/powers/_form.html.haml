@@ -1,0 +1,9 @@
+=form_for([:admin, @power]) do |f|
+	%p
+		%hr
+			%h3 Раздел: Основное
+	%p
+		=f.label 'Значение мощности'
+		=f.text_field :value
+	%p
+		=f.submit 'Сохранить'
