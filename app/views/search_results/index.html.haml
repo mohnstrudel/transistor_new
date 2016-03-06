@@ -1,0 +1,88 @@
+.main-header.background.background-image-heading-blog
+	.container
+		%h1 Результат поиска
+#breadcrumb
+	.container
+		%ol.breadcrumb
+			%li
+				=link_to 'Главная', root_path
+			%li.active
+				%span Результат поиска
+.blog-wrapper.blog-nobar
+	.container
+		.row
+			.col-md-9.col-centered
+				-if @products.empty?
+					%article.post
+						.entry-summary
+							.entry-title
+								%h2
+									К сожалению мы ничего не нашли по запросу
+							.entry-excerpt
+								%blockquote
+									.entry-meta 
+										=params[:search]
+				-else
+					-@products.each do |product|
+						%article.post
+							.entry-media
+								.entry-slide
+									.entry-carousel.owl-carousel
+										%div
+											%img{:alt => "", :src => "./img/samples/posts/sidebar/1.jpg"}/
+										%div
+											%img{:alt => "", :src => "./img/samples/posts/sidebar/1.jpg"}/
+										%div
+											%img{:alt => "", :src => "./img/samples/posts/sidebar/1.jpg"}/
+								/ /.entry-slider
+							/ /.entry-media
+							.entry-summary
+								.entry-datetime
+									%a{:href => "#", :title => ""}
+										%span.entry-day 28
+										%span.entry-month /June
+								/ /.entry-datetime
+								.entry-title
+									%h2
+										=link_to product.name, product
+								.entry-excerpt
+									%p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries...
+								/ /.entry-excerpt
+								.entry-meta
+									%span Posted by
+									%strong.entry-author
+										%a{:href => "#", :title => ""} Join Doe
+									%span -
+									%span.entry-category
+										%a{:href => "#", :title => ""} Clothing
+									%span -
+									%span.entry-comment-count
+										%a{:href => "#", :title => ""} 3 Comments
+								/ /.entry-meta
+							/ /.entry-summary
+				.center
+					%ul.pagination
+						%li.pagination-prev
+							%a{:href => "#"}
+								%i.icon.icon-arrow-prev
+						%li
+							%a{:href => "#"} 1
+						%li.active
+							%a{:href => "#"} 2
+						%li
+							%a{:href => "#"} 3
+						%li
+							%a{:href => "#"} 4
+						%li
+							%a{:href => "#"} 5
+						%li
+							%span ...
+						%li
+							%a{:href => "#"} 15
+						%li.pagination-next
+							%a{:href => "#"}
+								%i.icon.icon-arrow-next
+					/ ./pagination
+		/ /.row
+	/ /.container
+/ /.blog-wrapper

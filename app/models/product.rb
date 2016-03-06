@@ -30,7 +30,7 @@ class Product < ActiveRecord::Base
 
 	protected
 		def set_keywords
-			self.keywords = [name, description, sku, intro_text].map(&:downcase).join(' ')
+			self.keywords = [name, description, sku.to_s, intro_text].map(&:downcase).join(' ')
 		end
 
 	private 

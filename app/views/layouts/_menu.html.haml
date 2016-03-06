@@ -136,10 +136,10 @@
                   %span.sr-only Search
                   %span.icon.icon-search
                 #menubar-search-form.menubar-search-form
-                  %form{:action => "index.html", :method => "GET"}
-                    %input.form-control{:name => "s", :placeholder => "Search your entry here...", :type => "text"}
+                  =form_tag url_for(controller: 'search_results'), method: :get do
+                    %input.form-control{:name => "search", :placeholder => "Введите поисковое значение...", :type => "text"}
                       .menubar-search-buttons
-                        %button.btn.btn-sm.btn-white{:type => "submit"} Search
+                        =submit_tag 'Искать', class: 'btn btn-sm btn-white'
                         %button#close-search-form.btn.btn-sm.btn-white{:type => "button"}
                           %span.icon.icon-remove
                 / /.menubar-search-form
