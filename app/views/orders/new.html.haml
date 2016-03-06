@@ -1,0 +1,101 @@
+.main-header.background.background-image-heading-checkout
+  .container
+    %h1 Оформление заказа
+#breadcrumb
+  .container
+    %ol.breadcrumb
+      %li
+        =link_to 'Главная', root_path
+      %li.active
+        %span
+          Оформление заказа
+=form_for @order do |f|
+  .checkout-wrapper
+    .container
+      / .text-alert
+      /   %p
+      /     Вы уже были у нас?
+      /     %a{:href => "#"} Click here to login
+      / /.text-alert
+      .row
+        .col-md-6
+          %h2 Ваши данные
+          .form-group
+            %label{ for: 'name'} 
+              Ваше имя
+              %sup *
+              
+            =f.text_field :name, class: 'form-control dark'
+          .form-group
+            %label{ for: 'phone'} 
+              Ваш телефон
+              %sup *
+              
+            =f.text_field :phone, class: 'form-control dark'
+
+          .form-group
+            %label{ for: 'email'} 
+              Ваша почта
+              %sup *
+              
+            =f.text_field :email, class: 'form-control dark'
+
+          .form-group
+            %label{ for: 'address'} 
+              Ваш адрес
+              %sup *
+            =f.text_area :address, class: 'form-control dark'
+        .col-md-6
+          .payment-right
+            %h2 Ваш заказ
+            .payment-detail-wrapper
+              %ul.cart-list
+                -@cart.line_items.each do |item|
+                  %li
+                    .cart-item
+                      .product-image
+                        =link_to item.product do
+                          =image_tag item.product.images.first.image.url, height: 98, width: 70
+                      .product-body
+                        .product-name
+                          %h3
+                            =item.product.name
+                        .product-price
+                          %span
+                            =item.sellprice
+                            ="\u20BD".encode('utf-8')
+                    / /.cart-item
+                    %a.remove-cart{:href => "#", :title => ""}
+                      %span.icon.icon-remove
+            .cart-total
+              %table
+                %tbody
+                  %tr.cart-subtotal
+                    %th Сумма покупок:
+                    %td
+                      %span.amount
+                        =@cart.total_price
+                        ="\u20BD".encode('utf-8')
+                  %tr.shipping
+                    %th Доставка :
+                    %td БЕСПЛАТНО!
+                  %tr.order-total
+                    %th Итого:
+                    %td
+                      %strong
+                        %span.amount
+                          =@cart.total_price
+                        ="\u20BD".encode('utf-8')
+            / /.cart-total
+            .cart-checkboxes
+              =f.radio_button :payment_type, 'Наличные курьеру'
+              %label
+                %span
+                  Наличные курьеру
+              / /.checkbox
+            / /.cart-checkboxes
+            .wc-proceed-to-checkout
+              =f.submit 'Оформить заказ', class: 'btn btn-lg btn-primary'
+            / /.wc-proceed-to-checkout
+    / /.container
+  / /.checkout-wrapper

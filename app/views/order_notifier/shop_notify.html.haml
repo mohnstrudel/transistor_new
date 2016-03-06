@@ -1,0 +1,48 @@
+%h3 Получен новый заказ
+
+%h4
+	Покупатель:
+=@order.name
+
+%h4
+	Телефон:
+=@order.phone
+
+%h4
+	Эл.почта:
+=@order.email
+
+%h4
+	Адрес:
+=@order.address
+
+%h3 Заказ:
+
+%table
+	%tr
+		%th
+			Кол-во
+		%th
+			Описание
+		%th
+			Стоимость за шт.
+		%th
+			Доп.услуги
+		%td 
+			Общая сумма
+	=render @order.line_items
+	%tr
+		%td
+			=""
+		%td
+			Доставка
+		%td
+			1000.00 руб
+		%td 
+			=""
+		%td
+			1000.00 руб
+	%tr
+		%td{colspan: 5, "align" => "right"}
+			=sprintf("%.2f", @order.totalsum + 1000)
+			руб

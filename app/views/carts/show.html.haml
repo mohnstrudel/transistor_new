@@ -67,5 +67,5 @@
                       ="\u20BD".encode('utf-8')
               %tr
                 %td{:colspan => "2"}
-                  %a.btn.btn-primary{:href => "#", :role => "button"}
+                  =link_to new_order_path, method: :get, class: 'btn btn-primary' do
                     %span Оформить заказ

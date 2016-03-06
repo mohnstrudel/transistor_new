@@ -1,0 +1,16 @@
+%tr
+	%td
+		=line_item.quantity
+		шт
+	%td
+		=line_item.product.name
+	%td.item_price
+		=sprintf("%.2f", line_item.sellprice)
+		руб
+
+	%td
+		0
+		руб
+	%td 
+		=sprintf("%.2f", line_item.total_price)
+		руб

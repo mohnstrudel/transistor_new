@@ -20,6 +20,9 @@ gem 'jquery-rails'
 # Use this gem for nested forms
 # gem 'cocoon'
 
+# Lets store some environment variables
+gem 'figaro'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Jquery turbolinks are required because elsewise javascript won't work after loading a page (only if you refresh this page)
