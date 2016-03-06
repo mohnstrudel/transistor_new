@@ -110,8 +110,11 @@
               =link_to @product.category.name, "#"
             %span -
             %span.product-tags
-              %span Тэги:
-              %a{:href => "#", :title => ""} Jacket
+              %span 
+                Тэги:
+                -@product.tags.each do |tag|
+                  ="#{tag}, "
+              / %a{:href => "#", :title => ""} Jacket
           / /.product-meta
         / /.product-details-wrapper
   .product-socials
@@ -148,277 +151,43 @@
     .relared-products-header.margin-bottom-50
       %h3.upper Товары, которые вас могут заинтересовать
     .products.owl-carousel{"data-items" => "4"}
-      .product.product-grid
-        .product-media
-          .product-thumbnail
-            %a{:href => "product-fullwidth.html", :title => ""}
-              %img.current{:alt => "", :src => "./img/samples/products/grid/1.jpg"}
-                %img{:alt => "", :src => "./img/samples/products/index/clothing/2.jpg"}
-          / /.product-thumbnail
-          .product-hover
-            .product-actions
-              %a.awe-button.product-add-cart{"data-toggle" => "tooltip", :href => "#", :title => "Add to cart"}
-                %i.icon.icon-shopping-bag
-              %a.awe-button.product-quick-whistlist{"data-toggle" => "tooltip", :href => "#", :title => "Add to whistlist"}
-                %i.icon.icon-star
-              %a.awe-button.product-quick-view{"data-toggle" => "tooltip", :href => "product-quick-view.html", :title => "Quickview"}
-                %i.icon.icon-eye
-          / /.product-hover
-          %span.product-label.hot
-            %span hot
-        / /.product-media
-        .product-body
-          %h2.product-name
-            %a{:href => "#", :title => "Gin Lane Greenport Cotton Shirt"} Gin Lane Greenport Cotton Shirt
-          / /.product-product
-          .product-category
-            %span Jackets
-          / /.product-category
-          .product-price
-            %span.amount $246
-          / /.product-price
-        / /.product-body
-      / /.product
-      .product.product-grid
-        .product-media
-          .product-thumbnail
-            %a{:href => "product-fullwidth.html", :title => ""}
-              %img.current{:alt => "", :src => "./img/samples/products/grid/2.jpg"}
-                %img{:alt => "", :src => "./img/samples/products/index/clothing/2.jpg"}
-          / /.product-thumbnail
-          .product-hover
-            .product-actions
-              %a.awe-button.product-add-cart{"data-toggle" => "tooltip", :href => "#", :title => "Add to cart"}
-                %i.icon.icon-shopping-bag
-              %a.awe-button.product-quick-whistlist{"data-toggle" => "tooltip", :href => "#", :title => "Add to whistlist"}
-                %i.icon.icon-star
-              %a.awe-button.product-quick-view{"data-toggle" => "tooltip", :href => "product-quick-view.html", :title => "Quickview"}
-                %i.icon.icon-eye
-          / /.product-hover
-        / /.product-media
-        .product-body
-          %h2.product-name
-            %a{:href => "#", :title => "Gin Lane Greenport Cotton Shirt"} Gin Lane Greenport Cotton Shirt
-          / /.product-product
-          .product-category
-            %span Short
-          / /.product-category
-          .product-price
-            %span.amount $60
-          / /.product-price
-        / /.product-body
-      / /.product
-      .product.product-grid
-        .product-media
-          .product-thumbnail
-            %a{:href => "product-fullwidth.html", :title => ""}
-              %img.current{:alt => "", :src => "./img/samples/products/grid/3.jpg"}
-                %img{:alt => "", :src => "./img/samples/products/index/clothing/2.jpg"}
-          / /.product-thumbnail
-          .product-hover
-            .product-actions
-              %a.awe-button.product-add-cart{"data-toggle" => "tooltip", :href => "#", :title => "Add to cart"}
-                %i.icon.icon-shopping-bag
-              %a.awe-button.product-quick-whistlist{"data-toggle" => "tooltip", :href => "#", :title => "Add to whistlist"}
-                %i.icon.icon-star
-              %a.awe-button.product-quick-view{"data-toggle" => "tooltip", :href => "product-quick-view.html", :title => "Quickview"}
-                %i.icon.icon-eye
-          / /.product-hover
-          %span.product-label.sale
-            %span sale
-        / /.product-media
-        .product-body
-          %h2.product-name
-            %a{:href => "#", :title => "Gin Lane Greenport Cotton Shirt"} Gin Lane Greenport Cotton Shirt
-          / /.product-product
-          .product-category
-            %span Jackets
-          / /.product-category
-          .product-price
-            %span.amount $120
-            %del.amount $320
-          / /.product-price
-        / /.product-body
-      / /.product
-      .product.product-grid
-        .product-media
-          .product-thumbnail
-            %a{:href => "product-fullwidth.html", :title => ""}
-              %img.current{:alt => "", :src => "./img/samples/products/grid/4.jpg"}
-                %img{:alt => "", :src => "./img/samples/products/index/clothing/2.jpg"}
-          / /.product-thumbnail
-          .product-hover
-            .product-actions
-              %a.awe-button.product-add-cart{"data-toggle" => "tooltip", :href => "#", :title => "Add to cart"}
-                %i.icon.icon-shopping-bag
-              %a.awe-button.product-quick-whistlist{"data-toggle" => "tooltip", :href => "#", :title => "Add to whistlist"}
-                %i.icon.icon-star
-              %a.awe-button.product-quick-view{"data-toggle" => "tooltip", :href => "product-quick-view.html", :title => "Quickview"}
-                %i.icon.icon-eye
-          / /.product-hover
-          %span.product-label.hot
-            %span hot
-        / /.product-media
-        .product-body
-          %h2.product-name
-            %a{:href => "#", :title => "Gin Lane Greenport Cotton Shirt"} Gin Lane Greenport Cotton Shirt
-          / /.product-product
-          .product-category
-            %span Shocks
-          / /.product-category
-          .product-price
-            %span.amount $12
-          / /.product-price
-        / /.product-body
-      / /.product
-      .product.product-grid
-        .product-media
-          .product-thumbnail
-            %a{:href => "product-fullwidth.html", :title => ""}
-              %img.current{:alt => "", :src => "./img/samples/products/grid/5.jpg"}
-                %img{:alt => "", :src => "./img/samples/products/index/clothing/2.jpg"}
-          / /.product-thumbnail
-          .product-hover
-            .product-actions
-              %a.awe-button.product-add-cart{"data-toggle" => "tooltip", :href => "#", :title => "Add to cart"}
-                %i.icon.icon-shopping-bag
-              %a.awe-button.product-quick-whistlist{"data-toggle" => "tooltip", :href => "#", :title => "Add to whistlist"}
-                %i.icon.icon-star
-              %a.awe-button.product-quick-view{"data-toggle" => "tooltip", :href => "product-quick-view.html", :title => "Quickview"}
-                %i.icon.icon-eye
-          / /.product-hover
-          %span.product-label.new
-            %span new
-        / /.product-media
-        .product-body
-          %h2.product-name
-            %a{:href => "#", :title => "Gin Lane Greenport Cotton Shirt"} Gin Lane Greenport Cotton Shirt
-          / /.product-product
-          .product-category
-            %span Jackets
-          / /.product-category
-          .product-price
-            %span.amount $145
-          / /.product-price
-        / /.product-body
-      / /.product
-      .product.product-grid
-        .product-media
-          .product-thumbnail
-            %a{:href => "product-fullwidth.html", :title => ""}
-              %img.current{:alt => "", :src => "./img/samples/products/grid/6.jpg"}
-                %img{:alt => "", :src => "./img/samples/products/index/clothing/2.jpg"}
-          / /.product-thumbnail
-          .product-hover
-            .product-actions
-              %a.awe-button.product-add-cart{"data-toggle" => "tooltip", :href => "#", :title => "Add to cart"}
-                %i.icon.icon-shopping-bag
-              %a.awe-button.product-quick-whistlist{"data-toggle" => "tooltip", :href => "#", :title => "Add to whistlist"}
-                %i.icon.icon-star
-              %a.awe-button.product-quick-view{"data-toggle" => "tooltip", :href => "product-quick-view.html", :title => "Quickview"}
-                %i.icon.icon-eye
-          / /.product-hover
-        / /.product-media
-        .product-body
-          %h2.product-name
-            %a{:href => "#", :title => "Gin Lane Greenport Cotton Shirt"} Gin Lane Greenport Cotton Shirt
-          / /.product-product
-          .product-category
-            %span Shirts
-          / /.product-category
-          .product-price
-            %span.amount $50
-          / /.product-price
-        / /.product-body
-      / /.product
-      .product.product-grid
-        .product-media
-          .product-thumbnail
-            %a{:href => "product-fullwidth.html", :title => ""}
-              %img.current{:alt => "", :src => "./img/samples/products/grid/7.jpg"}
-                %img{:alt => "", :src => "./img/samples/products/index/clothing/2.jpg"}
-          / /.product-thumbnail
-          .product-hover
-            .product-actions
-              %a.awe-button.product-add-cart{"data-toggle" => "tooltip", :href => "#", :title => "Add to cart"}
-                %i.icon.icon-shopping-bag
-              %a.awe-button.product-quick-whistlist{"data-toggle" => "tooltip", :href => "#", :title => "Add to whistlist"}
-                %i.icon.icon-star
-              %a.awe-button.product-quick-view{"data-toggle" => "tooltip", :href => "product-quick-view.html", :title => "Quickview"}
-                %i.icon.icon-eye
-          / /.product-hover
-        / /.product-media
-        .product-body
-          %h2.product-name
-            %a{:href => "#", :title => "Gin Lane Greenport Cotton Shirt"} Gin Lane Greenport Cotton Shirt
-          / /.product-product
-          .product-category
-            %span Shirts
-          / /.product-category
-          .product-price
-            %span.amount $125
-          / /.product-price
-        / /.product-body
-      / /.product
-      .product.product-grid
-        .product-media
-          .product-thumbnail
-            %a{:href => "product-fullwidth.html", :title => ""}
-              %img.current{:alt => "", :src => "./img/samples/products/grid/8.jpg"}
-                %img{:alt => "", :src => "./img/samples/products/index/clothing/2.jpg"}
-          / /.product-thumbnail
-          .product-hover
-            .product-actions
-              %a.awe-button.product-add-cart{"data-toggle" => "tooltip", :href => "#", :title => "Add to cart"}
-                %i.icon.icon-shopping-bag
-              %a.awe-button.product-quick-whistlist{"data-toggle" => "tooltip", :href => "#", :title => "Add to whistlist"}
-                %i.icon.icon-star
-              %a.awe-button.product-quick-view{"data-toggle" => "tooltip", :href => "product-quick-view.html", :title => "Quickview"}
-                %i.icon.icon-eye
-          / /.product-hover
-        / /.product-media
-        .product-body
-          %h2.product-name
-            %a{:href => "#", :title => "Gin Lane Greenport Cotton Shirt"} Gin Lane Greenport Cotton Shirt
-          / /.product-product
-          .product-category
-            %span Jackets
-          / /.product-category
-          .product-price
-            %span.amount $360
-          / /.product-price
-        / /.product-body
-      / /.product
-      .product.product-grid
-        .product-media
-          .product-thumbnail
-            %a{:href => "product-fullwidth.html", :title => ""}
-              %img.current{:alt => "", :src => "./img/samples/products/grid/9.jpg"}
-                %img{:alt => "", :src => "./img/samples/products/index/clothing/2.jpg"}
-          / /.product-thumbnail
-          .product-hover
-            .product-actions
-              %a.awe-button.product-add-cart{"data-toggle" => "tooltip", :href => "#", :title => "Add to cart"}
-                %i.icon.icon-shopping-bag
-              %a.awe-button.product-quick-whistlist{"data-toggle" => "tooltip", :href => "#", :title => "Add to whistlist"}
-                %i.icon.icon-star
-              %a.awe-button.product-quick-view{"data-toggle" => "tooltip", :href => "product-quick-view.html", :title => "Quickview"}
-                %i.icon.icon-eye
-          / /.product-hover
-        / /.product-media
-        .product-body
-          %h2.product-name
-            %a{:href => "#", :title => "Gin Lane Greenport Cotton Shirt"} Gin Lane Greenport Cotton Shirt
-          / /.product-product
-          .product-category
-            %span Shirts
-          / /.product-category
-          .product-price
-            %span.amount $125
-          / /.product-price
-        / /.product-body
-      / /.product
-  / /.relared-products
+      -@similar_products.each do |product|
+        .product.product-grid
+          .product-media
+            .product-thumbnail
+              =link_to product do
+                =image_tag product.images.first.image.url, class: 'current'
+                =image_tag product.images.second.image.url
+            / /.product-thumbnail
+            .product-hover
+              .product-actions
+                %a.awe-button.product-add-cart{"data-toggle" => "tooltip", :href => "#", :title => "Add to cart"}
+                  %i.icon.icon-shopping-bag
+                %a.awe-button.product-quick-whistlist{"data-toggle" => "tooltip", :href => "#", :title => "Add to whistlist"}
+                  %i.icon.icon-star
+                %a.awe-button.product-quick-view{"data-toggle" => "tooltip", :href => "product-quick-view.html", :title => "Quickview"}
+                  %i.icon.icon-eye
+            / /.product-hover
+            %span.product-label.hot
+              %span hot
+          / /.product-media
+          .product-body
+            %h2.product-name
+              =link_to product.name, product, title: product.name
+            / /.product-product
+            .product-category
+              %span
+                =product.category.name
+            / /.product-category
+            .product-price
+              %span.amount
+                от
+                =product.options.first.price
+                ="\u20BD".encode('utf-8')
+            / /.product-price
+          / /.product-body
+        / /.product
+  / /.related-products
 :javascript
   $(function() { aweProductRender(true); });
 %footer.footer

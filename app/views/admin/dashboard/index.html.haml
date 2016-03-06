@@ -36,5 +36,13 @@
 			%h6 Действия
 			=link_to 'Создать новую мощность', new_admin_power_path
 			=link_to 'Просмотреть все мощности', admin_powers_path
+		.box
+			%h4 Тэги
+			%h5 Последние тэги
+			=render 'shared/listing_tags'
+
+			%h6 Действия
+			=link_to 'Создать новый тэг', new_admin_tag_path
+			=link_to 'Просмотреть все тэги', admin_tags_path
 	.col-md-3
 

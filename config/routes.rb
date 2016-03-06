@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :categories
     resources :subcategories
     resources :powers
+    resources :search_results
+    resources :tags
   end
 
   resources :products

@@ -1,0 +1,10 @@
+=form_for([:admin, @tag]) do |f|
+	%p
+		%hr
+			%h3 Раздел: Основное
+	%p
+		=f.label 'Наименование тэга'
+		=f.text_field :name
+
+	%p
+		=f.submit 'Сохранить'

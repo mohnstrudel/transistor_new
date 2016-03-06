@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306192314) do
+ActiveRecord::Schema.define(version: 20160306213652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,16 @@ ActiveRecord::Schema.define(version: 20160306192314) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "product_tags", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "product_tags", ["product_id"], name: "index_product_tags_on_product_id", using: :btree
+  add_index "product_tags", ["tag_id"], name: "index_product_tags_on_tag_id", using: :btree
+
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -121,12 +131,20 @@ ActiveRecord::Schema.define(version: 20160306192314) do
   add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id", using: :btree
   add_index "subcategories", ["product_id"], name: "index_subcategories_on_product_id", using: :btree
 
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "categorypics", "categories"
   add_foreign_key "images", "products"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
   add_foreign_key "options", "products"
+  add_foreign_key "product_tags", "products"
+  add_foreign_key "product_tags", "tags"
   add_foreign_key "products", "subcategories"
   add_foreign_key "subcategories", "categories"
   add_foreign_key "subcategories", "products"

@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    
+    @similar_products = Product.joins(:tags).where("tags.id IN (?)", @product)
   end
 
   private

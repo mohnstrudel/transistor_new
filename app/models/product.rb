@@ -15,6 +15,9 @@ class Product < ActiveRecord::Base
 
 	has_many :line_items
 
+	has_many :product_tags
+	has_many :tags, through: :product_tags
+
 	before_destroy :ensure_not_referenced_by_any_line_item
 
 	before_save :set_keywords
@@ -27,6 +30,7 @@ class Product < ActiveRecord::Base
 			# find(:all, :order => "type_id desc", :limit => 5).reverse
 		end
 	end
+
 
 	protected
 		def set_keywords

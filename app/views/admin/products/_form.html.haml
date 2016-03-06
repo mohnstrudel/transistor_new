@@ -66,4 +66,13 @@
 				%p
 					=f.label 'Небольшой рекламный текст (3-5 слов)'
 					=f.text_field :advertising_main_slider
+			.box
+				%p
+					%hr
+						%h3 Тэги товара
+				%p
+					=collection_check_boxes(:product, :tag_ids, Tag.all, :id, :name ) do |b|
+						%br
+						= b.label class: "label-checkbox" do
+							=b.check_box + b.text
 		.col-md-3

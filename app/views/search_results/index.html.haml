@@ -13,7 +13,7 @@
 		.row
 			.col-md-9.col-centered
 				-if @products.empty?
-					%article.post
+					%article.post	
 						.entry-summary
 							.entry-title
 								%h2
@@ -28,14 +28,9 @@
 							.entry-media
 								.entry-slide
 									.entry-carousel.owl-carousel
-										%div
-											%img{:alt => "", :src => "./img/samples/posts/sidebar/1.jpg"}/
-										%div
-											%img{:alt => "", :src => "./img/samples/posts/sidebar/1.jpg"}/
-										%div
-											%img{:alt => "", :src => "./img/samples/posts/sidebar/1.jpg"}/
-								/ /.entry-slider
-							/ /.entry-media
+										-product.images.each do |pic|
+											%div
+												=image_tag pic.image.url
 							.entry-summary
 								.entry-datetime
 									%a{:href => "#", :title => ""}
@@ -46,20 +41,17 @@
 									%h2
 										=link_to product.name, product
 								.entry-excerpt
-									%p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries...
-								/ /.entry-excerpt
+									%p
+										=truncate(product.intro_text, length: 200)
+									%p
+										=truncate(product.description, length: 100)
 								.entry-meta
-									%span Posted by
+									%span В категории
 									%strong.entry-author
-										%a{:href => "#", :title => ""} Join Doe
+										=link_to product.category.name, products_path(category: product.category.name)
 									%span -
 									%span.entry-category
-										%a{:href => "#", :title => ""} Clothing
-									%span -
-									%span.entry-comment-count
-										%a{:href => "#", :title => ""} 3 Comments
-								/ /.entry-meta
-							/ /.entry-summary
+										=link_to product.subcategory.name, products_path(category: product.category.name, subcategory: product.subcategory.name)
 				.center
 					%ul.pagination
 						%li.pagination-prev
