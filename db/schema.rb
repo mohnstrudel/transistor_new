@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306182406) do
+ActiveRecord::Schema.define(version: 20160306192314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 20160306182406) do
     t.boolean  "hotproduct"
     t.string   "main_slider_image"
     t.integer  "subcategory_id"
+    t.text     "keywords"
   end
 
   add_index "products", ["subcategory_id"], name: "index_products_on_subcategory_id", using: :btree

@@ -12,39 +12,15 @@
 //
 
 
-//= require vendor/jquery-ui.min
-//= require plugins/bootstrap.min 
-//= require plugins/awemenu.min 
-//= require plugins/headroom.min
-//= require plugins/hideshowpassword.min
-//= require plugins/jquery.parallax-1.1.3.min
-//= require plugins/jquery.magnific-popup.min
-//= require plugins/jquery.nanoscroller.min
+//= require vendor/modernizr-2.8.3.min
+//= require vendor/jquery-1.11.3.min
 
+//= require jquery.turbolinks
+//= require jquery_ujs
+//= require turbolinks
 
-
-//= require plugins/swiper.min
-//= require plugins/owl.carousel.min
-//= require plugins/jquery.countdown.min
-//= require plugins/easyzoom
-
-//= require plugins/masonry.pkgd.min
-//= require plugins/isotope.pkgd.min
-//= require plugins/imagesloaded.pkgd.min
-
-//= require plugins/gmaps.min
-
-
-//= require awe/awe-carousel-branch
-//= require awe/awe-carousel-blog
-//= require awe/awe-carousel-products
-//= require awe/awe-carousel-testimonial
-
-//= require awe-hosoren
-//= require main
-
-//= require plugins/list.min
-//= require docs
+//= require admin/products
+//= require products
 
 
 

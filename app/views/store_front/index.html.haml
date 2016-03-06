@@ -74,7 +74,7 @@
                           =category.name
                         %p.margin-bottom-50
                           =category.description
-                        %a.btn.btn-sm.btn-outline.btn-white{:href => "#"} Все товары
+                        =link_to 'Все товары', products_path(category: category.name), class: 'btn btn-sm btn-outline btn-white'
                 / /.awe-media-overlay
               / /.awe-media-header
             / /.awe-media
