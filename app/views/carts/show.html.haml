@@ -1,0 +1,71 @@
+.main-header.background.background-image-heading-checkout
+  .container
+    %h1 Корзина
+#breadcrumb
+  .container
+    %ol.breadcrumb
+      %li
+        =link_to "Главная", root_path
+      %li.active
+        %span Корзина
+.cart-page
+  %main.container
+    .table-responsive
+      %table.table-bordered.table.table-cart
+        %thead
+          %tr
+            %th Наименование
+            %th{:style => "width:10%"}
+            %th{:style => "width:10%"} Стоимость
+            %th{:style => "width:10%"} Кол-во
+            %th{:style => "width:10%"} Сумма
+        %tbody
+          -@cart.line_items.each do |item|
+            %tr
+              %td.cart-product
+                %a.remove{"data-original-title" => "Remove", "data-toggle" => "tooltip", :href => "#", :title => ""} &times;
+                =link_to item.product, class: 'product-cart' do
+                  =image_tag item.product.images.first.image.url, width: 32
+                  %h3.product-title
+                    =item.product.name
+              %td
+                %a.edit-link{"data-original-title" => "Edit", "data-toggle" => "tooltip", :href => "#", :title => ""}
+                  %i.fa.fa-edit
+              %td
+                %span.amount
+                  =item.sellprice
+                  ="\u20BD".encode('utf-8')
+              %td
+                %input.qty{:type => "text", value: item.quantity}
+              %td
+                %span.amount
+                  =item.total_price
+                  ="\u20BD".encode('utf-8')
+        %tfoot
+          %tr
+            %td{:colspan => "5"}
+              .text-right
+                =link_to 'Очистить корзину', @cart, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-dark btn-outline', role: 'button'
+                %button.btn.btn-primary{:type => "button"} Update cart
+    .row
+      .col-md-4
+        .mdspace.cartbox
+      .col-md-4
+        .mdspace.cartbox
+          
+      .col-md-4
+        .cartbox
+          %h2.uheading Итоговая сумма всей покупки
+          %table.table-summary-cart
+            %tbody
+              %tr.order-total
+                %th ИТОГО
+                %td
+                  %strong
+                    %span.amount
+                      =@cart.total_price
+                      ="\u20BD".encode('utf-8')
+              %tr
+                %td{:colspan => "2"}
+                  %a.btn.btn-primary{:href => "#", :role => "button"}
+                    %span Оформить заказ

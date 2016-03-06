@@ -45,74 +45,75 @@
           %span Назад
       / /header
       .product-details-wrapper
-        %h2.product-name
-          =link_to @product.name, '#', title: @product.name
-        / /.product-name
-        .product-status
-          %span In Stock
-          %span -
-          %small SKU: 12345678
-        / /.product-status
-        .product-stars
-          %span.rating
-            %span.star
-            %span.star
-            %span.star
-            %span
-            %span
-        / /.product-stars
-        .product-description
-          %p
-            =@product.intro_text
-        / /.product-description
-        .product-features
-          #product-infomation.tab-pane{:role => "tabpanel"}
-            %ul
-              %li
-                %span Напряжение
-                %span.value
-                  =@product.voltage
-                  В
-              %li
-                %span Ток (сила)
-                %span.value
-                  =@product.electric_current
-                  А
-              %li
-                %span Доступные мощности
-                %span.value
-                  -@product.options.each do |option|
-                    =sprintf("%.0f", option.power)
-                    ="," unless option == @product.options.last
-        / /.product-features
-        .product-actions-wrapper
-          %form{:action => "product-quick-view.html", :method => "POST"}
-            .row
-              .col-md-12
-                .form-group
-                  %label{:for => "p_color"} Выберите необходимую мощность
-                  =select_tag "voltage", options_from_collection_for_select(@product.options, "price", "power"), id: 'select_voltage', class: 'form-control'
-          / /.form
-          .product-list-actions
-            %span.product-price
-              %span.amount#priceValue
-                60
-              ="\u20BD".encode('utf-8')
-              / %del.amount 
-              /   $120
-            %button.btn.btn-lg.btn-primary В корзину
-          / /.product-list-actions
-        / /.product-actions-wrapper
-        .product-meta
-          %span.product-category
-            %span Категория:
-            =link_to @product.category.name, "#"
-          %span -
-          %span.product-tags
-            %span Тэги:
-            %a{:href => "#", :title => ""} Jacket
-        / /.product-meta
-      / /.product-details-wrapper
+        =form_for :line_item, url: line_items_path(product_id: @product.id) do |f|
+          %h2.product-name
+            =link_to @product.name, '#', title: @product.name
+          / /.product-name
+          .product-status
+            %span In Stock
+            %span -
+            %small SKU: 12345678
+          / /.product-status
+          .product-stars
+            %span.rating
+              %span.star
+              %span.star
+              %span.star
+              %span
+              %span
+          / /.product-stars
+          .product-description
+            %p
+              =@product.intro_text
+          / /.product-description
+          .product-features
+            #product-infomation.tab-pane{:role => "tabpanel"}
+              %ul
+                %li
+                  %span Напряжение
+                  %span.value
+                    =@product.voltage
+                    В
+                %li
+                  %span Ток (сила)
+                  %span.value
+                    =@product.electric_current
+                    А
+                %li
+                  %span Доступные мощности
+                  %span.value
+                    -@product.options.each do |option|
+                      =sprintf("%.0f", option.power)
+                      ="," unless option == @product.options.last
+          / /.product-features
+          .product-actions-wrapper
+            %form{:action => "product-quick-view.html", :method => "POST"}
+              .row
+                .col-md-12
+                  .form-group
+                    %label{:for => "p_color"} Выберите необходимую мощность
+                    =select_tag "voltage[]", options_from_collection_for_select(@product.options, "price", "power"), id: 'select_voltage', class: 'form-control'
+            / /.form
+            .product-list-actions
+              %span.product-price
+                %span.amount#priceValue
+                  60
+                ="\u20BD".encode('utf-8')
+                / %del.amount 
+                /   $120
+              =button_to 'В корзину', line_items_path(product_id: @product, sellprice: params[:voltage]), class: 'btn btn-lg btn-primary'
+            / /.product-list-actions
+          / /.product-actions-wrapper
+          .product-meta
+            %span.product-category
+              %span Категория:
+              =link_to @product.category.name, "#"
+            %span -
+            %span.product-tags
+              %span Тэги:
+              %a{:href => "#", :title => ""} Jacket
+          / /.product-meta
+        / /.product-details-wrapper
   .product-socials
     %ul.list-socials
       %li
