@@ -1,0 +1,15 @@
+=form_for([:admin, @subcategory]) do |f|
+	%p
+		%hr
+			%h3 Раздел: Основное
+	%p
+		=f.label 'Выбрать категорию'
+		=f.collection_select :category_id, Category.all, :id, :name, { prompt: 'Выбрать категорию' }, class: 'form-control'
+	%p
+		=f.label 'Наименование подкатегории'
+		=f.text_field :name
+	%p
+		=f.label 'Описание подкатегории'
+		=f.text_area :description
+	%p
+		=f.submit 'Сохранить'

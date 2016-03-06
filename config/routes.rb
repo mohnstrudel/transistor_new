@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get '', to: 'dashboard#index', as: '/'
     resources :products
     resources :categories
+    resources :subcategories
     resources :powers
   end
 

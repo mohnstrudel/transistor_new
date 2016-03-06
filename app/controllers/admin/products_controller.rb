@@ -55,7 +55,7 @@ class Admin::ProductsController < ApplicationController
 
   def product_params
   	params.require(:product).permit(:name, :description, :intro_text, :sku, :category_id,
-      :voltage, :electric_current, :main_slider_image, :advertising_main_slider, :hotproduct,
+      :subcategory_id, :voltage, :electric_current, :main_slider_image, :advertising_main_slider, :hotproduct,
       options_attributes: [:id, :power, :price, :product_id, :_destroy],
       images_attributes: [ :id, :image, :product_id, :_destroy ])
   end

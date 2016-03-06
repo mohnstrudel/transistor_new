@@ -1,0 +1,5 @@
+-@subcategories.each do |subcategory|
+	%p
+		=subcategory.name
+		=link_to 'Редактировать', edit_admin_subcategory_path(subcategory)
+		=link_to 'Удалить', admin_subcategory_path(subcategory), method: :delete, data: {confirm: 'Уверен?'}

@@ -1,0 +1,14 @@
+%h1
+	Admin::Products#index
+%p Find me in app/views/admin/products/index.html.erb
+
+%p 
+	Все подкатегории
+%p
+	-@subcategories.each do |subcategory|
+		=subcategory.name
+		%br
+		=link_to "Редактировать", edit_admin_subcategory_path(subcategory)
+
+%p
+	=link_to "Создать новую подкатегорию", new_admin_subcategory_path

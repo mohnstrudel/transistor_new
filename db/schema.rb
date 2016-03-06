@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301201601) do
+ActiveRecord::Schema.define(version: 20160305150450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,20 +73,27 @@ ActiveRecord::Schema.define(version: 20160301201601) do
     t.string   "advertising_main_slider"
     t.boolean  "hotproduct"
     t.string   "main_slider_image"
+    t.integer  "subcategory_id"
   end
+
+  add_index "products", ["subcategory_id"], name: "index_products_on_subcategory_id", using: :btree
 
   create_table "subcategories", force: :cascade do |t|
     t.string   "name"
+    t.text     "description"
     t.integer  "category_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "product_id"
   end
 
   add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id", using: :btree
+  add_index "subcategories", ["product_id"], name: "index_subcategories_on_product_id", using: :btree
 
   add_foreign_key "categorypics", "categories"
-  add_foreign_key "categorypics", "subcategories"
   add_foreign_key "images", "products"
   add_foreign_key "options", "products"
+  add_foreign_key "products", "subcategories"
   add_foreign_key "subcategories", "categories"
+  add_foreign_key "subcategories", "products"
 end

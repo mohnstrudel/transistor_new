@@ -5,6 +5,7 @@ class Product < ActiveRecord::Base
 	mount_uploader :main_slider_image, CategorypicUploader
 
 	belongs_to :category
+	belongs_to	:subcategory
 	
 	has_many :options, dependent: :destroy
 	accepts_nested_attributes_for :options, allow_destroy: true
