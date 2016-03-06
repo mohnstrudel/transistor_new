@@ -18,7 +18,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 
 # Use this gem for nested forms
-gem 'cocoon'
+# gem 'cocoon'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -46,6 +46,9 @@ gem "haml-rails"
 
 # Use Unicorn as the app server
 # gem 'unicorn'
+
+# Pagination gem for pagination
+gem 'will_paginate'
 
 # Only puma gets us right!
 gem 'puma'

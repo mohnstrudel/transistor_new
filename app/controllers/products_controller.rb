@@ -3,7 +3,31 @@ class ProductsController < ApplicationController
   before_action :find_product, only: [:show]
 
   def index
-  	@products = Product.all
+  	if params[:category].blank?
+      @products = Product.all.order(params[:sort], created_at: :desc)
+    elsif params[:subcategory].blank?
+      @category = Category.find_by(name: params[:category])
+      @category_id = @category.id
+      if params[:sort]
+        @products = Product.where(category_id: @category_id).order(params[:sort, created_at: :desc])
+      else
+        @products = Product.where(category_id: @category_id).order(params[created_at: :desc])
+      end
+
+    else
+
+      @category = Category.find_by(name: params[:category])
+      @category_id = @category.id
+      @subcategory = Subcategory.find_by(name: params[:subcategory])
+      @subcategory_id = @subcategory.id
+
+      if params[:sort]
+        @products = Product.where(category_id: @category_id).where(subcategory_id: @subcategory_id).order(params[:sort, created_at: :desc])
+      else
+        @products = Product.where(category_id: @category_id).where(subcategory_id: @subcategory_id).order(params[created_at: :desc])
+      end
+
+    end 
   end
 
   def show

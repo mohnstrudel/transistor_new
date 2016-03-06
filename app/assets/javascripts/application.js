@@ -21,6 +21,8 @@
 //= require plugins/jquery.magnific-popup.min
 //= require plugins/jquery.nanoscroller.min
 
+
+
 //= require plugins/swiper.min
 //= require plugins/owl.carousel.min
 //= require plugins/jquery.countdown.min
@@ -47,4 +49,4 @@
 
 
 
-//= require cocoon
+

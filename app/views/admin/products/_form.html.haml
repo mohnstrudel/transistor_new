@@ -27,6 +27,7 @@
 					=f.fields_for :options do |builder|
 						=render 'option_fields', f: builder
 						%br
+					/ link_to_add_association 'Добавить опцию', f, :options
 					=link_to_add_fields 'Добавить опцию', f, :options
 				%p
 					%hr
