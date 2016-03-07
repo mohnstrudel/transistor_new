@@ -101,7 +101,7 @@
                 ="\u20BD".encode('utf-8')
                 / %del.amount 
                 /   $120
-              =f.submit 'В корзину', class: 'btn btn-lg btn-primary'  
+              =f.submit 'В корзину', class: 'btn btn-lg btn-primary', id: 'add_to_cart'
               / =button_to 'В корзину', line_items_path(product_id: @product, sellprice: params[:voltage]), class: 'btn btn-lg btn-primary'
             / /.product-list-actions
           / /.product-actions-wrapper

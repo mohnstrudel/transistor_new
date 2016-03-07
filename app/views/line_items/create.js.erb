@@ -1,4 +1,5 @@
-console.log($('#cart_id'));
+$('#add_to_cart').val('Добавлено...');
+$('#add_to_cart').addClass('btn-dark');
 
 $('#cart_id').html("<%= escape_javascript(render partial: 'shared/cart') %>");
 
