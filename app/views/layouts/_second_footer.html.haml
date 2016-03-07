@@ -1,0 +1,88 @@
+%footer.footer
+  .footer-wrapper
+    .footer-widgets
+      .container
+        .row
+          .col-md-4
+            .row
+              .col-md-12.col-sm-6
+                .widget
+                  %h3.widget-title О МАГАЗИНЕ
+                  .widget-content
+                    %p У нас самый крутой магазин транзисторов, трансформаторов и прочей интересной живности.
+              .col-md-12.col-sm-6
+                .widget
+                  %h3.widget-title КАК ВАМ ПОМОЧЬ?
+                  .widget-content
+                    %p Тел. 1: 8 (495) 989—20—11
+                    %p Тел. 2: 8 (800) 875—05—26
+                    %p Время работы : 09:00-21:00
+                    %p Почта: transistor@gmail.com
+                / /.widget
+          .col-md-2.col-sm-6
+            .widget
+              %h3.widget-title Магазин
+              %ul
+                %li
+                  %a{:href => "#", :title => ""} Ваша корзина
+                %li
+                  %a{:href => "#", :title => ""} Ваши заказы
+                %li
+                  %a{:href => "#", :title => ""} Товары для сравнения
+                %li
+                  %a{:href => "#", :title => ""} Лист пожеланий
+                %li
+                  %a{:href => "#", :title => ""} Доставка
+            / /.widget
+          .col-md-2.col-sm-6
+            .widget
+              %h3.widget-title Полезные ссылки
+              %ul
+                %li
+                  %a{:href => "#", :title => ""} Блог
+                %li
+                  %a{:href => "#", :title => ""} Подарки
+                %li
+                  %a{:href => "#", :title => ""} Гайды
+                %li
+                  %a{:href => "#", :title => ""} Новые поступления
+                %li
+                  %a{:href => "#", :title => ""} Полезное
+            / /.widget
+          .col-md-4
+            .widget
+              %h3.widget-title Мы в соцсетях
+              %ul.list-socials
+                %li
+                  %a{:href => "#", :title => ""}
+                    %i.icon.icon-twitter
+                %li
+                  %a{:href => "#", :title => ""}
+                    %i.icon.icon-facebook
+                %li
+                  %a{:href => "#", :title => ""}
+                    %i.icon.icon-google-plus
+                %li
+                  %a{:href => "#", :title => ""}
+                    %i.icon.icon-pinterest
+            .widget
+              %h3.widget-title Мы принимаем
+
+
+
+              %ul.list-socials
+                %li
+                  %a{:href => "#", :title => ""}
+                    %i.fa.fa-cc-paypal
+                %li
+                  %a{:href => "#", :title => ""}
+                    %i.fa.fa-cc-visa
+                %li
+                  %a{:href => "#", :title => ""}
+                    %i.fa.fa-cc-amex
+            / /.widget
+      =render 'layouts/footer'
+      %a.back-top{:href => "#", :title => ""}
+        %span.back-top-image
+          =image_tag 'back-top.png'
+        %small Вверх

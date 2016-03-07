@@ -1,0 +1,8 @@
+%ul.submenu.megamenu
+  %li
+    .container-fluid
+      %ul.whishlist#list
+        =render 'line_items/list'
+      .cart-action
+        =link_to 'Просмотреть корзину', cart_path(Cart.find(session[:cart_id]).id), class: 'btn btn-lg btn-dark btn-outline btn-block'
+        =link_to 'Оформить заказ', new_order_path, class: 'btn btn-lg btn-primary btn-block'

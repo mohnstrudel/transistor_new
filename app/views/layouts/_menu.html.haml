@@ -7,129 +7,14 @@
         .awemenu-container
           .navbar-header
             %ul.navbar-icons
-              %li.menubar-account
-                %a.awemenu-icon{:href => "#", :title => ""}
-                  %i.icon.icon-user-circle
-                  %span.awe-hidden-text Account
-                %ul.submenu.megamenu
-                  %li
-                    .container-fluid
-                      .header-account
-                        .header-account-avatar
-                          %a{:href => "#", :title => ""}
-                            %img.img-circle{:alt => "", :src => "./img/samples/avatars/customers/1.jpg"}
-                        .header-account-username
-                          %h4
-                            %a{:href => "#"} Jessica Alba
-                        %ul
-                          %li
-                            %a{:href => "#"} Invite Friends
-                          %li
-                            %a{:href => "#"} Account Infomation
-                          %li
-                            %a{:href => "#"} Logout
-              %li.menubar-wishlist
-                %a.awemenu-icon{:href => "#", :title => ""}
-                  %i.icon.icon-star
-                  %span.awe-hidden-text Wishlist
-                %ul.submenu.megamenu
-                  %li
-                    .container-fluid
-                      %ul.whishlist
-                        %li
-                          .whishlist-item
-                            .product-image
-                              %a{:href => "#", :title => ""}
-                                %img{:alt => "", :src => "./img/samples/products/cart/1.jpg"}
-                            .product-body
-                              .whishlist-name
-                                %h3
-                                  %a{:href => "#", :title => ""} Gin Lane Greenport Cotton Shirt
-                              .whishlist-price
-                                %span Price:
-                                %strong $120
-                          %a.remove{:href => "#", :title => ""}
-                            %i.icon.icon-remove
-                        %li
-                          .whishlist-item
-                            .product-image
-                              %a{:href => "#", :title => ""}
-                                %img{:alt => "", :src => "./img/samples/products/cart/2.jpg"}
-                            .product-body
-                              .whishlist-name
-                                %h3
-                                  %a{:href => "#", :title => ""} Gin Lane Greenport Cotton Shirt
-                              .whishlist-price
-                                %span Price:
-                                %strong $120
-                          %a.remove{:href => "#", :title => ""}
-                            %i.icon.icon-remove
-                        %li
-                          .whishlist-item
-                            .product-image
-                              %a{:href => "#", :title => ""}
-                                %img{:alt => "", :src => "./img/samples/products/cart/3.jpg"}
-                            .product-body
-                              .whishlist-name
-                                %h3
-                                  %a{:href => "#", :title => ""} Gin Lane Greenport Cotton Shirt
-                              .whishlist-price
-                                %span Price:
-                                %strong $120
-                          %a.remove{:href => "#", :title => ""}
-                            %i.icon.icon-remove
-                      %hr
-                        .whishlist-action
-                          %a.btn.btn-dark.btn-lg.btn-outline.btn-block{:href => "#", :title => ""} View Wishlist
               %li.menubar-cart
                 %a.awemenu-icon.menu-shopping-cart{:href => "#", :title => ""}
                   %i.icon.icon-shopping-bag
                   %span.awe-hidden-text Cart
                   %span.cart-number 2
-                %ul.submenu.megamenu
-                  %li
-                    .container-fluid
-                      %ul.whishlist
-                        %li
-                          .whishlist-item
-                            .product-image
-                              %a{:href => "#", :title => ""}
-                                %img{:alt => "", :src => "./img/samples/products/cart/1.jpg"}
-                            .product-body
-                              .whishlist-name
-                                %h3
-                                  %a{:href => "#", :title => ""} Gin Lane Greenport Cotton Shirt
-                              .whishlist-price
-                                %span Price:
-                                %strong $120
-                              .whishlist-quantity
-                                %span Quantity:
-                                %span 1
-                          %a.remove{:href => "#", :title => ""}
-                            %i.icon.icon-remove
-                        %li
-                          .whishlist-item
-                            .product-image
-                              %a{:href => "#", :title => ""}
-                                %img{:alt => "", :src => "./img/samples/products/cart/2.jpg"}
-                            .product-body
-                              .whishlist-name
-                                %h3
-                                  %a{:href => "#", :title => ""} Gin Lane Greenport Cotton Shirt
-                              .whishlist-price
-                                %span Price:
-                                %strong $120
-                              .whishlist-quantity
-                                %span Quantity:
-                                %span 1
-                          %a.remove{:href => "#", :title => ""}
-                            %i.icon.icon-remove
-                      .menu-cart-total
-                        %span Total
-                        %span.price $180
-                      .cart-action
-                        %a.btn.btn-lg.btn-dark.btn-outline.btn-block{:href => "cart.html", :title => ""} View cart
-                        %a.btn.btn-lg.btn-primary.btn-block{:href => "checkout.html", :title => ""} Proceed To Checkout
+                #cart_id
+                  -if session[:cart_id]
+                    =render 'shared/cart'
             %ul.navbar-search
               %li
                 %a#open-search-form.awemenu-icon.awe-menubar-search{:href => "#", :title => ""}

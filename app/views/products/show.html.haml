@@ -45,7 +45,7 @@
           %span Назад
       / /header
       .product-details-wrapper
-        =form_for :line_item, url: line_items_path(product_id: @product.id) do |f|
+        =form_for :line_item, url: line_items_path(product_id: @product.id), remote: true do |f|
           %h2.product-name
             =link_to @product.name, '#', title: @product.name
           / /.product-name
@@ -101,7 +101,8 @@
                 ="\u20BD".encode('utf-8')
                 / %del.amount 
                 /   $120
-              =button_to 'В корзину', line_items_path(product_id: @product, sellprice: params[:voltage]), class: 'btn btn-lg btn-primary'
+              =f.submit 'В корзину', class: 'btn btn-lg btn-primary'  
+              / =button_to 'В корзину', line_items_path(product_id: @product, sellprice: params[:voltage]), class: 'btn btn-lg btn-primary'
             / /.product-list-actions
           / /.product-actions-wrapper
           .product-meta
@@ -112,8 +113,7 @@
             %span.product-tags
               %span 
                 Тэги:
-                -@product.tags.each do |tag|
-                  ="#{tag}, "
+                =@product.tags.map{|p| p.name}.join(", ")
               / %a{:href => "#", :title => ""} Jacket
           / /.product-meta
         / /.product-details-wrapper
@@ -190,83 +190,3 @@
   / /.related-products
 :javascript
   $(function() { aweProductRender(true); });
-%footer.footer
-  .footer-wrapper
-    .footer-widgets
-      .container
-        .row
-          .col-md-4
-            .row
-              .col-md-12.col-sm-6
-                .widget
-                  %h3.widget-title ABOUT HOSOREN
-                  .widget-content
-                    %p Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit. Cras neque nulla, convallis non commodo et, euismod nonsese.
-              .col-md-12.col-sm-6
-                .widget
-                  %h3.widget-title WE CAN HELP YOU?
-                  .widget-content
-                    %p Phone 1: 8 (495) 989—20—11
-                    %p Phone 2: 8 (800) 875—05—26
-                    %p Open - Close: 09:00-21:00
-                    %p Mail: hosoren@gmail.com
-                / /.widget
-          .col-md-2.col-sm-6
-            .widget
-              %h3.widget-title Shopping
-              %ul
-                %li
-                  %a{:href => "#", :title => ""} Your Cart
-                %li
-                  %a{:href => "#", :title => ""} Your Orders
-                %li
-                  %a{:href => "#", :title => ""} Compared Items
-                %li
-                  %a{:href => "#", :title => ""} Wishlist Items
-                %li
-                  %a{:href => "#", :title => ""} Shipping Detail
-            / /.widget
-          .col-md-2.col-sm-6
-            .widget
-              %h3.widget-title MORE LINK
-              %ul
-                %li
-                  %a{:href => "#", :title => ""} Blog
-                %li
-                  %a{:href => "#", :title => ""} Gift Center
-                %li
-                  %a{:href => "#", :title => ""} Buying Guides
-                %li
-                  %a{:href => "#", :title => ""} New Arrivals
-                %li
-                  %a{:href => "#", :title => ""} Clearance
-            / /.widget
-          .col-md-4
-            .widget
-              %h3.widget-title Are You Like Me
-              %ul.list-socials
-                %li
-                  %a{:href => "#", :title => ""}
-                    %i.icon.icon-twitter
-                %li
-                  %a{:href => "#", :title => ""}
-                    %i.icon.icon-facebook
-                %li
-                  %a{:href => "#", :title => ""}
-                    %i.icon.icon-google-plus
-                %li
-                  %a{:href => "#", :title => ""}
-                    %i.icon.icon-pinterest
-            .widget
-              %h3.widget-title PAYMENT ACCEPT
-              %ul.list-socials
-                %li
-                  %a{:href => "#", :title => ""}
-                    %i.fa.fa-cc-paypal
-                %li
-                  %a{:href => "#", :title => ""}
-                    %i.fa.fa-cc-visa
-                %li
-                  %a{:href => "#", :title => ""}
-                    %i.fa.fa-cc-amex
-            / /.widget
