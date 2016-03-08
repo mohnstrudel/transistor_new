@@ -1,0 +1,203 @@
+#shop-widgets-filters.shop-widgets-filters
+	#widget-area.widget-area
+		.widget.woocommerce.widget_product_categories
+			%h3.widget-title Категории
+			%ul
+				%li.active
+					=link_to 'Все товары', products_path
+				-Category.all.each do |category|
+					%li
+						=link_to category.name, products_path(category: category.name)
+		/ /.widget
+		.widget.woocommerce
+			%h3.widget-title Мощность
+			.widget-content
+				%label.label-select
+					%select.form-control{:name => "product-sizes"}
+						%option{:value => ""} Size A
+						%option{:value => ""} Size B
+						%option{:value => ""} Size C
+						%option{:value => ""} Size D
+						
+
+		/ /.widget
+		.widget
+			%h3.widget-title Brands
+			.widget-content
+				.awewoo-brand
+					.awewoo-brand-header
+						%input.form-control{:placeholder => "Find your brand", :type => "text"}
+					.awewoo-brand-content
+						.nano{:style => "max-height: 150px;"}
+							.nano-content
+								%ul
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span Vans
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span The Hood
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span Kill City
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span Baby Milo
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span Baby Milo
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span The Police
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span Vans
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span The Hood
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span Kill City
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span Baby Milo
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span Baby Milo
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span The Police
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span Vans
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span The Hood
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span Kill City
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span Baby Milo
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span Baby Milo
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span The Police
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span Vans
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span The Hood
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span Kill City
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span Baby Milo
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span Baby Milo
+									%li
+										.checkbox
+											%label
+												%input{:type => "checkbox", :value => ""}
+													%span The Police
+		.widget.woocommerce.widget_product_prices_filter
+			%h3.widget-title Prices
+			.widget-content
+				.ranger-wrapper
+					#price-slider.ranger
+				.center.small.gray
+					%span Start from
+					%span#amount.dark.bold $35
+					%span to
+					%span.dark.bold $320
+		:javascript
+			$(function() { awePriceSlider(); });
+														.widget
+			%h3.widget-title Colors
+			.wiget-content
+				.colors.square
+					%a{:href => "#", :title => ""}
+						%span.color.orange
+					%a{:href => "#", :title => ""}
+						%span.color.green
+					%a{:href => "#", :title => ""}
+						%span.color.blue
+					%a{:href => "#", :title => ""}
+						%span.color.dark
+					%a{:href => "#", :title => ""}
+						%span.color.gray
+					%a{:href => "#", :title => ""}
+						%span.color.white
+		.widget.woocommerce.widget_product_prices
+			%h3.widget-title Prices
+			%ul
+				%li
+					%a{:href => "#", :title => ""} None
+				%li
+					%a{:href => "#", :title => ""} $35	-	$100
+				%li.active
+					%a{:href => "#", :title => ""} $100 - $200
+				%li
+					%a{:href => "#", :title => ""} $200 - $300
+				%li
+					%a{:href => "#", :title => ""} $300	-	$400
+				%li
+					%a{:href => "#", :title => ""} $400	-	$500
+				%li
+					%a{:href => "#", :title => ""} $500	-	$600
+		/ /.widget
+#open-filters
+	%i.fa.fa-filter
+	%span Filter
+

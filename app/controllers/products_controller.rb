@@ -3,8 +3,14 @@ class ProductsController < ApplicationController
   before_action :find_product, only: [:show]
 
   def index
+
+    
+
   	if params[:category].blank?
-      @products = Product.all.order(params[:sort], created_at: :desc)
+      @products = Product.voltage(params[:product][:voltage])
+      # @products = Product.filter(params.slice(:voltage))
+      # debug
+      # @products = Product.all.order(params[:sort], created_at: :desc)
     elsif params[:subcategory].blank?
       @category = Category.find_by(name: params[:category])
       @category_id = @category.id

@@ -1,5 +1,9 @@
 class Product < ActiveRecord::Base
 
+	include Filterable
+
+	scope :voltage, -> (voltage) { joins(:options).where('options.power' => voltage) }
+
 	scope :hot, lambda{ where(hotproduct: true) }
 
 	mount_uploader :main_slider_image, CategorypicUploader
