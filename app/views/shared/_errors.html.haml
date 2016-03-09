@@ -1,0 +1,11 @@
+-if object.errors.any?
+	.row
+		.col-md-8.col-md-offset-2			
+			.alert.alert-danger
+				%button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+				%i.fa.fa-exclamation-triangle
+				%strong.upper Вы не заполнили следующие обязательные поля:
+				-object.errors.each do |attribute, message|
+					%hr
+						%p 
+							="#{object.class.human_attribute_name(attribute)} - #{message}"

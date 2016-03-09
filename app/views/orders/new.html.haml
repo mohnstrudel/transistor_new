@@ -9,6 +9,9 @@
       %li.active
         %span
           Оформление заказа
+
+=render 'shared/errors', object: @order, as: 'object'
+
 =form_for @order do |f|
   .checkout-wrapper
     .container

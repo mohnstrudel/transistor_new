@@ -1,0 +1,23 @@
+ru:
+  activerecord:
+    errors:
+      models:
+        order:
+          attributes:
+            email:
+              blank: "должна быть заполненной"
+            phone:
+              blank: "должен быть заполненным"
+            address:
+              blank: "должен быть заполненным"
+            name:
+              blank: "должно быть заполненным"
+            payment_type:
+              blank: 'выберите тип оплаты'
+    attributes:
+      order:
+        email: 'Почта'
+        phone: 'Телефон'
+        address: 'Адрес'
+        name: 'Имя'
+        payment_type: 'Оплата'
