@@ -11,7 +11,7 @@
 // about supported directives.
 //
 
-
+//= require ckeditor/init
 //= require vendor/modernizr-2.8.3.min
 //= require vendor/jquery-1.11.3.min
 

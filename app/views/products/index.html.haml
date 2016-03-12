@@ -88,7 +88,7 @@
 										%span.star
 								.product-description
 									%p
-										=product.intro_text
+										=product.intro_text.html_safe
 								.product-list-actions
 									/ %button.btn.btn-lg.btn-primary Add to cart
 									=link_to product do

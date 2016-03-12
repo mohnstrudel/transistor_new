@@ -20,6 +20,9 @@ gem 'jquery-rails'
 # Use this gem for nested forms
 # gem 'cocoon'
 
+# For better text formatting
+gem 'ckeditor'
+
 # Lets store some environment variables
 gem 'figaro'
 
