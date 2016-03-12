@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+	def setting(param)
+		return Setting.first.send(param)
+	end
+
 	def hidden_div_if(condition, attributes = {}, &block)
 		if condition
 			attributes["style"] = "display: none"
@@ -16,10 +20,10 @@ module ApplicationHelper
 		link_to(name, '#', class: 'add_fields', data: {id: id, fields: fields.gsub("\n", "")})
 	end
 
-	def image_or_default(object, thumb, options = {})
+	def image_or_default(object, options = {})
 
 		which_one = options[:which_one] || 'first'
-
+		thumb = options[:thumb]
 		if object.images.any?
 			return image_tag(object.images.send(which_one).image.url(thumb), size: "270x380", class: options[:class])
 		else

@@ -9,15 +9,24 @@
                 .widget
                   %h3.widget-title О МАГАЗИНЕ
                   .widget-content
-                    %p У нас самый крутой магазин транзисторов, трансформаторов и прочей интересной живности.
+                    %p
+                      =setting("about")
               .col-md-12.col-sm-6
                 .widget
                   %h3.widget-title КАК ВАМ ПОМОЧЬ?
                   .widget-content
-                    %p Тел. 1: 8 (495) 989—20—11
-                    %p Тел. 2: 8 (800) 875—05—26
-                    %p Время работы : 09:00-21:00
-                    %p Почта: transistor@gmail.com
+                    %p 
+                      Тел. 1:
+                      =setting("phone1")
+                    %p 
+                      Тел. 2:
+                      =setting("phone2")
+                    %p 
+                      Время работы :
+                      =setting("opening")
+                    %p 
+                      Почта:
+                      =setting("mail")
                 / /.widget
           .col-md-2.col-sm-6
             .widget
@@ -53,18 +62,11 @@
             .widget
               %h3.widget-title Мы в соцсетях
               %ul.list-socials
-                %li
-                  %a{:href => "#", :title => ""}
-                    %i.icon.icon-twitter
-                %li
-                  %a{:href => "#", :title => ""}
-                    %i.icon.icon-facebook
-                %li
-                  %a{:href => "#", :title => ""}
-                    %i.icon.icon-google-plus
-                %li
-                  %a{:href => "#", :title => ""}
-                    %i.icon.icon-pinterest
+                -setting('social_media').each do |key, value|
+                  -unless value.empty?
+                    %li
+                      =link_to value do
+                        ="<i class='fa fa-#{key}'></i>".html_safe
             .widget
               %h3.widget-title Мы принимаем
 

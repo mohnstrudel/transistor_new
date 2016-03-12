@@ -20,7 +20,7 @@
               .swiper-slide
                 .easyzoom.easyzoom--overlay
                   =link_to pic.image.url, title: pic.image.url do
-                    =image_or_default(@product, :detail_pic)
+                    =image_or_default(@product, thumb: :detail_pic)
           .swiper-button-prev
             %i.fa.fa-chevron-left
           .swiper-button-next
@@ -156,8 +156,8 @@
           .product-media
             .product-thumbnail
               =link_to product do
-                =image_tag product.images.first.image.url, class: 'current'
-                =image_tag product.images.second.image.url
+                =image_or_default(product, :detail_pic, which_one: 'first', class: 'current')
+                =image_or_default(product, :detail_pic, which_one: 'second')
             / /.product-thumbnail
             .product-hover
               .product-actions
