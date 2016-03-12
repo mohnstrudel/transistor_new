@@ -1,7 +1,5 @@
 class CreateSettings < ActiveRecord::Migration
   def change
-    enable_extension 'hstore'
-
     create_table :settings do |t|
       t.string :logo
       t.text :adv_text_1
