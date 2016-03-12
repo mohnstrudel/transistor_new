@@ -1,3 +1,5 @@
+=render 'shared/errors', object: @product, as: 'object'
+
 .row
 	=form_for([:admin, @product], html: { multipart: true }) do |f|
 		.col-md-1
@@ -32,6 +34,7 @@
 				%p
 					%hr
 						%h3 Раздел: фотографии
+						=f.label 'Загрузить фотографии продукции (идеальный размер - 550 х 580, но программа обрежет их как нужно)'
 						=file_field_tag :image, name: "images[]", id: 'fileupload', type: :file, multiple: true
 
 						-if @product.images.any?
@@ -63,6 +66,13 @@
 				%p
 					=f.label 'Загрузить большую фото (1450 на 500 лучше всего)'
 					=f.file_field :main_slider_image, type: :file
+
+					-if @product.main_slider_image?
+						.box
+							%h6 Для удаления текущей фото просто перезалей новое фото
+							%p
+								=image_tag @product.main_slider_image, width: 120
+
 				%p
 					=f.label 'Небольшой рекламный текст (3-5 слов)'
 					=f.text_field :advertising_main_slider

@@ -1,0 +1,7 @@
+
+.row
+	.col-md-2
+		=link_to "Редактировать", send("edit_admin_#{item.class.to_s.underscore}_path", item), class: 'btn  btn-primary btn-sm btn-outline'
+	.col-md-4
+		=item.name
+	.col-md-6

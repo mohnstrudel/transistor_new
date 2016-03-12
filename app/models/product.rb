@@ -1,5 +1,7 @@
 class Product < ActiveRecord::Base
 
+	validates :category, :subcategory, :description, :intro_text, presence: true
+
 	include Filterable
 
 	scope :voltage, -> (voltage) { joins(:options).where('options.power' => voltage) }
@@ -15,7 +17,7 @@ class Product < ActiveRecord::Base
 	accepts_nested_attributes_for :options, allow_destroy: true
 
 	has_many :images
-	accepts_nested_attributes_for :images, allow_destroy: true
+	accepts_nested_attributes_for :images, allow_destroy: true, reject_if: { minimum: 2 }
 
 	has_many :line_items
 
