@@ -57,23 +57,6 @@
                                 -group_of_five.each do |subcategory|
                                   %li
                                     =link_to subcategory.name, products_path(category: category.name, subcategory: subcategory.name)
-                          .col-lg-3
-                            .awe-media.inline.margin-bottom-25
-                              .awe-media-image
-                                %a{:href => "#", :title => ""}
-                                  %img{:alt => "", :src => "./img/samples/menu/trending-shop.jpg"}
-                              %h4.awe-media-title.medium.upper.center
-                                %a{:href => "#", :title => ""} The trend shop
-                            .awe-media.inline
-                              .awe-media-image
-                                %a{:href => "#", :title => ""}
-                                  %img{:alt => "", :src => "./img/samples/menu/shirt-shop.jpg"}
-                                .awe-media-overlay.overlay-dark-50.fullpage
-                                  .fp-table
-                                    .fp-table-cell.center
-                                      %a.btn.btn-white{:href => "#"} Show now
-                              %h4.awe-media-title.medium.upper.center
-                                %a{:href => "#", :title => ""} Shirt shop
                         .bottom-link
                           =link_to products_path(category: category.name), class: 'btn btn-lg btn-dark btn-outline' do
                             %span

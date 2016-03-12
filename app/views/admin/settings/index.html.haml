@@ -1,0 +1,5 @@
+=render partial: 'admin/shared/header', locals: { item: 'настройки'}
+
+=link_to 'Редактировать настройки', edit_admin_setting_path(@settings.first)
+
+=render partial: 'admin/shared/footer', locals: { item: 'setting' }

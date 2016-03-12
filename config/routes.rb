@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :powers
     resources :search_results
     resources :tags
+    resources :settings
   end
 
   resources :products

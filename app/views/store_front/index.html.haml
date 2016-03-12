@@ -128,8 +128,8 @@
               .product-media
                 .product-thumbnail
                   =link_to product do
-                    =image_tag product.images.first.image.url, class: 'current'
-                    =image_tag product.images.second.image.url
+                    =image_or_default(product, :store_front, which_one: 'first', class: 'current' )
+                    =image_or_default(product, :store_front, which_one: 'second')
                 / /.product-thumbnail
                 .product-hover
                   .product-actions
