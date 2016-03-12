@@ -16,9 +16,12 @@ module ApplicationHelper
 		link_to(name, '#', class: 'add_fields', data: {id: id, fields: fields.gsub("\n", "")})
 	end
 
-	def image_or_default(object)
+	def image_or_default(object, thumb, options = {})
+
+		which_one = options[:which_one] || 'first'
+
 		if object.images.any?
-			return image_tag(object.images.first.image.url, size: "270x380")
+			return image_tag(object.images.send(which_one).image.url(thumb), size: "270x380", class: options[:class])
 		else
 			return image_tag("default.png", size: "270x380")
 		end
