@@ -24,10 +24,14 @@ module ApplicationHelper
 
 		which_one = options[:which_one] || 'first'
 		thumb = options[:thumb]
-		if object.images.any?
-			return image_tag(object.images.send(which_one).image.url(thumb), size: "270x380", class: options[:class])
+		if object.try(:images)
+			if object.images.any?
+				return image_tag(object.images.send(which_one).image.url(thumb), size: "270x380", class: options[:class])
+			else
+				return image_tag("default.png", size: "270x380")
+			end
 		else
-			return image_tag("default.png", size: "270x380")
+			return image_tag(object.send(options[:image_name]).url(thumb), class: options[:class])
 		end
 	end
 

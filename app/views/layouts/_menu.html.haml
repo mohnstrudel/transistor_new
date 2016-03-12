@@ -30,7 +30,7 @@
                 / /.menubar-search-form
           .awe-logo
             =link_to root_path do
-              =image_tag Setting.first.logo.url
+              =image_or_default(Setting.first, image_name: :logo)
           / /.awe-logo
           %ul.awemenu.awemenu-right
             -Category.all.each do |category|
