@@ -1,3 +1,6 @@
+- meta title: @product.to_title
+- meta keywords: @product.to_keywords
+
 .main-header.background.background-image-heading-product
   .container
     %h1
@@ -19,7 +22,7 @@
             -@product.images.each do |pic|
               .swiper-slide
                 .easyzoom.easyzoom--overlay
-                  =link_to pic.image.url, title: pic.image.url do
+                  =link_to pic.image.url(:detail_pic), title: pic.image.url do
                     =image_or_default(@product, thumb: :detail_pic)
           .swiper-button-prev
             %i.fa.fa-chevron-left
@@ -156,8 +159,8 @@
           .product-media
             .product-thumbnail
               =link_to product do
-                =image_or_default(product, :detail_pic, which_one: 'first', class: 'current')
-                =image_or_default(product, :detail_pic, which_one: 'second')
+                =image_or_default(product, thumb: :detail_pic, which_one: 'first', class: 'current')
+                =image_or_default(product, thumb: :detail_pic, which_one: 'second')
             / /.product-thumbnail
             .product-hover
               .product-actions

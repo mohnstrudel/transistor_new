@@ -23,20 +23,15 @@
 									.entry-meta 
 										=params[:search]
 				-else
+					%article.post	
+						.entry-summary
+							.entry-excerpt
+								%blockquote
+									.entry-meta 
+										="Найдено #{@products.count} товар#{russianize(@products.count)}"
 					-@products.each do |product|
 						%article.post
-							.entry-media
-								.entry-slide
-									.entry-carousel.owl-carousel
-										-product.images.each do |pic|
-											%div
-												=image_tag pic.image.url
 							.entry-summary
-								.entry-datetime
-									%a{:href => "#", :title => ""}
-										%span.entry-day 28
-										%span.entry-month /June
-								/ /.entry-datetime
 								.entry-title
 									%h2
 										=link_to product.name, product
@@ -52,29 +47,3 @@
 									%span -
 									%span.entry-category
 										=link_to product.subcategory.name, products_path(category: product.category.name, subcategory: product.subcategory.name)
-				.center
-					%ul.pagination
-						%li.pagination-prev
-							%a{:href => "#"}
-								%i.icon.icon-arrow-prev
-						%li
-							%a{:href => "#"} 1
-						%li.active
-							%a{:href => "#"} 2
-						%li
-							%a{:href => "#"} 3
-						%li
-							%a{:href => "#"} 4
-						%li
-							%a{:href => "#"} 5
-						%li
-							%span ...
-						%li
-							%a{:href => "#"} 15
-						%li.pagination-next
-							%a{:href => "#"}
-								%i.icon.icon-arrow-next
-					/ ./pagination
-		/ /.row
-	/ /.container
-/ /.blog-wrapper

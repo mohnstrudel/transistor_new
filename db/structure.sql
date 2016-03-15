@@ -406,7 +406,11 @@ CREATE TABLE settings (
     opening character varying,
     social_media hstore,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    keywords character varying,
+    description text,
+    title character varying,
+    site character varying
 );
 
 
@@ -931,4 +935,8 @@ INSERT INTO schema_migrations (version) VALUES ('20160306213403');
 INSERT INTO schema_migrations (version) VALUES ('20160306213652');
 
 INSERT INTO schema_migrations (version) VALUES ('20160312172800');
+
+INSERT INTO schema_migrations (version) VALUES ('20160315175546');
+
+INSERT INTO schema_migrations (version) VALUES ('20160315181714');
 

@@ -37,6 +37,14 @@ class Product < ActiveRecord::Base
 		end
 	end
 
+	def to_keywords
+		name.split(" ")
+	end
+
+	def to_title
+		name
+	end
+
 
 	protected
 		def set_keywords

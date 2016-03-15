@@ -20,6 +20,10 @@ gem 'jquery-rails'
 # Use this gem for nested forms
 # gem 'cocoon'
 
+# Lets make this site SEO friendly
+gem 'metamagic' 
+gem 'sitemap_generator'
+
 # For better text formatting
 gem 'ckeditor'
 

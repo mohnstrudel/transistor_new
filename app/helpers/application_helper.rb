@@ -26,7 +26,7 @@ module ApplicationHelper
 		thumb = options[:thumb]
 		if object.try(:images)
 			if object.images.any?
-				return image_tag(object.images.send(which_one).image.url(thumb), size: "270x380", class: options[:class])
+				return image_tag(object.images.send(which_one).image.url(thumb), class: options[:class])
 			else
 				return image_tag("default.png", size: "270x380")
 			end

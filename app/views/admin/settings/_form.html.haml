@@ -1,53 +1,66 @@
 =form_for([:admin, @setting]) do |f|
-	%p
-		%hr
-			%h3 Раздел: Основное
-	%p
-		=f.label 'Логотип'
-		=f.file_field :logo
-		-if @setting.logo?
-			=image_tag @setting.logo.url, width: 120
-	%p
-		=f.label 'Первый рекламный текст под баннером (слева)'
-		=f.text_area :adv_text_1
-	%p
-		=f.label 'Второй рекламный текст под баннером (по центру)'
-		=f.text_area :adv_text_2
-	%p
-		=f.label 'Третий рекламный текст под баннерм (справа)'
-		=f.text_area :adv_text_3
-	%p
-		=f.label 'О магазине (показывается в подвале, слева)'
-		=f.text_area :about
-	%p
-		=f.label 'Телефон 1 (показывается в подвале)'
-		=f.text_field :phone1
-	%p
-		=f.label 'Телефон 2 (показывается в подвале)'
-		=f.text_field :phone2
-	%p
-		=f.label 'Почта магазина (показывается в подвале)'
-		=f.text_field :mail
-	%p
-		=f.label 'Время открытия (показывается в подвале - вводить в свободной форме, например: 10:00 - 20:00 или 09:00 до 21:30)'
-		=f.text_field :opening
-	%p
-		=f.label 'Телефон 1 (показывается в подвале)'
-		=f.text_field :phone1
-	%p
-		=f.label 'Соцсети'
-		=f.fields_for :social_media, OpenStruct.new(@setting.social_media) do |d|
-			=d.label 'Твиттер'
-			=d.text_field :twitter
-			%br
-			=d.label 'Фейсбук'
-			=d.text_field :facebook
-			%br
-			=d.label 'Вконтакте'
-			=d.text_field :vk
-			%br
-			=d.label 'Инстаграм'
-			=d.text_field :instagram
+	.row
+		.col-md-6
+			%p
+				%hr
+					%h3 Раздел: Основное
+			%p
+				=f.label 'Логотип'
+				=f.file_field :logo
+				-if @setting.logo?
+					=image_tag @setting.logo.url, width: 120
+			%p
+				=f.label 'Первый рекламный текст под баннером (слева)'
+				=f.text_area :adv_text_1
+			%p
+				=f.label 'Второй рекламный текст под баннером (по центру)'
+				=f.text_area :adv_text_2
+			%p
+				=f.label 'Третий рекламный текст под баннерм (справа)'
+				=f.text_area :adv_text_3
+			%p
+				=f.label 'О магазине (показывается в подвале, слева)'
+				=f.text_area :about
+			%p
+				=f.label 'Телефон 1 (показывается в подвале)'
+				=f.text_field :phone1
+			%p
+				=f.label 'Телефон 2 (показывается в подвале)'
+				=f.text_field :phone2
+			%p
+				=f.label 'Почта магазина (показывается в подвале)'
+				=f.text_field :mail
+			%p
+				=f.label 'Время открытия (показывается в подвале - вводить в свободной форме, например: 10:00 - 20:00 или 09:00 до 21:30)'
+				=f.text_field :opening
+			%p
+				=f.label 'Телефон 1 (показывается в подвале)'
+				=f.text_field :phone1
+			%p
+				=f.label 'Соцсети'
+				=f.fields_for :social_media, OpenStruct.new(@setting.social_media) do |d|
+					=d.label 'Твиттер'
+					=d.text_field :twitter
+					%br
+					=d.label 'Фейсбук'
+					=d.text_field :facebook
+					%br
+					=d.label 'Вконтакте'
+					=d.text_field :vk
+					%br
+					=d.label 'Инстаграм'
+					=d.text_field :instagram
+		.col-md-6
+			%h3 SEO-настройки
+			%p
+				=f.label 'Тайтл для сайта (будет формироваться так: [Тайтл сайта] - [Тайтл страницы]'
+				=f.text_field :title
+			%p
+				=f.label 'Ключевые слова общие, вводить через пробел'
+				=f.text_field :keywords
+			%p
+				=f.label 'Общее описание сайта'
+				=f.text_area :description
 
 	%p
 		=f.submit 'Сохранить'
