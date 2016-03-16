@@ -23,7 +23,7 @@
               .swiper-slide
                 .easyzoom.easyzoom--overlay
                   =link_to pic.image.url(:detail_pic), title: pic.image.url do
-                    =image_or_default(@product, thumb: :detail_pic)
+                    =image_tag pic.image.url(:detail_pic)
           .swiper-button-prev
             %i.fa.fa-chevron-left
           .swiper-button-next
