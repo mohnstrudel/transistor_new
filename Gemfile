@@ -20,6 +20,9 @@ gem 'jquery-rails'
 # Use this gem for nested forms
 # gem 'cocoon'
 
+# Use translit for russian names
+gem 'translit'
+
 # Lets make this site SEO friendly
 gem 'metamagic' 
 gem 'sitemap_generator'

@@ -45,6 +45,11 @@ class Product < ActiveRecord::Base
 		name
 	end
 
+	def to_param
+		my_name = Translit.convert(name, :english)
+    	"#{id} #{my_name}".parameterize
+  	end
+
 
 	protected
 		def set_keywords
