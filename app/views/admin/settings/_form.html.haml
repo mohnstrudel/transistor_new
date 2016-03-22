@@ -61,6 +61,10 @@
 			%p
 				=f.label 'Общее описание сайта'
 				=f.text_area :description
+			%h3 Общие настройки (для всех страниц товаров)
+			%p
+				=f.label 'Доставка и оплата (свободный текст)'
+				=f.cktext_area :delivery_and_payment
 
 	%p
 		=f.submit 'Сохранить'

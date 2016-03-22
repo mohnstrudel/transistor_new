@@ -410,7 +410,8 @@ CREATE TABLE settings (
     keywords character varying,
     description text,
     title character varying,
-    site character varying
+    site character varying,
+    delivery_and_payment text
 );
 
 
@@ -939,4 +940,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160312172800');
 INSERT INTO schema_migrations (version) VALUES ('20160315175546');
 
 INSERT INTO schema_migrations (version) VALUES ('20160315181714');
+
+INSERT INTO schema_migrations (version) VALUES ('20160322184410');
 

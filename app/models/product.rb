@@ -1,5 +1,9 @@
 class Product < ActiveRecord::Base
 
+	before_create :set_default
+	before_save :set_keywords
+	before_destroy :ensure_not_referenced_by_any_line_item
+
 	validates :category, :subcategory, :description, :intro_text, presence: true
 
 	include Filterable
@@ -24,9 +28,7 @@ class Product < ActiveRecord::Base
 	has_many :product_tags
 	has_many :tags, through: :product_tags
 
-	before_destroy :ensure_not_referenced_by_any_line_item
-
-	before_save :set_keywords
+	
 
 	def self.search(keyword)
 		if keyword.present?
@@ -57,6 +59,10 @@ class Product < ActiveRecord::Base
 		end
 
 	private 
+
+	def set_default
+		self.sku ||= self.id
+	end
 
 	def ensure_not_referenced_by_any_line_item
 		if line_items.empty?

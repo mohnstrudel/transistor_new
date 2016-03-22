@@ -54,17 +54,12 @@
             =link_to @product.name, '#', title: @product.name
           / /.product-name
           .product-status
-            %span In Stock
+            %span Есть на складе
             %span -
-            %small SKU: 12345678
+            %small
+              Артикул
+              =@product.sku
           / /.product-status
-          .product-stars
-            %span.rating
-              %span.star
-              %span.star
-              %span.star
-              %span
-              %span
           / /.product-stars
           .product-description
             %p
@@ -144,13 +139,13 @@
       %nav
         %ul.nav{:role => "tablist"}
           %li.active{:role => "presentation"}
-            %a{"data-toggle" => "tab", :href => "#product-description"} Описание
+            %a{"data-toggle" => "tab", :href => "#product-description"} Доставка & Оплата
         / /.nav
       / /nav
       .tab-content
         #product-description.tab-pane.active{:role => "tabpanel"}
           %p
-            =@product.description.html_safe
+            =setting("delivery_and_payment").html_safe
   .relared-products
     .relared-products-header.margin-bottom-50
       %h3.upper Товары, которые вас могут заинтересовать

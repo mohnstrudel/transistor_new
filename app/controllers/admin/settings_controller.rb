@@ -38,7 +38,7 @@ class Admin::SettingsController < ApplicationController
 
   def setting_params
     params.require(:setting).permit(:logo, :adv_text_1, :adv_text_2, :adv_text_3, :about, :phone1, :phone2, :mail, :opening, 
-    	:title, :keywords, :description,
+    	:title, :keywords, :description, :delivery_and_payment,
       social_media: [:twitter, :instagram, :facebook, :vk ])
   end
 
