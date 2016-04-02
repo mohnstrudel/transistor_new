@@ -14,9 +14,7 @@
                   %h2
                     =hotproduct.name
                     %br
-                      от
-                      =hotproduct.options.first.price
-                      ="\u20BD".encode('utf-8')
+                      =price_or_default(hotproduct)
                   .button
                     =link_to "Купить сейчас", hotproduct, class: "btn btn-lg btn-primary margin-right-15"
                     =link_to "Похожие товары", '#', class: "btn btn-lg btn-white btn-outline"
@@ -107,9 +105,7 @@
                     / /.product-category
                     .product-price
                       %span.amount
-                        от
-                        =product.options.first.price
-                        ="\u20BD".encode('utf-8')
+                        =price_or_default(product)
                     / /.product-price
                   / /.product-body
                 / /.product
@@ -151,9 +147,7 @@
                 / /.product-category
                 .product-price
                   %span.amount
-                    от
-                    =product.options.first.price
-                    ="\u20BD".encode('utf-8')
+                    =price_or_default(product)
                 / /.product-price
               / /.product-body
       / /.arrivals

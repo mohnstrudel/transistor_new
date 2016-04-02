@@ -75,9 +75,7 @@
 								/ /.product-category
 								.product-price
 									%span.amount
-										от
-										=product.options.first.price
-										="\u20BD".encode('utf-8')
+										=price_or_default(product)
 								/ /.product-price
 								.product-stars
 									%span.rating

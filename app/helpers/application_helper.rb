@@ -48,6 +48,14 @@ module ApplicationHelper
 		end
 	end
 
+	def price_or_default(object)
+		unless object.options.first.price.nil?
+			return "От #{object.options.first.price} #{"\u20BD".encode('utf-8')}"
+		else
+			return "Нет цены."
+		end
+	end
+
 	def style_first_div(number, &block)
 		if number.even?
 			return content_tag('div', class: "col-md-3 col-sm-4", &block)
