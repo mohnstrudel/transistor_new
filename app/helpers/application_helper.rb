@@ -49,10 +49,14 @@ module ApplicationHelper
 	end
 
 	def price_or_default(object)
-		unless object.options.first.price.nil?
-			return "От #{object.options.first.price} #{"\u20BD".encode('utf-8')}"
+		if object.options.any?
+			unless object.options.first.price.nil?
+				return "От #{object.options.first.price} #{"\u20BD".encode('utf-8')}"
+			else
+				return "Нет цены"
+			end
 		else
-			return "Нет цены."
+			return "Нет цены"
 		end
 	end
 
