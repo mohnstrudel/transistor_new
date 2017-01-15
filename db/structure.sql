@@ -44,6 +44,18 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
 -- Name: carts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -213,7 +225,7 @@ ALTER SEQUENCE line_items_id_seq OWNED BY line_items.id;
 CREATE TABLE options (
     id integer NOT NULL,
     price double precision,
-    power double precision,
+    size character varying,
     product_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -273,37 +285,6 @@ CREATE SEQUENCE orders_id_seq
 --
 
 ALTER SEQUENCE orders_id_seq OWNED BY orders.id;
-
-
---
--- Name: powers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE powers (
-    id integer NOT NULL,
-    value integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: powers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE powers_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: powers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE powers_id_seq OWNED BY powers.id;
 
 
 --
@@ -435,6 +416,37 @@ ALTER SEQUENCE settings_id_seq OWNED BY settings.id;
 
 
 --
+-- Name: sizes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE sizes (
+    id integer NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: sizes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sizes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sizes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE sizes_id_seq OWNED BY sizes.id;
+
+
+--
 -- Name: subcategories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -552,13 +564,6 @@ ALTER TABLE ONLY orders ALTER COLUMN id SET DEFAULT nextval('orders_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY powers ALTER COLUMN id SET DEFAULT nextval('powers_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY product_tags ALTER COLUMN id SET DEFAULT nextval('product_tags_id_seq'::regclass);
 
 
@@ -580,6 +585,13 @@ ALTER TABLE ONLY settings ALTER COLUMN id SET DEFAULT nextval('settings_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY sizes ALTER COLUMN id SET DEFAULT nextval('sizes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY subcategories ALTER COLUMN id SET DEFAULT nextval('subcategories_id_seq'::regclass);
 
 
@@ -588,6 +600,14 @@ ALTER TABLE ONLY subcategories ALTER COLUMN id SET DEFAULT nextval('subcategorie
 --
 
 ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclass);
+
+
+--
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
 
 
 --
@@ -647,14 +667,6 @@ ALTER TABLE ONLY orders
 
 
 --
--- Name: powers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY powers
-    ADD CONSTRAINT powers_pkey PRIMARY KEY (id);
-
-
---
 -- Name: product_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -676,6 +688,14 @@ ALTER TABLE ONLY products
 
 ALTER TABLE ONLY settings
     ADD CONSTRAINT settings_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sizes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY sizes
+    ADD CONSTRAINT sizes_pkey PRIMARY KEY (id);
 
 
 --
@@ -879,67 +899,42 @@ ALTER TABLE ONLY categorypics
 
 SET search_path TO "$user",public;
 
-INSERT INTO schema_migrations (version) VALUES ('20160227132325');
+INSERT INTO schema_migrations (version) VALUES
+('20160227132325'),
+('20160228102059'),
+('20160228103921'),
+('20160228110401'),
+('20160228110538'),
+('20160228174755'),
+('20160228183049'),
+('20160301174441'),
+('20160301174504'),
+('20160301175305'),
+('20160301190037'),
+('20160301201108'),
+('20160301201223'),
+('20160301201601'),
+('20160305145951'),
+('20160305150330'),
+('20160305150450'),
+('20160306152813'),
+('20160306154852'),
+('20160306162100'),
+('20160306170332'),
+('20160306171200'),
+('20160306173042'),
+('20160306180854'),
+('20160306182406'),
+('20160306192314'),
+('20160306213403'),
+('20160306213652'),
+('20160312172800'),
+('20160315175546'),
+('20160315181714'),
+('20160322184410'),
+('20170115171245'),
+('20170115172449'),
+('20170115174042'),
+('20170115174628');
 
-INSERT INTO schema_migrations (version) VALUES ('20160228102059');
-
-INSERT INTO schema_migrations (version) VALUES ('20160228103921');
-
-INSERT INTO schema_migrations (version) VALUES ('20160228110401');
-
-INSERT INTO schema_migrations (version) VALUES ('20160228110538');
-
-INSERT INTO schema_migrations (version) VALUES ('20160228174755');
-
-INSERT INTO schema_migrations (version) VALUES ('20160228183049');
-
-INSERT INTO schema_migrations (version) VALUES ('20160301174441');
-
-INSERT INTO schema_migrations (version) VALUES ('20160301174504');
-
-INSERT INTO schema_migrations (version) VALUES ('20160301175305');
-
-INSERT INTO schema_migrations (version) VALUES ('20160301190037');
-
-INSERT INTO schema_migrations (version) VALUES ('20160301201108');
-
-INSERT INTO schema_migrations (version) VALUES ('20160301201223');
-
-INSERT INTO schema_migrations (version) VALUES ('20160301201601');
-
-INSERT INTO schema_migrations (version) VALUES ('20160305145951');
-
-INSERT INTO schema_migrations (version) VALUES ('20160305150330');
-
-INSERT INTO schema_migrations (version) VALUES ('20160305150450');
-
-INSERT INTO schema_migrations (version) VALUES ('20160306152813');
-
-INSERT INTO schema_migrations (version) VALUES ('20160306154852');
-
-INSERT INTO schema_migrations (version) VALUES ('20160306162100');
-
-INSERT INTO schema_migrations (version) VALUES ('20160306170332');
-
-INSERT INTO schema_migrations (version) VALUES ('20160306171200');
-
-INSERT INTO schema_migrations (version) VALUES ('20160306173042');
-
-INSERT INTO schema_migrations (version) VALUES ('20160306180854');
-
-INSERT INTO schema_migrations (version) VALUES ('20160306182406');
-
-INSERT INTO schema_migrations (version) VALUES ('20160306192314');
-
-INSERT INTO schema_migrations (version) VALUES ('20160306213403');
-
-INSERT INTO schema_migrations (version) VALUES ('20160306213652');
-
-INSERT INTO schema_migrations (version) VALUES ('20160312172800');
-
-INSERT INTO schema_migrations (version) VALUES ('20160315175546');
-
-INSERT INTO schema_migrations (version) VALUES ('20160315181714');
-
-INSERT INTO schema_migrations (version) VALUES ('20160322184410');
 

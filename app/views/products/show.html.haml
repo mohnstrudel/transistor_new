@@ -79,10 +79,10 @@
                     =@product.electric_current
                     А
                 %li
-                  %span Доступные мощности
+                  %span Доступные размеры
                   %span.value
                     -@product.options.each do |option|
-                      =sprintf("%.0f", option.power)
+                      =option.size
                       ="," unless option == @product.options.last
           / /.product-features
           .product-actions-wrapper
@@ -90,8 +90,8 @@
               .row
                 .col-md-12
                   .form-group
-                    %label{:for => "p_color"} Выберите необходимую мощность
-                    =select_tag "voltage[]", options_from_collection_for_select(@product.options, "price", "power"), id: 'select_voltage', class: 'form-control'
+                    %label{:for => "p_color"} Выберите необходимый размер
+                    =select_tag "voltage[]", options_from_collection_for_select(@product.options, "price", "size"), id: 'select_voltage', class: 'form-control'
             / /.form
             .product-list-actions
               %span.product-price

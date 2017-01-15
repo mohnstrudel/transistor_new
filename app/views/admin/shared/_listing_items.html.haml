@@ -3,5 +3,8 @@
 	.col-md-2
 		=link_to "Редактировать", send("edit_admin_#{item.class.to_s.underscore}_path", item), class: 'btn  btn-primary btn-sm btn-outline'
 	.col-md-4
-		=item.name
+		-if item.respond_to?(:name)
+			=item.name
+		-elsif item.respond_to?(:value)
+			=item.value
 	.col-md-6

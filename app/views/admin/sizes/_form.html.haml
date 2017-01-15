@@ -1,9 +1,9 @@
-=form_for([:admin, @power]) do |f|
+=form_for([:admin, @size]) do |f|
 	%p
 		%hr
 			%h3 Раздел: Основное
 	%p
-		=f.label 'Значение мощности'
+		=f.label 'Значение размера'
 		=f.text_field :value
 	%p
 		=f.submit 'Сохранить'
