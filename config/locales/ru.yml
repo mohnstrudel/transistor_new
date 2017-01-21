@@ -21,3 +21,15 @@ ru:
         address: 'Адрес'
         name: 'Имя'
         payment_type: 'Оплата'
+
+  datetime:
+    distance_in_words:
+      less_than_x_minutes:
+        one: "менее минуты"
+        other: "меньше %{count} минут"
+      x_minutes:
+        one: "1 минуты"
+        other: "%{count} минут"
+      about_x_hours:
+        one: "около 1 часа"
+        other: "около %{count} часов"

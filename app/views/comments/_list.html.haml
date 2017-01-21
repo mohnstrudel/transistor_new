@@ -1,0 +1,12 @@
+%ol.product-review-list
+  -product.comments.each do |comment|
+    %li
+      %h4.review-title=comment.title
+      .review-comment
+        %p=comment.body
+      .review-meta
+        %span Отправлено
+        %a.author{:href => "#"}=comment.name
+        %span -
+        %span=t time_ago_in_words(comment.created_at)
+        %span назад

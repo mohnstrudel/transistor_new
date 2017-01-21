@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'comments/create'
+
   get 'search_results/index'
 
   namespace :admin do
@@ -17,7 +19,9 @@ Rails.application.routes.draw do
     resources :settings
   end
 
-  resources :products
+  resources :products do
+    resources :comments, only: [:create]
+  end
   resources :line_items
   resources :carts
   resources :orders

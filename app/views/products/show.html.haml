@@ -161,8 +161,11 @@
           %p
             =setting("delivery_and_payment").html_safe
         #product-review.tab-pane{:role => "tabpanel"}
-          %p
-            Hello
+          %h3 Отзывы
+          #comments
+            =render partial: "comments/list", locals: {product: @product}
+          %h3 Отправить отзыв
+          =render partial: "comments/form", locals: {product: @product}
   .related-products
     .relared-products-header.margin-bottom-50
       %h3.upper Товары, которые вас могут заинтересовать

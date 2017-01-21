@@ -152,6 +152,41 @@ ALTER SEQUENCE categorypics_id_seq OWNED BY categorypics.id;
 
 
 --
+-- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE comments (
+    id integer NOT NULL,
+    title character varying,
+    name character varying,
+    email character varying,
+    body text,
+    product_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
+
+
+--
 -- Name: images; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -539,6 +574,13 @@ ALTER TABLE ONLY categorypics ALTER COLUMN id SET DEFAULT nextval('categorypics_
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY images ALTER COLUMN id SET DEFAULT nextval('images_id_seq'::regclass);
 
 
@@ -638,6 +680,14 @@ ALTER TABLE ONLY categorypics
 
 
 --
+-- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY comments
+    ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: images_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -729,6 +779,13 @@ CREATE INDEX index_categorypics_on_category_id ON categorypics USING btree (cate
 --
 
 CREATE INDEX index_categorypics_on_subcategory_id ON categorypics USING btree (subcategory_id);
+
+
+--
+-- Name: index_comments_on_product_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_comments_on_product_id ON comments USING btree (product_id);
 
 
 --
@@ -857,6 +914,14 @@ ALTER TABLE ONLY options
 
 
 --
+-- Name: fk_rails_a0d280f6e4; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY comments
+    ADD CONSTRAINT fk_rails_a0d280f6e4 FOREIGN KEY (product_id) REFERENCES products(id);
+
+
+--
 -- Name: fk_rails_a402a4c881; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -939,6 +1004,7 @@ INSERT INTO schema_migrations (version) VALUES
 ('20170115172449'),
 ('20170115174042'),
 ('20170115174628'),
-('20170121215412');
+('20170121215412'),
+('20170121224440');
 
 

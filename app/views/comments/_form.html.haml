@@ -1,0 +1,34 @@
+.margin-bottom-50
+  =form_for([product, product.comments.build], remote: true) do |f|
+    .row
+      .col-md-6
+        .form-group
+          %label{:for => "reply-name"}
+            Ваше имя
+            %sup *
+          =f.text_field :name, id: "reply-name", class: "form-control", placeholder: "Ваше имя", required: ""
+        / /.form-group
+      .col-md-6
+        .form-group
+          %label{:for => "reply-email"}
+            Ваша почта
+            %sup *
+          =f.email_field :email, id: "reply-email", class: "form-control", placeholder: "Ваша почта", required: ""
+        / /.form-group
+    .form-group
+      %label{:for => "reply-title"}
+        Название отзыва
+        %sup *
+      =f.text_field :title, id: "reply-title", class: "form-control", placeholder: "Название", required: ""
+    / /.form-group
+    .form-group
+      %label{:for => "reply-text"}
+        Ваш отзыв
+        %sup *
+      =f.text_area :body, class: "form-control", id: "reply-text", placeholder: "Текст вашего отзыва", rows: 7, required: ""
+    / /.form-group
+    .form-submit.clearfix
+      .pull-right
+        =f.submit "Отправить", class: "btn btn-lg btn-default", id: "send_comment"
+    / /.form-submit
+  / /form
