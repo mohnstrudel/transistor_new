@@ -82,7 +82,7 @@
                 .product.product-grid
                   .product-media
                     .product-thumbnail
-                      =link_to product do
+                      =link_to product, method: :get do
                         =image_or_default(product, thumb: :store_front, which_one: 'first', class: 'current' )
                         =image_or_default(product, thumb: :store_front, which_one: 'second')
                         
@@ -98,7 +98,7 @@
                   / /.product-media
                   .product-body
                     %h2.product-name
-                      =link_to product.name, product, title: product.name
+                      =link_to product.name, product, title: product.name, method: :get
                     / /.product-product
                     .product-category
                       %span Short
@@ -123,7 +123,7 @@
             .product.product-grid
               .product-media
                 .product-thumbnail
-                  =link_to product do
+                  =link_to product, method: :get do
                     =image_or_default(product, thumb: :store_front, which_one: 'first', class: 'current' )
                     =image_or_default(product, thumb: :store_front, which_one: 'second')
                 / /.product-thumbnail

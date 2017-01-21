@@ -8,11 +8,14 @@ class Product < ActiveRecord::Base
 
 	include Filterable
 
-	scope :voltage, -> (voltage) { joins(:options).where('options.power' => voltage) }
+	scope :sizing, -> (size) { joins(:options).where('options.size' => size) }
 
 	scope :hot, lambda{ where(hotproduct: true) }
 
 	mount_uploader :main_slider_image, CategorypicUploader
+	mount_uploader :main_infographic, ImageUploader
+	mount_uploader :sizes_infographic, ImageUploader
+	mount_uploader :table_infographic, ImageUploader
 
 	belongs_to :category
 	belongs_to	:subcategory

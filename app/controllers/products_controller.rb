@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     
 
   	if params[:category].blank?
-      @products = Product.voltage(params[:product][:voltage])
+      @products = Product.sizing(params[:product][:sizing])
       # @products = Product.filter(params.slice(:voltage))
       # debug
       # @products = Product.all.order(params[:sort], created_at: :desc)

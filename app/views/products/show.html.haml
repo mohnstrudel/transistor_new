@@ -116,6 +116,18 @@
               / %a{:href => "#", :title => ""} Jacket
           / /.product-meta
         / /.product-details-wrapper
+
+  .product-infographic.margin-bottom-50
+    -unless @product.main_infographic.blank?
+      =image_tag @product.main_infographic.url
+  .row
+    .product-sizes
+      .col-md-6.col-xs-12
+        -unless @product.table_infographic.blank?
+          =image_tag @product.table_infographic.url
+      .col-md-6.cols-xs-12
+        -unless @product.sizes_infographic.blank?
+          =image_tag @product.sizes_infographic.url
   .product-socials
     %ul.list-socials
       %li
@@ -140,13 +152,18 @@
         %ul.nav{:role => "tablist"}
           %li.active{:role => "presentation"}
             %a{"data-toggle" => "tab", :href => "#product-description"} Доставка & Оплата
+          %li{role: "presentation"}
+            %a{"data-toggle" => "tab", :href => "#product-review"} Отзывы
         / /.nav
       / /nav
       .tab-content
         #product-description.tab-pane.active{:role => "tabpanel"}
           %p
             =setting("delivery_and_payment").html_safe
-  .relared-products
+        #product-review.tab-pane{:role => "tabpanel"}
+          %p
+            Hello
+  .related-products
     .relared-products-header.margin-bottom-50
       %h3.upper Товары, которые вас могут заинтересовать
     .products.owl-carousel{"data-items" => "4"}

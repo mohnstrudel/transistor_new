@@ -29,7 +29,7 @@
                           %span.icon.icon-remove
                 / /.menubar-search-form
           .awe-logo
-            =link_to root_path do
+            =link_to root_path, method: :get do
               =image_or_default(Setting.first, image_name: :logo)
           / /.awe-logo
           %ul.awemenu.awemenu-right

@@ -11,8 +11,8 @@
 		/ /.widget
 		=form_for :product, method: 'get', url: products_path do |f|
 			.widget.woocommerce
-				%h3.widget-title Мощность
+				%h3.widget-title Размер
 				.widget-content
 					%label.label-select
-						=f.select(:voltage, options_from_collection_for_select(Power.all, :value, :value),{}, { class: "form-control" })
+						=f.select(:sizing, options_from_collection_for_select(Size.all, :value, :value),{}, { class: "form-control" })
 			=f.submit 'Отфильтровать', class: 'btn btn-lg btn-primary'

@@ -338,7 +338,10 @@ CREATE TABLE products (
     hotproduct boolean,
     main_slider_image character varying,
     subcategory_id integer,
-    keywords text
+    keywords text,
+    main_infographic character varying,
+    sizes_infographic character varying,
+    table_infographic character varying
 );
 
 
@@ -935,6 +938,7 @@ INSERT INTO schema_migrations (version) VALUES
 ('20170115171245'),
 ('20170115172449'),
 ('20170115174042'),
-('20170115174628');
+('20170115174628'),
+('20170121215412');
 
 

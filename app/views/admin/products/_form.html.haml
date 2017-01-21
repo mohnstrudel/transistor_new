@@ -82,4 +82,24 @@
 						%br
 						= b.label class: "label-checkbox" do
 							=b.check_box + b.text
+
+			.box
+				%p
+					%hr
+						%h3 Инфографика товара
+				%p
+					Главная инфографика (на всю ширину)
+					-unless @product.main_infographic.blank?
+						=image_tag @product.main_infographic.url(:thumb_small)
+					=f.file_field :main_infographic
+				%p
+					Картинка таблицы размеров
+					-unless @product.table_infographic.blank?
+						=image_tag @product.table_infographic.url(:thumb_small)
+					=f.file_field :table_infographic
+				%p
+					Картинка инфографики размеров
+					-unless @product.sizes_infographic.blank?
+						=image_tag @product.sizes_infographic.url(:thumb_small)
+					=f.file_field :sizes_infographic
 		.col-md-3
