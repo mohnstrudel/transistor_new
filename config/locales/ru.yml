@@ -28,7 +28,10 @@ ru:
         one: "менее минуты"
         other: "меньше %{count} минут"
       x_minutes:
-        one: "1 минуты"
+        one: "1 минуту"
+        two: "2 минуты"
+        three: "3 минуты"
+        four: "4 минуты"
         other: "%{count} минут"
       about_x_hours:
         one: "около 1 часа"

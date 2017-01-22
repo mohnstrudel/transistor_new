@@ -153,7 +153,8 @@
           %li.active{:role => "presentation"}
             %a{"data-toggle" => "tab", :href => "#product-description"} Доставка & Оплата
           %li{role: "presentation"}
-            %a{"data-toggle" => "tab", :href => "#product-review"} Отзывы
+            %a{"data-toggle" => "tab", :href => "#product-review"} 
+              ="Отзывы (#{@product.comments.count})"
         / /.nav
       / /nav
       .tab-content
@@ -161,7 +162,7 @@
           %p
             =setting("delivery_and_payment").html_safe
         #product-review.tab-pane{:role => "tabpanel"}
-          %h3 Отзывы
+          %h3 Отзывы 
           #comments
             =render partial: "comments/list", locals: {product: @product}
           %h3 Отправить отзыв

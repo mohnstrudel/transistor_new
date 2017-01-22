@@ -163,7 +163,8 @@ CREATE TABLE comments (
     body text,
     product_id integer,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    picture character varying
 );
 
 
@@ -1005,6 +1006,7 @@ INSERT INTO schema_migrations (version) VALUES
 ('20170115174042'),
 ('20170115174628'),
 ('20170121215412'),
-('20170121224440');
+('20170121224440'),
+('20170122094442');
 
 

@@ -2,8 +2,17 @@
   -product.comments.each do |comment|
     %li
       %h4.review-title=comment.title
-      .review-comment
-        %p=comment.body
+      -unless comment.picture.blank?
+        .row
+          .col-md-2
+            =image_tag comment.picture.url(:thumb_small)
+          .col-md-8
+            .review-comment
+              %p=comment.body
+      -else
+        .review-comment
+          %p=comment.body
+
       .review-meta
         %span Отправлено
         %a.author{:href => "#"}=comment.name
