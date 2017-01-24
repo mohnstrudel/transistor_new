@@ -4,7 +4,8 @@
       -@hotproducts.each do |hotproduct|
         .main-slider-item
           .main-slider-image
-            =image_tag hotproduct.main_slider_image.url(:horizontal_thumb)
+            -unless hotproduct.main_slider_image.blank?
+              =image_tag hotproduct.main_slider_image.url(:horizontal_thumb)
           .main-slider-text
             .fp-table
               .fp-table-cell.center
@@ -62,7 +63,8 @@
             .awe-media.home-cate-media
               .awe-media-header
                 .awe-media-image
-                  =image_tag category.vertical_image.url(:vertical_thumb)
+                  -unless category.vertical_image.blank?
+                    =image_tag category.vertical_image.url(:vertical_thumb)
                 / /.awe-media-image
                 .awe-media-overlay.overlay-dark-50.fullpage
                   .content
