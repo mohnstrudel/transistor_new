@@ -5,15 +5,25 @@ ru:
         order:
           attributes:
             email:
-              blank: "должна быть заполненной"
+              blank: "должна быть заполнен"
             phone:
-              blank: "должен быть заполненным"
+              blank: "должен быть заполнен"
             address:
-              blank: "должен быть заполненным"
+              blank: "должен быть заполнен"
             name:
-              blank: "должно быть заполненным"
+              blank: "должно быть заполнено"
             payment_type:
               blank: 'выберите тип оплаты'
+        product:
+          attributes:
+            description:
+              blank: "должно быть заполнено"
+            intro_text:
+              blank: 'должен быть заполнен'
+            category:
+              blank: 'выберите категорию продукта'
+            subcategory:
+              blank: 'выберите подкатегорию продукта'
     attributes:
       order:
         email: 'Почта'
@@ -21,6 +31,11 @@ ru:
         address: 'Адрес'
         name: 'Имя'
         payment_type: 'Оплата'
+      product:
+        description: 'Описание'
+        intro_text: 'Вступительный текст'
+        category: 'Категория'
+        subcategory: 'Подкатегория'
 
   datetime:
     distance_in_words:
