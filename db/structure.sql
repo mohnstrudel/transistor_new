@@ -152,6 +152,70 @@ ALTER SEQUENCE categorypics_id_seq OWNED BY categorypics.id;
 
 
 --
+-- Name: coloralizations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE coloralizations (
+    id integer NOT NULL,
+    product_id integer,
+    color_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: coloralizations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE coloralizations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: coloralizations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE coloralizations_id_seq OWNED BY coloralizations.id;
+
+
+--
+-- Name: colors; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE colors (
+    id integer NOT NULL,
+    name character varying,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: colors_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE colors_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: colors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE colors_id_seq OWNED BY colors.id;
+
+
+--
 -- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -575,6 +639,20 @@ ALTER TABLE ONLY categorypics ALTER COLUMN id SET DEFAULT nextval('categorypics_
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY coloralizations ALTER COLUMN id SET DEFAULT nextval('coloralizations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY colors ALTER COLUMN id SET DEFAULT nextval('colors_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
 
 
@@ -681,6 +759,22 @@ ALTER TABLE ONLY categorypics
 
 
 --
+-- Name: coloralizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY coloralizations
+    ADD CONSTRAINT coloralizations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: colors_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY colors
+    ADD CONSTRAINT colors_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -780,6 +874,20 @@ CREATE INDEX index_categorypics_on_category_id ON categorypics USING btree (cate
 --
 
 CREATE INDEX index_categorypics_on_subcategory_id ON categorypics USING btree (subcategory_id);
+
+
+--
+-- Name: index_coloralizations_on_color_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_coloralizations_on_color_id ON coloralizations USING btree (color_id);
+
+
+--
+-- Name: index_coloralizations_on_product_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_coloralizations_on_product_id ON coloralizations USING btree (product_id);
 
 
 --
@@ -907,11 +1015,27 @@ ALTER TABLE ONLY subcategories
 
 
 --
+-- Name: fk_rails_5862e91693; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY coloralizations
+    ADD CONSTRAINT fk_rails_5862e91693 FOREIGN KEY (color_id) REFERENCES colors(id);
+
+
+--
 -- Name: fk_rails_61f9a8ecbd; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY options
     ADD CONSTRAINT fk_rails_61f9a8ecbd FOREIGN KEY (product_id) REFERENCES products(id);
+
+
+--
+-- Name: fk_rails_68f27826c7; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY coloralizations
+    ADD CONSTRAINT fk_rails_68f27826c7 FOREIGN KEY (product_id) REFERENCES products(id);
 
 
 --
@@ -1007,6 +1131,8 @@ INSERT INTO schema_migrations (version) VALUES
 ('20170115174628'),
 ('20170121215412'),
 ('20170121224440'),
-('20170122094442');
+('20170122094442'),
+('20170130203447'),
+('20170130203518');
 
 

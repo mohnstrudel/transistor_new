@@ -1,0 +1,10 @@
+=form_for([:admin, @color]) do |f|
+	%p
+		%hr
+			%h3 Раздел: Основное
+	%p
+		=f.label 'Наименование цвета'
+		=f.text_field :name
+
+	%p
+		=f.submit 'Сохранить'

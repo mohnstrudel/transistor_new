@@ -82,6 +82,15 @@
 						%br
 						= b.label class: "label-checkbox" do
 							=b.check_box + b.text
+			.box
+				%p
+					%hr
+						%h3 Цвета товара
+				%p
+					=collection_check_boxes(:product, :color_ids, Color.all, :id, :name ) do |b|
+						%br
+						= b.label class: "label-checkbox" do
+							=b.check_box + b.text
 
 			.box
 				%p

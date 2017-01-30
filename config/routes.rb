@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :sizes
     resources :search_results
     resources :tags
+    resources :colors
     resources :settings
   end
 
