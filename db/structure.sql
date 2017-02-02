@@ -295,7 +295,9 @@ CREATE TABLE line_items (
     updated_at timestamp without time zone NOT NULL,
     quantity integer DEFAULT 1,
     sellprice double precision,
-    order_id integer
+    order_id integer,
+    color_id integer,
+    size_id integer
 );
 
 
@@ -912,6 +914,13 @@ CREATE INDEX index_line_items_on_cart_id ON line_items USING btree (cart_id);
 
 
 --
+-- Name: index_line_items_on_color_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_line_items_on_color_id ON line_items USING btree (color_id);
+
+
+--
 -- Name: index_line_items_on_order_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -923,6 +932,13 @@ CREATE INDEX index_line_items_on_order_id ON line_items USING btree (order_id);
 --
 
 CREATE INDEX index_line_items_on_product_id ON line_items USING btree (product_id);
+
+
+--
+-- Name: index_line_items_on_size_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_line_items_on_size_id ON line_items USING btree (size_id);
 
 
 --
@@ -1039,11 +1055,27 @@ ALTER TABLE ONLY coloralizations
 
 
 --
+-- Name: fk_rails_909773478f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY line_items
+    ADD CONSTRAINT fk_rails_909773478f FOREIGN KEY (color_id) REFERENCES colors(id);
+
+
+--
 -- Name: fk_rails_a0d280f6e4; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY comments
     ADD CONSTRAINT fk_rails_a0d280f6e4 FOREIGN KEY (product_id) REFERENCES products(id);
+
+
+--
+-- Name: fk_rails_a1e35bcaf6; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY line_items
+    ADD CONSTRAINT fk_rails_a1e35bcaf6 FOREIGN KEY (size_id) REFERENCES sizes(id);
 
 
 --
@@ -1133,6 +1165,7 @@ INSERT INTO schema_migrations (version) VALUES
 ('20170121224440'),
 ('20170122094442'),
 ('20170130203447'),
-('20170130203518');
+('20170130203518'),
+('20170202074356');
 
 

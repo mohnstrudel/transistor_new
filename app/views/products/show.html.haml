@@ -69,15 +69,11 @@
             #product-infomation.tab-pane{:role => "tabpanel"}
               %ul
                 %li
-                  %span Напряжение
+                  %span Доступные цвета
                   %span.value
-                    =@product.voltage
-                    В
-                %li
-                  %span Ток (сила)
-                  %span.value
-                    =@product.electric_current
-                    А
+                    -@product.colors.each do |color|
+                      =color.name
+                      ="," unless color == @product.colors.last
                 %li
                   %span Доступные размеры
                   %span.value
@@ -86,12 +82,17 @@
                       ="," unless option == @product.options.last
           / /.product-features
           .product-actions-wrapper
-            %form{:action => "product-quick-view.html", :method => "POST"}
-              .row
-                .col-md-12
-                  .form-group
-                    %label{:for => "p_color"} Выберите необходимый размер
-                    =select_tag "voltage[]", options_from_collection_for_select(@product.options, "price", "size"), id: 'select_voltage', class: 'form-control'
+            .row
+              .col-md-12
+                .form-group
+                  %label{:for => "p_color"} Выберите цвет
+                  =select_tag "color_id", options_from_collection_for_select(@product.colors, :id, :name), id: 'select_color', class: 'form-control'
+            .row
+              .col-md-12
+                .form-group
+                  %label{:for => "p_color"} Выберите необходимый размер
+                  =select_tag "size[]", options_for_select(@product.options.map { |obj| [obj['size'], [Size.where(value: obj[:size])[0].id, obj[:price]]] }), id: 'select_size', class: 'form-control'
+                  / =select_tag "size[]", options_from_collection_for_select(@product.options, ["id", "price"], :size), id: 'select_size', class: 'form-control'
             / /.form
             .product-list-actions
               %span.product-price
