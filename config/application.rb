@@ -27,8 +27,7 @@ module Transistor
     config.assets.precompile += %w( .svg .eot .woff .ttf)
 
     # To solve some CKeditor asset problems
-    config.assets.precompile += %w(ckeditor/config.js)
-    config.assets.precompile += %w( ckeditor/* )
+    config.assets.precompile += Ckeditor.assets
     # End CKEditor fix
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
