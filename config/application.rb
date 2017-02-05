@@ -27,9 +27,7 @@ module Transistor
     config.assets.precompile += %w( .svg .eot .woff .ttf)
 
     # To solve some CKeditor asset problems
-    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
-    config.assets.precompile += Ckeditor.assets
-    config.assets.precompile += %w(ckeditor/*)
+    # Screw that, we're using Trix now
     # End CKEditor fix
 
     # Do not swallow errors in after_commit/after_rollback callbacks.

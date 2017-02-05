@@ -28,7 +28,8 @@ gem 'metamagic'
 gem 'sitemap_generator'
 
 # For better text formatting
-gem 'ckeditor'
+# Fuck ckeditor! Lets use trix
+gem 'trix'
 
 # Lets store some environment variables
 gem 'figaro'

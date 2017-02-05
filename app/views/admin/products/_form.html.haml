@@ -16,7 +16,7 @@
 					=f.text_field :name, class: 'form-control'
 				%p
 					=f.label 'Вступительный текст'
-					=f.cktext_area :intro_text, class: 'form-control'
+					=f.trix_editor :intro_text, class: 'form-control'
 				%p
 					=f.label 'Артикул (если оставить пустым будет браться просто ID товара'
 					=f.number_field :sku, class: 'form-control'

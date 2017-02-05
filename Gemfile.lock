@@ -78,12 +78,6 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
-    ckeditor (4.2.2)
-      cocaine
-      orm_adapter (~> 0.5.0)
-    climate_control (0.1.0)
-    cocaine (0.5.8)
-      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -148,7 +142,6 @@ GEM
     nio4r (1.2.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
-    orm_adapter (0.5.0)
     pg (0.19.0)
     puma (3.6.2)
     rack (2.0.1)
@@ -228,6 +221,8 @@ GEM
     thread_safe (0.3.5)
     tilt (2.0.5)
     translit (0.1.5)
+    trix (0.10.1)
+      rails
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
@@ -259,7 +254,6 @@ DEPENDENCIES
   capistrano-rvm
   capistrano3-puma
   carrierwave
-  ckeditor
   coffee-rails (~> 4.1.0)
   figaro
   font-awesome-rails
@@ -279,6 +273,7 @@ DEPENDENCIES
   sitemap_generator
   spring
   translit
+  trix
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
