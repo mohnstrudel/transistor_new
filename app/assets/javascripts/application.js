@@ -15,10 +15,8 @@
 //= require vendor/modernizr-2.8.3.min
 //= require vendor/jquery-1.11.3.min
 
-//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.remotipart
-//= require turbolinks
 
 //= require admin/products
 //= require products
