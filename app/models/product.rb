@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
 	before_save :set_keywords
 	before_destroy :ensure_not_referenced_by_any_line_item
 
-	validates :category, :subcategory, :intro_text, presence: true
+	validates :category, :subcategory, :intro_text, :description, :name, presence: true
 
 	include Filterable
 
@@ -23,7 +23,7 @@ class Product < ActiveRecord::Base
 	has_many :options, dependent: :destroy
 	accepts_nested_attributes_for :options, allow_destroy: true
 
-	has_many :images
+	has_many :images, dependent: :destroy
 	accepts_nested_attributes_for :images, allow_destroy: true, reject_if: { minimum: 2 }
 
 	has_many :line_items

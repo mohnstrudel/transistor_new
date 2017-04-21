@@ -1,6 +1,6 @@
 class Admin::CategoriesController < ApplicationController
   
-  before_action :find_category, only: [:edit, :show, :update]
+  before_action :find_category, only: [:edit, :show, :update, :destroy]
 
   def index
     @categories = Category.all
@@ -21,6 +21,14 @@ class Admin::CategoriesController < ApplicationController
       redirect_to admin_categories_path
     else
       render 'edit'
+    end
+  end
+
+  def destroy
+    if @category.destroy
+      redirect_to admin_categories_path
+    else
+      render :index
     end
   end
 

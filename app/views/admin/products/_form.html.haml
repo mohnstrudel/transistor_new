@@ -1,6 +1,6 @@
 =render 'shared/errors', object: @product, as: 'object'
 
-.row
+.row.admin-row
 	=form_for([:admin, @product], html: { multipart: true }) do |f|
 		.col-md-1
 		.col-md-5
@@ -17,6 +17,9 @@
 				%p
 					=f.label 'Вступительный текст'
 					=f.trix_editor :intro_text, class: 'form-control'
+				%p
+					=f.label 'Детальное описание товара'
+					=f.trix_editor :description, class: 'form-control'
 				%p
 					=f.label 'Артикул (если оставить пустым будет браться просто ID товара'
 					=f.number_field :sku, class: 'form-control'
