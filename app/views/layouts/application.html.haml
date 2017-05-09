@@ -11,7 +11,7 @@
 	
 	= csrf_meta_tags
 
-%body
+%body{class: "#{controller_name} #{action_name}"}
 	/ Google Tag Manager
 	%noscript
 		%iframe{:height => "0", :src => "//www.googletagmanager.com/ns.html?id=GTM-594RN8", :style => "display:none;visibility:hidden", :width => "0"}

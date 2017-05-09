@@ -44,6 +44,7 @@
 									%span В категории
 									%strong.entry-author
 										=link_to product.category.name, products_path(category: product.category.name)
-									%span -
-									%span.entry-category
-										=link_to product.subcategory.name, products_path(category: product.category.name, subcategory: product.subcategory.name)
+									-unless product.subcategory.nil?
+										%span -
+										%span.entry-category
+											=link_to product.subcategory.name, products_path(category: product.category.name, subcategory: product.subcategory.name)
