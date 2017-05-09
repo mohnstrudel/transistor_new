@@ -1,7 +1,7 @@
 .footer-copyright
   .container
     .copyright
-      %p Все права защищены &copy; 2016 Транзистор.
+      %p Все права защищены &copy; 2017 Транзистор.
     .footer-nav
       %nav
         %ul
@@ -13,68 +13,3 @@
             %a{:href => "#", :title => ""} Политика безопасности
           %li
             %a{:href => "#", :title => ""} Site Map
-/ /.back-top
-/ /footer
-/ /#wrapper
-#login-popup.white-popup.login-popup.mfp-hide
-  %div{:role => "tabpanel"}
-    / Nav tabs
-    %ul.nav.nav-tabs{:role => "tablist"}
-      %li.active{:role => "presentation"}
-        %a{"aria-controls" => "account-login", "data-toggle" => "tab", :href => "#account-login", :role => "tab"} Account Login
-      %li{:role => "presentation"}
-        %a{"aria-controls" => "account-register", "data-toggle" => "tab", :href => "#account-register", :role => "tab"} Register
-    / /.nav
-    / Tab panes
-    .tab-content
-      #account-login.tab-pane.active{:role => "tabpanel"}
-        %form{:action => "index.html", :method => "POST"}
-          .form-group
-            %label{:for => "login-account"} Account
-            %input#login-account.form-control{:type => "text"}
-          / /.form-group
-          .form-group
-            %label{:for => "login-password"} Password
-            %input#login-password.form-control{"data-show-password" => "true", :type => "password"}
-          / /.form-group
-          .forgot-passwd
-            %a{:href => "#", :title => ""}
-              %i.icon.icon-key
-              %span Forgot your password?
-          / /.forgot-passwd
-          .form-button
-            %button.btn.btn-lg.btn-primary.btn-block{:type => "submit"} Login
-          / /.form-group
-      / /.tab-pane
-      #account-register.tab-pane{:role => "tabpanel"}
-        %form{:action => "index.html", :method => "POST"}
-          .form-group
-            %label{:for => "register-username"}
-              Username
-              %sup *
-            %input#register-username.form-control{:type => "text"}
-          / /.form-group
-          .form-group
-            %label{:for => "register-email"}
-              Email
-              %sup *
-            %input#register-email.form-control{:type => "text"}
-          / /.form-group
-          .form-group
-            %label{:for => "register-password"}
-              Password
-              %sup *
-            %input#register-password.form-control{:type => "password"}
-          / /.form-group
-          .form-group
-            %label{:for => "register-confirm-password"}
-              Confirm Password
-              %sup *
-            %input#register-confirm-password.form-control{:type => "password"}
-          / /.form-group
-          .form-button
-            %button.btn.btn-lg.btn-warning.btn-block{:type => "submit"} Register
-          / /.form-button
-      / /.tab-pane
-    / /.tab-content
-/ /.login-popup
