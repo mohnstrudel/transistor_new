@@ -1,0 +1,5 @@
+-@manufacturers.each do |manu|
+	%p
+		=manu.name
+		=link_to 'Редактировать', edit_admin_manufacturer_path(manu)
+		=link_to 'Удалить', admin_manufacturer_path(manu), method: :delete, data: {confirm: 'Уверен?'}

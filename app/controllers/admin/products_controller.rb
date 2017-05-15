@@ -54,9 +54,10 @@ class Admin::ProductsController < ApplicationController
   end
 
   def product_params
-  	params.require(:product).permit(:name, :description, :intro_text, :sku, :category_id,
+  	params.require(:product).permit(:name, :description, :characteristics, :sku, :category_id,
       :main_infographic, :sizes_infographic, :table_infographic,
       :subcategory_id, :voltage, :electric_current, :main_slider_image, :advertising_main_slider, :hotproduct,
+      :manufacturer_id,
       { tag_ids: [] }, { color_ids: [] }, 
       options_attributes: [:id, :size, :price, :product_id, :_destroy],
       images_attributes: [ :id, :image, :product_id, :_destroy ])

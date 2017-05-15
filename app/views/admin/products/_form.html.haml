@@ -15,13 +15,13 @@
 					=f.label 'Наименование товара'
 					=f.text_field :name, class: 'form-control'
 				%p
-					=f.label 'Вступительный текст'
-					=f.trix_editor :intro_text, class: 'form-control'
+					=f.label 'Характеристики товара'
+					=f.bootsy_area :characteristics, class: 'form-control', rows: 8, editor_options: {image: false}
 				%p
-					=f.label 'Детальное описание товара'
-					=f.trix_editor :description, class: 'form-control'
+					=f.label 'Описание товара'
+					=f.bootsy_area :description, class: 'form-control', rows: 8, editor_options: {image: false}
 				%p
-					=f.label 'Артикул (если оставить пустым будет браться просто ID товара'
+					=f.label 'Код товара (если оставить пустым будет браться просто ID товара'
 					=f.number_field :sku, class: 'form-control'
 
 				%p
@@ -88,30 +88,15 @@
 			.box
 				%p
 					%hr
-						%h3 Цвета товара
+						%h3 Производитель товара
 				%p
-					=collection_check_boxes(:product, :color_ids, Color.all, :id, :name ) do |b|
-						%br
-						= b.label class: "label-checkbox" do
-							=b.check_box + b.text
+					=f.collection_select :manufacturer_id, Manufacturer.all, :id, :name, { prompt: 'Выбрать производителя' }, class: 'form-control'
+					/ =collection_check_boxes(:product, :color_ids, Color.all, :id, :name ) do |b|
 
 			.box
 				%p
 					%hr
-						%h3 Инфографика товара
+						%h3 Тут ещё что-то будет
 				%p
-					Главная инфографика (на всю ширину)
-					-unless @product.main_infographic.blank?
-						=image_tag @product.main_infographic.url(:thumb_small)
-					=f.file_field :main_infographic
-				%p
-					Картинка таблицы размеров
-					-unless @product.table_infographic.blank?
-						=image_tag @product.table_infographic.url(:thumb_small)
-					=f.file_field :table_infographic
-				%p
-					Картинка инфографики размеров
-					-unless @product.sizes_infographic.blank?
-						=image_tag @product.sizes_infographic.url(:thumb_small)
-					=f.file_field :sizes_infographic
+					Инпут
 		.col-md-3

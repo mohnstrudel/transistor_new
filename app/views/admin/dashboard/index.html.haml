@@ -46,13 +46,13 @@
 			=link_to 'Просмотреть все тэги', admin_tags_path
 
 		.box
-			%h4 Цвета
-			%h5 Последние цвета
-			=render 'shared/listing_colors'
+			%h4 Производители
+			%h5 Последние производители
+			=render 'shared/listing_manufacturers'
 
 			%h6 Действия
-			=link_to 'Создать новый цвет', new_admin_color_path, method: :get
-			=link_to 'Просмотреть все цвета', admin_colors_path
+			=link_to 'Создать нового производителя', new_admin_manufacturer_path, method: :get
+			=link_to 'Просмотреть всех производителей', admin_manufacturers_path
 		.box
 			%h4 Настройки
 			%h6 Действия

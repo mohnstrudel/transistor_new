@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :sizes
     resources :search_results
     resources :tags
-    resources :colors
+    resources :manufacturers
     resources :settings
   end
 
@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   resources :orders
 
   root 'store_front#index'
+
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

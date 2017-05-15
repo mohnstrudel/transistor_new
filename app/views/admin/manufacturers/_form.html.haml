@@ -1,9 +1,9 @@
-=form_for([:admin, @color]) do |f|
+=form_for([:admin, @manufacturer]) do |f|
 	%p
 		%hr
 			%h3 Раздел: Основное
 	%p
-		=f.label 'Наименование цвета'
+		=f.label 'Наименование производителя'
 		=f.text_field :name
 
 	%p

@@ -56,6 +56,70 @@ CREATE TABLE ar_internal_metadata (
 
 
 --
+-- Name: bootsy_image_galleries; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE bootsy_image_galleries (
+    id integer NOT NULL,
+    bootsy_resource_type character varying,
+    bootsy_resource_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: bootsy_image_galleries_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE bootsy_image_galleries_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: bootsy_image_galleries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE bootsy_image_galleries_id_seq OWNED BY bootsy_image_galleries.id;
+
+
+--
+-- Name: bootsy_images; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE bootsy_images (
+    id integer NOT NULL,
+    image_file character varying,
+    image_gallery_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: bootsy_images_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE bootsy_images_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: bootsy_images_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE bootsy_images_id_seq OWNED BY bootsy_images.id;
+
+
+--
 -- Name: carts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -184,38 +248,6 @@ ALTER SEQUENCE coloralizations_id_seq OWNED BY coloralizations.id;
 
 
 --
--- Name: colors; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE colors (
-    id integer NOT NULL,
-    name character varying,
-    value character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: colors_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE colors_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: colors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE colors_id_seq OWNED BY colors.id;
-
-
---
 -- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -318,6 +350,38 @@ CREATE SEQUENCE line_items_id_seq
 --
 
 ALTER SEQUENCE line_items_id_seq OWNED BY line_items.id;
+
+
+--
+-- Name: manufacturers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE manufacturers (
+    id integer NOT NULL,
+    name character varying,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: manufacturers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE manufacturers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: manufacturers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE manufacturers_id_seq OWNED BY manufacturers.id;
 
 
 --
@@ -430,7 +494,7 @@ CREATE TABLE products (
     name character varying,
     description text,
     sku integer,
-    intro_text text,
+    characteristics text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     category_id integer,
@@ -443,7 +507,8 @@ CREATE TABLE products (
     keywords text,
     main_infographic character varying,
     sizes_infographic character varying,
-    table_infographic character varying
+    table_infographic character varying,
+    manufacturer_id integer
 );
 
 
@@ -620,6 +685,20 @@ ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY bootsy_image_galleries ALTER COLUMN id SET DEFAULT nextval('bootsy_image_galleries_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY bootsy_images ALTER COLUMN id SET DEFAULT nextval('bootsy_images_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY carts ALTER COLUMN id SET DEFAULT nextval('carts_id_seq'::regclass);
 
 
@@ -648,13 +727,6 @@ ALTER TABLE ONLY coloralizations ALTER COLUMN id SET DEFAULT nextval('coloraliza
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY colors ALTER COLUMN id SET DEFAULT nextval('colors_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
 
 
@@ -670,6 +742,13 @@ ALTER TABLE ONLY images ALTER COLUMN id SET DEFAULT nextval('images_id_seq'::reg
 --
 
 ALTER TABLE ONLY line_items ALTER COLUMN id SET DEFAULT nextval('line_items_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY manufacturers ALTER COLUMN id SET DEFAULT nextval('manufacturers_id_seq'::regclass);
 
 
 --
@@ -737,6 +816,22 @@ ALTER TABLE ONLY ar_internal_metadata
 
 
 --
+-- Name: bootsy_image_galleries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY bootsy_image_galleries
+    ADD CONSTRAINT bootsy_image_galleries_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: bootsy_images_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY bootsy_images
+    ADD CONSTRAINT bootsy_images_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: carts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -769,14 +864,6 @@ ALTER TABLE ONLY coloralizations
 
 
 --
--- Name: colors_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY colors
-    ADD CONSTRAINT colors_pkey PRIMARY KEY (id);
-
-
---
 -- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -798,6 +885,14 @@ ALTER TABLE ONLY images
 
 ALTER TABLE ONLY line_items
     ADD CONSTRAINT line_items_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: manufacturers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY manufacturers
+    ADD CONSTRAINT manufacturers_pkey PRIMARY KEY (id);
 
 
 --
@@ -963,6 +1058,13 @@ CREATE INDEX index_product_tags_on_tag_id ON product_tags USING btree (tag_id);
 
 
 --
+-- Name: index_products_on_manufacturer_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_products_on_manufacturer_id ON products USING btree (manufacturer_id);
+
+
+--
 -- Name: index_products_on_subcategory_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1023,6 +1125,14 @@ ALTER TABLE ONLY line_items
 
 
 --
+-- Name: fk_rails_33082c31de; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY products
+    ADD CONSTRAINT fk_rails_33082c31de FOREIGN KEY (manufacturer_id) REFERENCES manufacturers(id);
+
+
+--
 -- Name: fk_rails_3937626525; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1035,7 +1145,7 @@ ALTER TABLE ONLY subcategories
 --
 
 ALTER TABLE ONLY coloralizations
-    ADD CONSTRAINT fk_rails_5862e91693 FOREIGN KEY (color_id) REFERENCES colors(id);
+    ADD CONSTRAINT fk_rails_5862e91693 FOREIGN KEY (color_id) REFERENCES manufacturers(id);
 
 
 --
@@ -1059,7 +1169,7 @@ ALTER TABLE ONLY coloralizations
 --
 
 ALTER TABLE ONLY line_items
-    ADD CONSTRAINT fk_rails_909773478f FOREIGN KEY (color_id) REFERENCES colors(id);
+    ADD CONSTRAINT fk_rails_909773478f FOREIGN KEY (color_id) REFERENCES manufacturers(id);
 
 
 --
@@ -1124,7 +1234,7 @@ ALTER TABLE ONLY categorypics
 
 SET search_path TO "$user",public;
 
-INSERT INTO schema_migrations (version) VALUES
+INSERT INTO "schema_migrations" (version) VALUES
 ('20160227132325'),
 ('20160228102059'),
 ('20160228103921'),
@@ -1166,6 +1276,11 @@ INSERT INTO schema_migrations (version) VALUES
 ('20170122094442'),
 ('20170130203447'),
 ('20170130203518'),
-('20170202074356');
+('20170202074356'),
+('20170515193747'),
+('20170515193748'),
+('20170515195003'),
+('20170515200018'),
+('20170515200812');
 
 

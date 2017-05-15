@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '>= 5.0.0.rc2'
+gem 'rails'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -28,8 +28,8 @@ gem 'metamagic'
 gem 'sitemap_generator'
 
 # For better text formatting
-# Fuck ckeditor! Lets use trix
-gem 'trix'
+# Fuck ckeditor! Fuck trix!! Lets use bootsy
+gem 'bootsy'
 
 # Lets store some environment variables
 gem 'figaro'

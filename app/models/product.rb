@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
 	before_save :set_keywords
 	before_destroy :ensure_not_referenced_by_any_line_item
 
-	validates :category, :subcategory, :intro_text, :description, :name, presence: true
+	validates :category, :subcategory, :characteristics, :description, :name, presence: true
 
 	include Filterable
 
@@ -31,8 +31,7 @@ class Product < ActiveRecord::Base
 	has_many :product_tags
 	has_many :tags, through: :product_tags
 
-	has_many :coloralizations
-	has_many :colors, through: :coloralizations
+	belongs_to :manufacturer
 
 	has_many :comments
 
@@ -63,7 +62,7 @@ class Product < ActiveRecord::Base
 
 	protected
 		def set_keywords
-			self.keywords = [name, description, sku.to_s, intro_text].map(&:downcase).join(' ')
+			self.keywords = [name, description, sku.to_s, characteristics].map(&:downcase).join(' ')
 		end
 
 	private 
