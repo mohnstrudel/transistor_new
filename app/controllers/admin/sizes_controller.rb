@@ -1,4 +1,4 @@
-class Admin::SizesController < ApplicationController
+class Admin::SizesController < AdminController
 	before_action	:find_size, only: [:edit, :update, :show, :destroy]
 
   def index

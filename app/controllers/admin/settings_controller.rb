@@ -1,4 +1,4 @@
-class Admin::SettingsController < ApplicationController
+class Admin::SettingsController < AdminController
   
   before_action :find_setting, only: [:edit, :show, :update]
 

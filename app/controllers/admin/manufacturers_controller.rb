@@ -1,4 +1,4 @@
-class Admin::ManufacturersController < ApplicationController
+class Admin::ManufacturersController < AdminController
   
   before_action :find_manufacturer, only: [:edit, :show, :update]
 

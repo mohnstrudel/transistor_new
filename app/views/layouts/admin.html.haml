@@ -1,0 +1,15 @@
+!!!
+%html
+%head
+  = stylesheet_link_tag   'admin', media: 'all'
+  = csrf_meta_tags
+%body
+  =render partial: 'admin/navigation/top_bar'
+  .container-fluid
+    .row
+      =render partial: 'admin/navigation/left_menu'
+      .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        =render partial: 'admin/navigation/alerts'
+        =yield
+  
+= javascript_include_tag 'admin'

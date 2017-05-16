@@ -1,4 +1,4 @@
-class Admin::TagsController < ApplicationController
+class Admin::TagsController < AdminController
   
   before_action :find_tag, only: [:edit, :show, :update]
 

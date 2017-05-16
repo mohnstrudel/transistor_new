@@ -64,7 +64,7 @@
 			%h3 Общие настройки (для всех страниц товаров)
 			%p
 				=f.label 'Доставка и оплата (свободный текст)'
-				=f.trix_editor :delivery_and_payment
+				=f.bootsy_area :delivery_and_payment, class: 'form-control', rows: 8
 
 	%p
 		=f.submit 'Сохранить'

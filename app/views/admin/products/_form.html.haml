@@ -25,12 +25,8 @@
 					=f.number_field :sku, class: 'form-control'
 
 				%p
-					%h3 Раздел: Опции
-					=f.fields_for :options do |builder|
-						=render 'option_fields', f: builder
-						%br
-					/ link_to_add_association 'Добавить опцию', f, :options
-					=link_to_add_fields 'Добавить опцию', f, :options
+					%h3 Раздел: Цена
+					=f.number_field :price, class: 'form-control', placeholder: "Цена товара в рублях"
 				%p
 					%hr
 						%h3 Раздел: фотографии
@@ -96,7 +92,22 @@
 			.box
 				%p
 					%hr
-						%h3 Тут ещё что-то будет
+						%h3 Гарантия
 				%p
-					Инпут
+					=f.text_field :warranty, class: 'form-control', placeholder: "Например: от производителя, 12 месяцев"
+			.box
+				%p
+					%hr
+						%h3 Есть в наличии?
+				%p
+					=f.check_box :available, class: 'form-control'
+			.box
+				%p
+					%hr
+						%h3 Доступная доставка для товара
+				%p
+					=collection_check_boxes(:product, :delivery_ids, Delivery.all, :id, :delivery_type ) do |b|
+						%br
+						= b.label class: "label-checkbox" do
+							=b.check_box + b.text
 		.col-md-3

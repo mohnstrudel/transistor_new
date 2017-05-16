@@ -16,7 +16,6 @@
 
 //= require jquery_ujs
 //= require jquery.remotipart
-//= require bootsy
 
 //= require admin/products
 //= require products

@@ -1,61 +1,18 @@
-%h1 Админская панель
-.row
-	.col-md-1
-	.col-md-8
-		.box 
-			%h4 Товары
-			%h5 Последние 5 созданных
-			=render 'shared/listing'
-
-			%h6 Действия
-			=link_to 'Создать новый товар', new_admin_product_path, method: :get
-			=link_to 'Просмотреть все товары', admin_products_path
-
-		.box
-			%h4 Категории
-			%h5 Последние 5 созданных
-			=render 'shared/listing_cats'
-
-			%h6 Действия
-			=link_to 'Создать новую категорию', new_admin_category_path, method: :get
-			=link_to 'Просмотреть все категории', admin_categories_path
-
-		.box		
-			%h4 Подкатегории
-			%h5 Последние 5 созданных
-			=render 'shared/listing_subcats'
-
-			%h6 Действия
-			=link_to 'Создать новую подкатегорию', new_admin_subcategory_path, method: :get
-			=link_to 'Просмотреть все подкатегории', admin_subcategories_path
-		.box
-			%h4 Размеры
-			%h5 Последние размеры
-			=render 'shared/listing_powers'
-
-			%h6 Действия
-			=link_to 'Создать новый размер', new_admin_size_path, method: :get
-			=link_to 'Просмотреть все размеры', admin_sizes_path
-		.box
-			%h4 Тэги
-			%h5 Последние тэги
-			=render 'shared/listing_tags'
-
-			%h6 Действия
-			=link_to 'Создать новый тэг', new_admin_tag_path, method: :get
-			=link_to 'Просмотреть все тэги', admin_tags_path
-
-		.box
-			%h4 Производители
-			%h5 Последние производители
-			=render 'shared/listing_manufacturers'
-
-			%h6 Действия
-			=link_to 'Создать нового производителя', new_admin_manufacturer_path, method: :get
-			=link_to 'Просмотреть всех производителей', admin_manufacturers_path
-		.box
-			%h4 Настройки
-			%h6 Действия
-			=link_to 'Редактировать настройки', edit_admin_setting_path(@setting)
-	.col-md-3
-
+%h1.page-header Dashboard
+.row.placeholders
+  .col-xs-6.col-sm-3.placeholder
+    %img.img-responsive{:alt => "Generic placeholder thumbnail", :height => "200", :src => "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==", :width => "200"}/
+    %h4 Label
+    %span.text-muted Something else
+  .col-xs-6.col-sm-3.placeholder
+    %img.img-responsive{:alt => "Generic placeholder thumbnail", :height => "200", :src => "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==", :width => "200"}/
+    %h4 Label
+    %span.text-muted Something else
+  .col-xs-6.col-sm-3.placeholder
+    %img.img-responsive{:alt => "Generic placeholder thumbnail", :height => "200", :src => "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==", :width => "200"}/
+    %h4 Label
+    %span.text-muted Something else
+  .col-xs-6.col-sm-3.placeholder
+    %img.img-responsive{:alt => "Generic placeholder thumbnail", :height => "200", :src => "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==", :width => "200"}/
+    %h4 Label
+    %span.text-muted Something else

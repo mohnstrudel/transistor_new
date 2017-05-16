@@ -1,0 +1,21 @@
+-if object.respond_to?(:delivery_type)
+  .form-group
+    %label.col-sm-2.control-label
+      Тип доставки (Курьер, Самовывоз...)
+    .col-sm-10
+      =f.text_field :delivery_type, class: 'form-control'
+  .hr-line-dashed
+-if object.respond_to?(:reach)
+  .form-group
+    %label.col-sm-2.control-label
+      Охват доставки (Москва, Область)
+    .col-sm-10
+      =f.text_field :reach, class: 'form-control'
+  .hr-line-dashed
+-if object.respond_to?(:price)
+  .form-group
+    %label.col-sm-2.control-label
+      Цена в рублях
+    .col-sm-10
+      =f.number_field :price, class: 'form-control'
+  .hr-line-dashed

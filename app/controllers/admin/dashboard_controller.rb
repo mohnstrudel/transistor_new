@@ -1,4 +1,4 @@
-class Admin::DashboardController < ApplicationController
+class Admin::DashboardController < AdminController
   def index	
 	@products = Product.last(5)
 	@categories = Category.last(5)

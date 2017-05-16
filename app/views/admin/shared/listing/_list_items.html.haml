@@ -1,0 +1,63 @@
+%h2.sub-header
+  =object_name(object).pluralize.capitalize
+.row
+  .col-sm-12.m-b-xs
+    .pull-right
+      =link_to "Создать новую сущность - #{object_name(object)}", send("new_admin_#{local_assigns[:namespace]}#{object_name(object)}_path"), class: "btn btn-w-m btn-primary"
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        -if object.has_attribute? :name
+          %th
+            ="Наименование товара"
+        -if object.has_attribute? :sku
+          %th
+            ="Артикул товара"
+        -if object.has_attribute? :category_id
+          %th
+            ="Категория товара"
+        -if object.has_attribute? :delivery_type
+          %th
+            ="Тип доставки"
+        -if object.has_attribute? :reach
+          %th
+            ="Область доставки"
+        -if object.has_attribute? :price
+          %th
+            ="Цена"
+
+        %th
+          Создано
+        %th.text-right
+          Действия
+          
+    %tbody
+      -object.each do |obj|
+        %tr
+          -if obj.respond_to?(:name)
+            %td
+              =obj.name
+          -if obj.respond_to?(:sku)
+            %td
+              =obj.sku
+          -if obj.respond_to?(:category_id)
+            %td
+              =obj.category.name
+          -if obj.respond_to?(:delivery_type)
+            %td
+              =obj.delivery_type
+          -if obj.respond_to?(:reach)
+            %td
+              =obj.reach
+          -if obj.respond_to?(:price)
+            %td
+              =obj.price
+
+          %td
+            =time_ago_in_words(obj.created_at)
+            назад
+          %td.text-right
+            .btn-group
+              =link_to "Редактировать", send("edit_admin_#{local_assigns[:namespace]}#{object_name(object)}_path", obj), class: "btn-white btn btn-xs"
+              =link_to "Удалить", send("admin_#{local_assigns[:namespace]}#{object_name(object)}_path", obj), method: :delete, data: {confirm: t('admin.form.confirm') }, class: "btn-white btn btn-xs"

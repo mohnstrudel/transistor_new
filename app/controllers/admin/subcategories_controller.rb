@@ -1,4 +1,4 @@
-class Admin::SubcategoriesController < ApplicationController
+class Admin::SubcategoriesController < AdminController
   
   before_action :find_subcategory, only: [:edit, :show, :update, :destroy]
 

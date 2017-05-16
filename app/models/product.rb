@@ -28,6 +28,9 @@ class Product < ActiveRecord::Base
 
 	has_many :line_items
 
+	has_many :product_deliveries
+	has_many :deliveries, through: :product_deliveries
+
 	has_many :product_tags
 	has_many :tags, through: :product_tags
 

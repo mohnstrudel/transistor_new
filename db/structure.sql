@@ -284,6 +284,39 @@ ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 
 --
+-- Name: deliveries; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE deliveries (
+    id integer NOT NULL,
+    reach character varying,
+    price double precision,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    delivery_type character varying
+);
+
+
+--
+-- Name: deliveries_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE deliveries_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: deliveries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE deliveries_id_seq OWNED BY deliveries.id;
+
+
+--
 -- Name: images; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -454,6 +487,38 @@ ALTER SEQUENCE orders_id_seq OWNED BY orders.id;
 
 
 --
+-- Name: product_deliveries; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE product_deliveries (
+    id integer NOT NULL,
+    product_id integer,
+    delivery_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: product_deliveries_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE product_deliveries_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: product_deliveries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE product_deliveries_id_seq OWNED BY product_deliveries.id;
+
+
+--
 -- Name: product_tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -508,7 +573,10 @@ CREATE TABLE products (
     main_infographic character varying,
     sizes_infographic character varying,
     table_infographic character varying,
-    manufacturer_id integer
+    manufacturer_id integer,
+    warranty character varying,
+    available boolean,
+    price double precision
 );
 
 
@@ -734,6 +802,13 @@ ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY deliveries ALTER COLUMN id SET DEFAULT nextval('deliveries_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY images ALTER COLUMN id SET DEFAULT nextval('images_id_seq'::regclass);
 
 
@@ -763,6 +838,13 @@ ALTER TABLE ONLY options ALTER COLUMN id SET DEFAULT nextval('options_id_seq'::r
 --
 
 ALTER TABLE ONLY orders ALTER COLUMN id SET DEFAULT nextval('orders_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY product_deliveries ALTER COLUMN id SET DEFAULT nextval('product_deliveries_id_seq'::regclass);
 
 
 --
@@ -872,6 +954,14 @@ ALTER TABLE ONLY comments
 
 
 --
+-- Name: deliveries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY deliveries
+    ADD CONSTRAINT deliveries_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: images_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -909,6 +999,14 @@ ALTER TABLE ONLY options
 
 ALTER TABLE ONLY orders
     ADD CONSTRAINT orders_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: product_deliveries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY product_deliveries
+    ADD CONSTRAINT product_deliveries_pkey PRIMARY KEY (id);
 
 
 --
@@ -1044,6 +1142,20 @@ CREATE INDEX index_options_on_product_id ON options USING btree (product_id);
 
 
 --
+-- Name: index_product_deliveries_on_delivery_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_product_deliveries_on_delivery_id ON product_deliveries USING btree (delivery_id);
+
+
+--
+-- Name: index_product_deliveries_on_product_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_product_deliveries_on_product_id ON product_deliveries USING btree (product_id);
+
+
+--
 -- Name: index_product_tags_on_product_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1141,6 +1253,14 @@ ALTER TABLE ONLY subcategories
 
 
 --
+-- Name: fk_rails_3ff0b294a6; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY product_deliveries
+    ADD CONSTRAINT fk_rails_3ff0b294a6 FOREIGN KEY (product_id) REFERENCES products(id);
+
+
+--
 -- Name: fk_rails_5862e91693; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1213,6 +1333,14 @@ ALTER TABLE ONLY images
 
 
 --
+-- Name: fk_rails_caacc132cc; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY product_deliveries
+    ADD CONSTRAINT fk_rails_caacc132cc FOREIGN KEY (delivery_id) REFERENCES deliveries(id);
+
+
+--
 -- Name: fk_rails_ecabaad74a; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1281,6 +1409,13 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170515193748'),
 ('20170515195003'),
 ('20170515200018'),
-('20170515200812');
+('20170515200812'),
+('20170516201137'),
+('20170516201503'),
+('20170516201709'),
+('20170516201918'),
+('20170516213245'),
+('20170516215510'),
+('20170516220535');
 
 
