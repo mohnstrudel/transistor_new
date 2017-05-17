@@ -92,6 +92,9 @@
               / =button_to 'В корзину', line_items_path(product_id: @product, sellprice: params[:voltage]), class: 'btn btn-lg btn-primary'
             / /.product-list-actions
           / /.product-actions-wrapper
+          
+          .product-payments
+            =render partial: 'products/product_partials/payment_icons'
           .product-meta
             %span.product-category
               %span Категория:
