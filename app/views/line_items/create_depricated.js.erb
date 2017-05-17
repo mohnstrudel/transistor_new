@@ -1,5 +1,0 @@
-var ul = document.getElementById("list");
-console.log('hello');
-
-ul.innerHTML = "<%- Cart.find(session[:cart_id]).line_items.each do |item| %><li><div class='whishlist-item'><div class='product-image'></div><div class='product-body'><div class='whishlist-name'><h3>" + item + "</h3></div><div class='whishlist-price'><span>Цена:</span><strong></strong></div><div class='whishlist-quantity'><span>Кол-во:</span><span></span></div></div></div></div></li><% end %>";
-

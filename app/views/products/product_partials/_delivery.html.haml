@@ -1,0 +1,7 @@
+.row.cols-border
+  .col-sm-8.col-sm-offset-2
+    %ul.fa-ul
+      -@product.deliveries.each do |delivery|
+        %li
+          %i.fa-li.fa.fa-check
+          ="#{delivery.delivery_type} - #{delivery.price} рублей"

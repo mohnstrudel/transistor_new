@@ -14,5 +14,13 @@ $(document).ready(function(){
     $('#select_size').change(function(event) {
       update_price();
     });
+
+    // $('#add_to_cart').on('click', function(event){
+    //   $(this).val("Добавлено").addClass('btn-dark').prop('disabled', true);;
+    //   setTimeout(function(){
+    //                 $("#add_to_cart").val("В корзину").removeClass('btn-dark').prop('disabled', false);
+    //               }, 1500);
+
+    // });
   }  
 });
