@@ -48,6 +48,13 @@
               Ваш адрес
               %sup *
             =f.text_area :address, class: 'form-control dark'
+          .mdspace.cartbox
+            %h2.uheading Выбрать доставку
+            %p Выберите удобный тип доставки
+            .form-group
+              %label{:for => "state"} Опции доставки
+              =f.select(:delivery_id, Delivery.all.map {|item| ["#{item.reach} - #{item.delivery_type} - #{item.price}", item.id]}, {:prompt=> "Выбрать"}, {:class=>'form-control'})
+
         .col-md-6
           .payment-right
             %h2 Ваш заказ
@@ -81,7 +88,7 @@
                         ="\u20BD".encode('utf-8')
                   %tr.shipping
                     %th Доставка :
-                    %td БЕСПЛАТНО!
+                    %td 
                   %tr.order-total
                     %th Итого:
                     %td

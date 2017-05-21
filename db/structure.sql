@@ -463,7 +463,8 @@ CREATE TABLE orders (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     payment_type character varying,
-    totalsum double precision
+    totalsum double precision,
+    delivery_id integer
 );
 
 
@@ -1142,6 +1143,13 @@ CREATE INDEX index_options_on_product_id ON options USING btree (product_id);
 
 
 --
+-- Name: index_orders_on_delivery_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_orders_on_delivery_id ON orders USING btree (delivery_id);
+
+
+--
 -- Name: index_product_deliveries_on_delivery_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1341,6 +1349,14 @@ ALTER TABLE ONLY product_deliveries
 
 
 --
+-- Name: fk_rails_caba0da8d5; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY orders
+    ADD CONSTRAINT fk_rails_caba0da8d5 FOREIGN KEY (delivery_id) REFERENCES deliveries(id);
+
+
+--
 -- Name: fk_rails_ecabaad74a; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1416,6 +1432,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170516201918'),
 ('20170516213245'),
 ('20170516215510'),
-('20170516220535');
+('20170516220535'),
+('20170521164307');
 
 

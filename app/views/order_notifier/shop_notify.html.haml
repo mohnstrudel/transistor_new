@@ -37,12 +37,12 @@
 		%td
 			Доставка
 		%td
-			1000.00 руб
+			=@delivery.price
 		%td 
 			=""
 		%td
-			1000.00 руб
+			=@delivery.price
 	%tr
 		%td{colspan: 5, "align" => "right"}
-			=sprintf("%.2f", @order.totalsum + 1000)
+			=sprintf("%.2f", @order.totalsum + @delivery.price)
 			руб

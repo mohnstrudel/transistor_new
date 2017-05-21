@@ -22,12 +22,14 @@ class OrderNotifier < ApplicationMailer
   def shipped(order)
     @greeting = "Hi"
 
+
     mail to: "to@example.org"
   end
 
   def shop_notify(order)
     @order = order
+    @delivery = Delivery.find(@order.delivery_id)
 
-    mail to: 'a.kostin.09@gmail.com', subject: 'Новый заказ в магазине Транзистор'
+    mail to: Setting.first.mail, subject: 'Новый заказ в магазине Транзистор'
   end
 end

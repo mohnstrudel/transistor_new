@@ -19,6 +19,7 @@
 
 //= require admin/products
 //= require products
+//= require orders
 
 
 

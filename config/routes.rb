@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :line_items
   resources :carts
   resources :orders
+  resources :deliveries, only: [:show]
 
   root 'store_front#index'
 
