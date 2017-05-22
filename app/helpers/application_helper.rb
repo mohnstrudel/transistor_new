@@ -45,7 +45,12 @@ module ApplicationHelper
 			return image_tag(object.image.url(thumb), class: options[:class], alt: alt)
 		elsif object.try(:images)
 			if object.images.any?
-				return image_tag(object.images.send(which_one).image.url(thumb), class: options[:class], alt: alt)
+				begin
+					return image_tag(object.images.send(which_one).image.url(thumb), class: options[:class], alt: alt)
+				rescue => e
+					logger.debug "Error while displaying images. Errors: #{e.message}. Called with object: #{object.inspect}"
+					return placeholdit_image_tag "270x380", text: 'Нет изображения', class: options[:class]
+				end	
 			else
 				return placeholdit_image_tag "270x380", text: 'Нет изображения', class: options[:class]
 			end
