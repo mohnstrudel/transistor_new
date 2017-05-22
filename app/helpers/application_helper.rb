@@ -47,7 +47,7 @@ module ApplicationHelper
 			if object.images.any?
 				return image_tag(object.images.send(which_one).image.url(thumb), class: options[:class], alt: alt)
 			else
-				return image_tag("default.png", size: "270x380")
+				return placeholdit_image_tag "270x380", text: 'Нет изображения', class: options[:class]
 			end
 		else
 			return image_tag(object.send(options[:image_name]).url(thumb), class: options[:class], alt: alt)

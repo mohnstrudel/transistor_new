@@ -27,6 +27,9 @@ gem 'translit'
 gem 'metamagic' 
 gem 'sitemap_generator'
 
+# Nifty gem for placeholder images
+gem 'placeholdit'
+
 # For better text formatting
 # Fuck ckeditor! Fuck trix!! Lets use bootsy
 gem 'bootsy'
