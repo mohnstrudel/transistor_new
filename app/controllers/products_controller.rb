@@ -38,7 +38,9 @@ class ProductsController < ApplicationController
 
   def show
     # @similar_products = @product.tags.map(&:products).flatten.uniq - [@product]
-    @similar_products = Product.joins(:tags).where('tags.id' => @product.tag_ids).where.not('products.id' => @product.id)
+    @similar_products = Product.joins(:tags).where('tags.id' => @product.tag_ids).where.not('products.id' => @product.id).uniq
+
+    @accessoires = Product.joins(:accessoire_tags).where('accessoire_tags.id' => @product.accessoire_tag_ids).where.not('products.id' => @product.id).uniq
     # @similar_products = Product.joins(:tags).where("tags.id IN (?)", @product)
   end
 

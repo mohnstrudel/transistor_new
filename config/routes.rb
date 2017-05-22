@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :manufacturers
     resources :settings
     resources :deliveries
+    resources :accessoire_tags
   end
 
   resources :products do

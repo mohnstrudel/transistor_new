@@ -55,7 +55,7 @@ class Admin::ProductsController < AdminController
 
   def product_params
   	params.require(:product).permit(Product.attribute_names.map(&:to_sym).push(
-      { tag_ids: [] }, { delivery_ids: [] }, 
+      { tag_ids: [] }, { delivery_ids: [] }, { accessoire_tag_ids: [] }, 
       options_attributes: [:id, :size, :price, :product_id, :_destroy],
       images_attributes: [ :id, :image, :product_id, :_destroy ]))
   end

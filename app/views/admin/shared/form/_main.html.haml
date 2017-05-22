@@ -20,6 +20,14 @@
         .tab-content
           #tab-1.tab-pane.active
             .panel-body
+              -if object.respond_to?(:name)
+                .form-group
+                  %label.col-sm-2.control-label
+                    Наименование
+                  .col-sm-10
+                    =f.text_field :name, class: 'form-control'
+                .hr-line-dashed
+
               =render partial: "admin/shared/form/delivery_fields", locals: { object: object, f: f }
       
 

@@ -1,0 +1,41 @@
+.related-products
+  .relared-products-header.margin-bottom-50
+    %h3.upper Товары, которые вас могут заинтересовать
+  .products.owl-carousel{"data-items" => "4"}
+    -@similar_products.each do |product|
+      .product.product-grid
+        .product-media
+          .product-thumbnail
+            =link_to product do
+              =image_or_default(product, thumb: :detail_pic, which_one: 'first', class: 'current')
+              =image_or_default(product, thumb: :detail_pic, which_one: 'second')
+          / /.product-thumbnail
+          .product-hover
+            .product-actions
+              %a.awe-button.product-add-cart{"data-toggle" => "tooltip", :href => "#", :title => "Add to cart"}
+                %i.icon.icon-shopping-bag
+              %a.awe-button.product-quick-whistlist{"data-toggle" => "tooltip", :href => "#", :title => "Add to whistlist"}
+                %i.icon.icon-star
+              %a.awe-button.product-quick-view{"data-toggle" => "tooltip", :href => "product-quick-view.html", :title => "Quickview"}
+                %i.icon.icon-eye
+          / /.product-hover
+          %span.product-label.hot
+            %span hot
+        / /.product-media
+        .product-body
+          %h2.product-name
+            =link_to product.name, product, title: product.name
+          / /.product-product
+          .product-category
+            %span
+              =product.category.name
+          / /.product-category
+          .product-price
+            %span.amount
+              от
+              =product.options.first.price
+              ="\u20BD".encode('utf-8')
+          / /.product-price
+        / /.product-body
+      / /.product
+/ /.related-products

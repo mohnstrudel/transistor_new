@@ -34,6 +34,9 @@ class Product < ActiveRecord::Base
 	has_many :product_tags
 	has_many :tags, through: :product_tags
 
+	has_many :product_accessoire_tags
+	has_many :accessoire_tags, through: :product_accessoire_tags
+
 	belongs_to :manufacturer
 
 	has_many :comments

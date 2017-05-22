@@ -44,6 +44,37 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: accessoire_tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE accessoire_tags (
+    id integer NOT NULL,
+    name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: accessoire_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE accessoire_tags_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: accessoire_tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE accessoire_tags_id_seq OWNED BY accessoire_tags.id;
+
+
+--
 -- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -488,6 +519,38 @@ ALTER SEQUENCE orders_id_seq OWNED BY orders.id;
 
 
 --
+-- Name: product_accessoire_tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE product_accessoire_tags (
+    id integer NOT NULL,
+    product_id integer,
+    accessoire_tag_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: product_accessoire_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE product_accessoire_tags_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: product_accessoire_tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE product_accessoire_tags_id_seq OWNED BY product_accessoire_tags.id;
+
+
+--
 -- Name: product_deliveries; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -754,6 +817,13 @@ ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY accessoire_tags ALTER COLUMN id SET DEFAULT nextval('accessoire_tags_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY bootsy_image_galleries ALTER COLUMN id SET DEFAULT nextval('bootsy_image_galleries_id_seq'::regclass);
 
 
@@ -845,6 +915,13 @@ ALTER TABLE ONLY orders ALTER COLUMN id SET DEFAULT nextval('orders_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY product_accessoire_tags ALTER COLUMN id SET DEFAULT nextval('product_accessoire_tags_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY product_deliveries ALTER COLUMN id SET DEFAULT nextval('product_deliveries_id_seq'::regclass);
 
 
@@ -888,6 +965,14 @@ ALTER TABLE ONLY subcategories ALTER COLUMN id SET DEFAULT nextval('subcategorie
 --
 
 ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclass);
+
+
+--
+-- Name: accessoire_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY accessoire_tags
+    ADD CONSTRAINT accessoire_tags_pkey PRIMARY KEY (id);
 
 
 --
@@ -1000,6 +1085,14 @@ ALTER TABLE ONLY options
 
 ALTER TABLE ONLY orders
     ADD CONSTRAINT orders_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: product_accessoire_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY product_accessoire_tags
+    ADD CONSTRAINT product_accessoire_tags_pkey PRIMARY KEY (id);
 
 
 --
@@ -1150,6 +1243,20 @@ CREATE INDEX index_orders_on_delivery_id ON orders USING btree (delivery_id);
 
 
 --
+-- Name: index_product_accessoire_tags_on_accessoire_tag_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_product_accessoire_tags_on_accessoire_tag_id ON product_accessoire_tags USING btree (accessoire_tag_id);
+
+
+--
+-- Name: index_product_accessoire_tags_on_product_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_product_accessoire_tags_on_product_id ON product_accessoire_tags USING btree (product_id);
+
+
+--
 -- Name: index_product_deliveries_on_delivery_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1210,6 +1317,14 @@ CREATE INDEX index_subcategories_on_product_id ON subcategories USING btree (pro
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: fk_rails_106ab86b92; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY product_accessoire_tags
+    ADD CONSTRAINT fk_rails_106ab86b92 FOREIGN KEY (product_id) REFERENCES products(id);
 
 
 --
@@ -1357,6 +1472,14 @@ ALTER TABLE ONLY orders
 
 
 --
+-- Name: fk_rails_d8a50f7cb4; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY product_accessoire_tags
+    ADD CONSTRAINT fk_rails_d8a50f7cb4 FOREIGN KEY (accessoire_tag_id) REFERENCES accessoire_tags(id);
+
+
+--
 -- Name: fk_rails_ecabaad74a; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1433,6 +1556,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170516213245'),
 ('20170516215510'),
 ('20170516220535'),
-('20170521164307');
+('20170521164307'),
+('20170522062750'),
+('20170522063559');
 
 
