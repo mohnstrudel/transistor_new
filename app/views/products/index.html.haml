@@ -26,22 +26,22 @@
 									Всего
 									=@products.count
 									="товар#{russianize(@products.count)}"
-						.col-md-8.col-sm-6.col-xs-12
-							.form-show-sort
-								.form-group.pull-left
-									%label{:for => "p_show"} Показать
-									%select#p_show.form-control.input-sm{:name => "p_show"}
-										%option{:value => ""} 10
-										%option{:value => ""} 25
-										%option{:value => ""} 50
-									%strong на странице
-								/ /.form-group
-								.form-group.pull-right.text-right
-									%label{:for => "p_sort_by"} Сортировать
-									%select#p_sort_by.form-control.input-sm{:name => "p_sort_by"}
-										%option{:value => ""} Lastest
-										%option{:value => ""} Recommend
-								/ /.form-group
+						/ .col-md-8.col-sm-6.col-xs-12
+						/ 	.form-show-sort
+						/ 		.form-group.pull-left
+						/ 			%label{:for => "p_show"} Показать
+						/ 			%select#p_show.form-control.input-sm{:name => "p_show"}
+						/ 				%option{:value => ""} 10
+						/ 				%option{:value => ""} 25
+						/ 				%option{:value => ""} 50
+						/ 			%strong на странице
+						/ 		/ /.form-group
+						/ 		.form-group.pull-right.text-right
+						/ 			%label{:for => "p_sort_by"} Сортировать
+						/ 			%select#p_sort_by.form-control.input-sm{:name => "p_sort_by"}
+						/ 				%option{:value => ""} Lastest
+						/ 				%option{:value => ""} Recommend
+						/ /.form-group
 					/ /.row
 			/ /.product-header-actions
 			.products
@@ -86,36 +86,11 @@
 										%span.star
 								.product-description
 									%p
-										=product.intro_text.html_safe
+										=product.description.html_safe
 								.product-list-actions
 									/ %button.btn.btn-lg.btn-primary Add to cart
 									=link_to product do
 										%button.btn.btn-lg.btn-dark.btn-outline Просмотреть
-								/ /.product-actions
-							/ /.product-body
-						/ /.product
-			%ul.pagination
-				%li.pagination-prev
-					%a{:href => "#"}
-						%i.icon.icon-arrow-prev
-				%li
-					%a{:href => "#"} 1
-				%li.active
-					%a{:href => "#"} 2
-				%li
-					%a{:href => "#"} 3
-				%li
-					%a{:href => "#"} 4
-				%li
-					%a{:href => "#"} 5
-				%li
-					%span ...
-				%li
-					%a{:href => "#"} 15
-				%li.pagination-next
-					%a{:href => "#"}
-						%i.icon.icon-arrow-next
-			/ ./pagination
-		/ /.col-*
+								
 		.col-md-3.col-md-pull-9
 			=render 'left_menu'

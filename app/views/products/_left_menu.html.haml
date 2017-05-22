@@ -8,11 +8,11 @@
 				-Category.all.each do |category|
 					%li
 						=link_to category.name, products_path(category: category.name)
-		/ /.widget
-		=form_for :product, method: 'get', url: products_path do |f|
-			.widget.woocommerce
-				%h3.widget-title Размер
-				.widget-content
-					%label.label-select
-						=f.select(:sizing, options_from_collection_for_select(Size.all, :value, :value),{}, { class: "form-control" })
-			=f.submit 'Отфильтровать', class: 'btn btn-lg btn-primary'
+			/ /.widget
+			/ =form_for :product, method: 'get', url: products_path do |f|
+			/ 	.widget.woocommerce
+			/ 		%h3.widget-title Размер
+			/ 		.widget-content
+			/ 			%label.label-select
+			/ 				=f.select(:sizing, options_from_collection_for_select(Size.all, :value, :value),{}, { class: "form-control" })
+			/ =f.submit 'Отфильтровать', class: 'btn btn-lg btn-primary'
