@@ -28,7 +28,7 @@
                 / /.menubar-search-form
           .awe-logo
             =link_to root_path, method: :get do
-              =image_or_default(Setting.first, image_name: :logo)
+              =image_or_default(Setting.first, image_name: :logo, thumb: 'thumb')
           / /.awe-logo
           %ul.awemenu.awemenu-right
             -Category.all.each do |category|
@@ -42,13 +42,10 @@
                       .awemenu-megamenu-wrapper
                         .row
                           .col-lg-3
-                            %h2.upper
+                            %h2.upper.padding-bottom-40
                               =category.name
-                            %ul.super
-                              %li
-                                %a{:href => "#", :title => ""} Лучшие предложения
-                              %li
-                                %a{:href => "#", :title => ""} Новинки
+
+
                           -category.subcategories.in_groups_of(5, false).each do |group_of_five|
                             .col-lg-3
                               %ul.sublist
