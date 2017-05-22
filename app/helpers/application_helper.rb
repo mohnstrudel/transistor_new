@@ -61,6 +61,8 @@ module ApplicationHelper
 			else
 				return "Нет цены"
 			end
+		elsif object.price.present?
+			return object.price
 		else
 			return "Нет цены"
 		end

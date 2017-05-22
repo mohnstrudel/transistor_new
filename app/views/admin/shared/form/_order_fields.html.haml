@@ -1,0 +1,52 @@
+-if object.respond_to?(:address)
+  .form-group
+    %label.col-sm-2.control-label
+      Адрес клиента
+    .col-sm-10
+      =f.text_field :address, class: 'form-control'
+  .hr-line-dashed
+-if object.respond_to?(:email)
+  .form-group
+    %label.col-sm-2.control-label
+      Почта клиента
+    .col-sm-10
+      =f.text_field :email, class: 'form-control'
+  .hr-line-dashed
+-if object.respond_to?(:phone)
+  .form-group
+    %label.col-sm-2.control-label
+      Телефон клиента
+    .col-sm-10
+      =f.number_field :phone, class: 'form-control'
+  .hr-line-dashed
+-if object.respond_to?(:payment_type)
+  .form-group
+    %label.col-sm-2.control-label
+      Выбранный тип оплаты
+    .col-sm-10
+      =f.text_field :payment_type, class: 'form-control'
+  .hr-line-dashed
+-if object.respond_to?(:delivery_id)
+  .form-group
+    %label.col-sm-2.control-label
+      Выбранная доставка
+    .col-sm-10
+      =f.number_field :delivery_id, class: 'form-control'
+  .hr-line-dashed
+-if object.respond_to?(:totalsum)
+  .form-group
+    %label.col-sm-2.control-label
+      Общая стоимость заказа
+    .col-sm-10
+      =f.number_field :totalsum, class: 'form-control'
+  .hr-line-dashed
+-if object.try(:line_items).present?
+  .form-group
+    %label.col-sm-2.control-label
+      Список товаров в заказе
+    .col-sm-10
+      -object.line_items.each do |line_item|
+        =line_item.product.name
+        =line_item.product.price
+        %br
+  .hr-line-dashed

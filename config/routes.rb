@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :settings
     resources :deliveries
     resources :accessoire_tags
+    resources :orders
   end
 
   resources :products do

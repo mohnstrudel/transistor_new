@@ -1,3 +1,6 @@
-=render partial: 'admin/shared/header', locals: { item: 'Товар'}
-=render partial: 'admin/shared/listing_items', collection: @products, as: :item
-=render partial: 'admin/shared/footer', locals: { item: 'product' }
+/ =render partial: 'admin/shared/header', locals: { item: 'Товар'}
+/ =render partial: 'admin/shared/listing_items', collection: @products, as: :item
+/ =render partial: 'admin/shared/footer', locals: { item: 'product' }
+
+
+=render partial: 'admin/shared/listing/list_items', locals: { object: @products }

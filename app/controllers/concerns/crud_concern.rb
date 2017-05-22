@@ -7,7 +7,7 @@ module CrudConcern
 
 
   def index_helper(object, options = {})
-      @objects = object.constantize.all
+      @objects = object.constantize.all.order(created_at: :desc)
   end
 
   def create_helper(object, path)
