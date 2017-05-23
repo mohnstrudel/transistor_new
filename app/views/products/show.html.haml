@@ -1,171 +1,166 @@
 - meta title: @product.to_title
 - meta keywords: @product.to_keywords
 
-.main-header.background.background-image-heading-product
-  .container
-    %h1
-      =@product.category.name
-#breadcrumb
-  .container
-    %ol.breadcrumb
-      %li
-        =link_to 'Главная', root_path
-      %li.active
-        %span
-          =@product.category.name
-.container
-  .row
-    .col-md-6
-      .product-slider-wrapper.thumbs-bottom
-        .swiper-container.product-slider-main
-          .swiper-wrapper
-            -@product.images.each do |pic|
-              .swiper-slide
-                .easyzoom.easyzoom--overlay
-                  =link_to pic.image.url(:detail_pic), title: pic.image.url do
-                    =image_or_default(pic, which_one: :each, thumb: :detail_pic)
+-if params[:renderer] == 'quickview'
+  =render partial: 'products/quickview'
+-else
 
-          .swiper-button-prev
-            %i.fa.fa-chevron-left
-          .swiper-button-next
-            %i.fa.fa-chevron-right
-        / /.swiper-container
-        .swiper-container.product-slider-thumbs
-          .swiper-wrapper
-            -@product.images.each do |pic|
-              .swiper-slide
-                =image_or_default(pic, which_one: :each, thumb: :thumb_small)
-        / /.swiper-container
-      / /.product-slider-wrapper
-    .col-md-6
-      %nav.pnav
-        .pull-right
-          %a.btn.btn-sm.btn-arrow.btn-default{:href => "#"}
-            %i.fa.fa-chevron-left
-          %a.btn.btn-sm.btn-arrow.btn-default{:href => "#"}
-            %i.fa.fa-chevron-right
-        =link_to products_path, class: "back-to-pcate" do
-          %i.fa.fa-chevron-left
-          %span Назад
-      / /header
-      .product-details-wrapper
-        =form_for :line_item, url: line_items_path(product_id: @product.id), remote: true do |f|
-          %h2.product-name
-            =link_to @product.name, '#', title: @product.name
-          
-          .portfolio-desc
-            =article_description @product
+  .main-header.background.background-image-heading-product
+    .container
+      %h1
+        =@product.category.name
+  #breadcrumb
+    .container
+      %ol.breadcrumb
+        %li
+          =link_to 'Главная', root_path
+        %li.active
+          %span
+            =@product.category.name
+  .container
+    .row
+      .col-md-6
+        .product-slider-wrapper.thumbs-bottom
+          .swiper-container.product-slider-main
+            .swiper-wrapper
+              -@product.images.each do |pic|
+                .swiper-slide
+                  .easyzoom.easyzoom--overlay
+                    =link_to pic.image.url(:detail_pic), title: pic.image.url do
+                      =image_or_default(pic, which_one: :each, thumb: :detail_pic)
 
-          %ul.portfolio-list
-            %li
-              %span.name Код товара:
-              %span.value
-                =@product.sku
-            %li
-              %span.name Производитель:
-              %span.value=@product.manufacturer.name
-            %li
-              %span.name Гарантия:
-              %span.value=@product.warranty
-            %li
-              %span.name Наличие:
-              %span.value=@product.available? ? "Есть на складе" : "Нет в наличии"
-                  
+            .swiper-button-prev
+              %i.fa.fa-chevron-left
+            .swiper-button-next
+              %i.fa.fa-chevron-right
+          / /.swiper-container
+          .swiper-container.product-slider-thumbs
+            .swiper-wrapper
+              -@product.images.each do |pic|
+                .swiper-slide
+                  =image_or_default(pic, which_one: :each, thumb: :thumb_small)
+          / /.swiper-container
+        / /.product-slider-wrapper
+      .col-md-6
+        .product-details-wrapper
+          =form_for :line_item, url: line_items_path(product_id: @product.id), remote: true do |f|
+            %h2.product-name
+              =link_to @product.name, '#', title: @product.name
+            
+            .portfolio-desc
+              =article_description @product
+
+            %ul.portfolio-list
+              %li
+                %span.name Код товара:
+                %span.value
+                  =@product.sku
+              %li
+                %span.name Производитель:
+                %span.value=@product.manufacturer.name
+              %li
+                %span.name Гарантия:
+                %span.value=@product.warranty
+              %li
+                %span.name Наличие:
+                %span.value=@product.available? ? "Есть на складе" : "Нет в наличии"
                     
-          / /.product-features
-          .product-actions-wrapper
-            .row
-              .col-md-12
-                .form-group
-                  %label{:for => "p_color"} Варианты доставки
-                =render partial: 'products/product_partials/delivery'
+                      
+            / /.product-features
+            .product-actions-wrapper
+              .row
+                .col-md-12
+                  .form-group
+                    %label{:for => "p_color"} Варианты доставки
+                  =render partial: 'products/product_partials/delivery'
 
-            / /.form
-            .product-list-actions
-              %span.product-price
-                %span.amount#priceValue
-                  =@product.price
-                ="\u20BD".encode('utf-8')
-                / %del.amount 
-                /   $120
-              =f.submit 'В корзину', data: { "disable-with" => "Добавлено..."}, class: 'btn btn-lg btn-primary', id: 'add_to_cart'
-              / =button_to 'В корзину', line_items_path(product_id: @product, sellprice: params[:voltage]), class: 'btn btn-lg btn-primary'
-            / /.product-list-actions
-          / /.product-actions-wrapper
-          
-          .product-payments
-            =render partial: 'products/product_partials/payment_icons'
-          .product-meta
-            %span.product-category
-              %span Категория:
-              =link_to @product.category.name, "#"
-            %span -
-            %span.product-tags
-              %span 
-                Тэги:
-                =@product.tags.map{|p| p.name}.join(", ")
-              / %a{:href => "#", :title => ""} Jacket
-          / /.product-meta
-        / /.product-details-wrapper
-  / /.product-socials
-  .product-details-center
-    .product-details{:role => "tabpanel"}
-      .awe-nav-responsive
-        %ul.awe-nav{:role => "tablist"}
-          %li.active{:role => "presentation"}
-            %a{"aria-controls" => "description", "data-toggle" => "tab", :href => "#description", :role => "tab", :title => ""} Описание
-          %li{:role => "presentation"}
-            %a{"aria-controls" => "characteristics", "data-toggle" => "tab", :href => "#characteristics", :role => "tab", :title => ""} Характеристики
-      .row
-        .col-sm-12
-          .tab-content.padding-top-25
-            #description.tab-pane.fade.in.active{:role => "tabpanel"}
-              .text-muted
-                =@product.description.html_safe
-            #characteristics.tab-pane.fade{:role => "tabpanel"}
-              .text-muted
-                =@product.characteristics.html_safe
-          / /.tab-content
-  .product-socials
-    %ul.list-socials
-      %li
-        %a{"data-toggle" => "tooltip", :href => "#", :title => "Twitter"}
-          %i.icon.icon-twitter
-      %li
-        %a{"data-toggle" => "tooltip", :href => "#", :title => "Facebook"}
-          %i.icon.icon-facebook
-      %li
-        %a{"data-toggle" => "tooltip", :href => "#", :title => "Dot-Dot"}
-          %i.icon.icon-dot-dot
-      %li
-        %a{"data-toggle" => "tooltip", :href => "#", :title => "Google+"}
-          %i.icon.icon-google-plus
-      %li
-        %a{"data-toggle" => "tooltip", :href => "#", :title => "Pinterest"}
-          %i.icon.icon-pinterest
+              / /.form
+              .product-list-actions
+                %span.product-price
+                  %span.amount#priceValue
+                    =@product.price
+                  ="\u20BD".encode('utf-8')
+                  / %del.amount 
+                  /   $120
+                =f.submit 'В корзину', data: { "disable-with" => "Добавлено..."}, class: 'btn btn-lg btn-primary', id: 'add_to_cart'
+                / =button_to 'В корзину', line_items_path(product_id: @product, sellprice: params[:voltage]), class: 'btn btn-lg btn-primary'
+              / /.product-list-actions
+            / /.product-actions-wrapper
+            
+            .product-payments
+              =render partial: 'products/product_partials/payment_icons'
+            .product-meta
+              %span.product-category
+                %span Категория:
+                =link_to @product.category.name, "#"
+              %span -
+              %span.product-tags
+                %span 
+                  Тэги:
+                  =@product.tags.map{|p| p.name}.join(", ")
+                / %a{:href => "#", :title => ""} Jacket
+            / /.product-meta
+          / /.product-details-wrapper
+    / /.product-socials
+    .product-details-center
+      .product-details{:role => "tabpanel"}
+        .awe-nav-responsive
+          %ul.awe-nav{:role => "tablist"}
+            %li.active{:role => "presentation"}
+              %a{"aria-controls" => "description", "data-toggle" => "tab", :href => "#description", :role => "tab", :title => ""} Описание
+            %li{:role => "presentation"}
+              %a{"aria-controls" => "characteristics", "data-toggle" => "tab", :href => "#characteristics", :role => "tab", :title => ""} Характеристики
+        .row
+          .col-sm-12
+            .tab-content.padding-top-25
+              #description.tab-pane.fade.in.active{:role => "tabpanel"}
+                .text-muted
+                  =@product.description.html_safe
+              #characteristics.tab-pane.fade{:role => "tabpanel"}
+                .text-muted
+                  =@product.characteristics.html_safe
+            / /.tab-content
+    .product-socials
+      %ul.list-socials
+        -if @socials['twitter'].present?
+          %li
+            =link_to @socials['twitter'], data: {toggle: 'tooltip'}, title: 'Twitter' do
+              %i.icon.icon-twitter
+        -if @socials['twitter'].present?
+          %li
+            =link_to @socials['facebook'], data: {toggle: 'tooltip'}, title: 'Facebook' do
+              %i.icon.icon-facebook
+        -if @socials['vk'].present?
+          %li
+            =link_to @socials['vk'], data: {toggle: 'tooltip'}, title: 'VKontakte' do
+              %i.fa.fa-vk
+        -if @socials['instagram'].present?
+          %li
+            =link_to @socials['instagram'], data: {toggle: 'tooltip'}, title: 'Instagram' do
+              %i.fa.fa-instagram
 
-  .product-details-left
-    .product-details{:role => "tabpanel"}
-      %nav
-        %ul.nav{:role => "tablist"}
-          %li.active{:role => "presentation"}
-            %a{"data-toggle" => "tab", :href => "#product-description"} Доставка & Оплата
-          %li{role: "presentation"}
-            %a{"data-toggle" => "tab", :href => "#product-review"} 
-              ="Отзывы (#{@product.comments.count})"
-        / /.nav
-      / /nav
-      .tab-content
-        #product-description.tab-pane.active{:role => "tabpanel"}
-          %p
-            =setting("delivery_and_payment").html_safe
-        #product-review.tab-pane{:role => "tabpanel"}
-          %h3 Отзывы 
-          #comments
-            =render partial: "comments/list", locals: {product: @product}
-          %h3 Отправить отзыв
-          =render partial: "comments/form", locals: {product: @product}
-  =render partial: 'products/product_partials/accessoires'
-  =render partial: 'products/product_partials/related_products'
-:javascript
-  $(function() { aweProductRender(true); });
+    .product-details-left
+      .product-details{:role => "tabpanel"}
+        %nav
+          %ul.nav{:role => "tablist"}
+            %li.active{:role => "presentation"}
+              %a{"data-toggle" => "tab", :href => "#product-description"} Доставка & Оплата
+            %li{role: "presentation"}
+              %a{"data-toggle" => "tab", :href => "#product-review"} 
+                ="Отзывы (#{@product.comments.count})"
+          / /.nav
+        / /nav
+        .tab-content
+          #product-description.tab-pane.active{:role => "tabpanel"}
+            %p
+              =setting("delivery_and_payment").html_safe
+          #product-review.tab-pane{:role => "tabpanel"}
+            %h3 Отзывы 
+            #comments
+              =render partial: "comments/list", locals: {product: @product}
+            %h3 Отправить отзыв
+            =render partial: "comments/form", locals: {product: @product}
+    =render partial: 'products/product_partials/accessoires'
+    =render partial: 'products/product_partials/related_products'
+  :javascript
+    $(function() { aweProductRender(true); });

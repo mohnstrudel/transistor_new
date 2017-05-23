@@ -1,0 +1,46 @@
+.white-popup.product-quickview-popup
+  .product
+    .product-media
+      .product-quickview-slider.owl-carousel.owl-carousel-inset
+        -@product.images.each do |pic|
+          %div
+            =image_or_default(pic, which_one: :each, thumb: :detail_pic)
+
+    / /.product-media
+    .product-body
+      %h2.product-name
+        =link_to @product.name, '#'
+        / %a{:href => "#", :title => " Gin Lane Greenport Cotton Shirt"} Gin Lane Greenport Cotton Shirt
+      / /.product-name
+      .product-status
+        %span=@product.available? ? "Есть на складе" : "Нет в наличии"
+        %span -
+        %span
+          ="Код товара: #{@product.sku}"
+      / /.product-status
+      .product-price
+        %span.amount=@product.price
+      / /.product-price
+      .product-description
+        %p=truncate(@product.description, length: 400)
+        / /.form
+        .product-list-actions
+          %button.btn.btn-lg.btn-primary В корзину
+        / /.product-actions
+      .product-meta
+        %span.product-category
+          %span Категория:
+          %a{:href => "#", :title => ""}=@product.category.name
+        %span -
+        %span.product-tags
+          %span Тэги:
+          %a{:href => "#", :title => ""}=@product.tags.map{|p| p.name}.join(", ")
+    / /.product-body
+:javascript
+  $(function() {
+      $('.product-quickview-slider').owlCarousel({
+          items: 1,
+          nav: true,
+          dots: false
+      });
+  });

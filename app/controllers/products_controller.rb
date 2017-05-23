@@ -37,6 +37,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @socials = Setting.first.social_media
     # @similar_products = @product.tags.map(&:products).flatten.uniq - [@product]
     @similar_products = Product.joins(:tags).where('tags.id' => @product.tag_ids).where.not('products.id' => @product.id).uniq
 
