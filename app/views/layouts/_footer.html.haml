@@ -1,15 +1,10 @@
 .footer-copyright
   .container
     .copyright
-      %p Все права защищены &copy; 2017 Транзистор.
+      %p="Все права защищены &copy; 2017 #{Setting.first.title}."
     .footer-nav
       %nav
         %ul
-          %li
-            %a{:href => "#", :title => ""} Связаться с нами
-          %li
-            %a{:href => "#", :title => ""} Условия пользования
-          %li
-            %a{:href => "#", :title => ""} Политика безопасности
-          %li
-            %a{:href => "#", :title => ""} Site Map
+          -StaticPage.footer.each do |static_page|
+            %li
+              =link_to static_page.title, static_page_path(static_page)

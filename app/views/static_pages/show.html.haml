@@ -1,0 +1,18 @@
+.main-header.background.background-image-heading-about-us
+  .container
+    %h1=@static_page.title
+#breadcrumb
+  .container
+    %ol.breadcrumb
+      %li
+        %a{:href => "#"} Главная
+      %li.active
+        %span=@static_page.title
+%section
+  .container
+    .padding-vertical-50.border-bottom
+      .row
+        .col-md-8.col-md-offset-2
+          .awe-box.center
+            .awe-box-content
+              =@static_page.body.html_safe

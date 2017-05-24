@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :deliveries
     resources :accessoire_tags
     resources :orders
+    resources :static_pages
   end
 
   resources :products do
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :orders
   resources :deliveries, only: [:show]
+  resources :static_pages, only: [:show], path: '/pages'
 
   root 'store_front#index'
 

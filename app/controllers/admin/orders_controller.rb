@@ -25,7 +25,7 @@ class Admin::OrdersController < AdminController
   end
 
   def destroy
-    destroy_helper(@order, "admin_deliveries_path")
+    destroy_helper(@order, "admin_orders_path")
   end
 
   private

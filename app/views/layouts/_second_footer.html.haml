@@ -5,59 +5,34 @@
         .row
           .col-md-3
             .row
-              .col-md-12.col-sm-6
-                .widget
-                  %h3.widget-title О МАГАЗИНЕ
-                  .widget-content
-                    %p
-                      =setting("about")
-              .col-md-12.col-sm-6
-                .widget
-                  %h3.widget-title КАК ВАМ ПОМОЧЬ?
-                  .widget-content
-                    %p 
-                      Тел. 1:
-                      =setting("phone1")
-                    %p 
-                      Тел. 2:
-                      =setting("phone2")
-                    %p 
-                      Время работы :
-                      =setting("opening")
-                    %p 
-                      Почта:
-                      =setting("mail")
-                / /.widget
+              .widget
+                %h3.widget-title О МАГАЗИНЕ
+                .widget-content
+                  %p
+                    =setting("about")
           .col-md-3.col-sm-6
             .widget
               %h3.widget-title Магазин
               %ul
-                %li
-                  %a{:href => "#", :title => ""} Ваша корзина
-                %li
-                  %a{:href => "#", :title => ""} Ваши заказы
-                %li
-                  %a{:href => "#", :title => ""} Товары для сравнения
-                %li
-                  %a{:href => "#", :title => ""} Лист пожеланий
-                %li
-                  %a{:href => "#", :title => ""} Доставка
-            / /.widget
+                -Subcategory.all.each do |subcat|
+                  %li
+                    =link_to subcat.name, products_path(category: subcat.category.name, subcategory: subcat.name)
           .col-md-3.col-sm-6
             .widget
-              %h3.widget-title Полезные ссылки
-              %ul
-                %li
-                  %a{:href => "#", :title => ""} Блог
-                %li
-                  %a{:href => "#", :title => ""} Подарки
-                %li
-                  %a{:href => "#", :title => ""} Гайды
-                %li
-                  %a{:href => "#", :title => ""} Новые поступления
-                %li
-                  %a{:href => "#", :title => ""} Полезное
-            / /.widget
+              %h3.widget-title КАК ВАМ ПОМОЧЬ?
+              .widget-content
+                %p 
+                  Тел. 1:
+                  =setting("phone1")
+                %p 
+                  Тел. 2:
+                  =setting("phone2")
+                %p 
+                  Время работы :
+                  =setting("opening")
+                %p 
+                  Почта:
+                  =setting("mail")
           .col-md-3
             .widget
               %h3.widget-title Мы в соцсетях

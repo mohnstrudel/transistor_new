@@ -1,7 +1,3 @@
---
--- PostgreSQL database dump
---
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -749,6 +745,39 @@ ALTER SEQUENCE sizes_id_seq OWNED BY sizes.id;
 
 
 --
+-- Name: static_pages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE static_pages (
+    id bigint NOT NULL,
+    title character varying,
+    body text,
+    placement character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: static_pages_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE static_pages_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: static_pages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE static_pages_id_seq OWNED BY static_pages.id;
+
+
+--
 -- Name: subcategories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -957,6 +986,13 @@ ALTER TABLE ONLY sizes ALTER COLUMN id SET DEFAULT nextval('sizes_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY static_pages ALTER COLUMN id SET DEFAULT nextval('static_pages_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY subcategories ALTER COLUMN id SET DEFAULT nextval('subcategories_id_seq'::regclass);
 
 
@@ -1133,6 +1169,14 @@ ALTER TABLE ONLY settings
 
 ALTER TABLE ONLY sizes
     ADD CONSTRAINT sizes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: static_pages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY static_pages
+    ADD CONSTRAINT static_pages_pkey PRIMARY KEY (id);
 
 
 --
@@ -1558,6 +1602,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170516220535'),
 ('20170521164307'),
 ('20170522062750'),
-('20170522063559');
+('20170522063559'),
+('20170524061920'),
+('20170524063710');
 
 

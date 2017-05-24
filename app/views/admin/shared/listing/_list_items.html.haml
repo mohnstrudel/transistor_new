@@ -11,6 +11,12 @@
         -if object.has_attribute? :name
           %th
             ="Наименование"
+        -if object.has_attribute? :title
+          %th
+            ="Наименование"
+        -if object.has_attribute? :placement
+          %th
+            ="Размещение"
         -if object.has_attribute? :sku
           %th
             ="Артикул"
@@ -38,6 +44,12 @@
           -if obj.respond_to?(:name)
             %td
               =obj.name
+          -if obj.respond_to?(:title)
+            %td
+              =obj.title
+          -if obj.respond_to?(:placement)
+            %td
+              =obj.placement
           -if obj.respond_to?(:sku)
             %td
               =obj.sku

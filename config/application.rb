@@ -26,6 +26,11 @@ module Transistor
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.assets.precompile += %w( .svg .eot .woff .ttf)
 
+    config.placements = {
+        footer: 'Подвал',
+        header: 'Шапка'
+    }
+
     # To solve some CKeditor asset problems
     # Screw that, we're using Trix now
     # End CKEditor fix
