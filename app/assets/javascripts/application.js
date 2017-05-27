@@ -20,6 +20,7 @@
 //= require admin/products
 //= require products
 //= require orders
+//= require store_front
 
 
 

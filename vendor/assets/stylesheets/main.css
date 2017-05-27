@@ -7420,6 +7420,7 @@ h2.entry-title {
 
 .header-top {
   border: solid 1px #e1e1e1;
+  padding-bottom: 15px;
 }
 
 @media (max-width: 1199px) {
@@ -7430,7 +7431,7 @@ h2.entry-title {
 
 .header-top .header-top-relative {
   position: relative;
-  z-index: 10000;
+  /*z-index: 10000;*/
 }
 
 .header-style-2 .navbar-search a,
