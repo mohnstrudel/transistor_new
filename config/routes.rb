@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  # devise_for :admins
   get 'comments/create'
 
   get 'search_results/index'
@@ -22,6 +23,11 @@ Rails.application.routes.draw do
     resources :accessoire_tags
     resources :orders
     resources :static_pages
+
+    devise_for :admins, controllers: {
+        sessions: 'admin/admins/sessions',
+        registrations: 'admin/admins/registrations'
+      }
   end
 
   resources :products do

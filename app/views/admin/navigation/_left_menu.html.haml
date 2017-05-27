@@ -1,17 +1,18 @@
 .col-sm-3.col-md-2.sidebar
-  %ul.nav.nav-sidebar
-    =nav_link "Главная", admin_path
-    =nav_link "Товары", admin_products_path
-    =nav_link "Заказы", admin_orders_path
-    =nav_link "Категории", admin_categories_path
-    =nav_link "Подкатегории", admin_subcategories_path
-    =nav_link "Статичные страницы", admin_static_pages_path
+  -if check_access?
+    %ul.nav.nav-sidebar
+      =nav_link "Главная", admin_path
+      =nav_link "Товары", admin_products_path
+      =nav_link "Заказы", admin_orders_path
+      =nav_link "Категории", admin_categories_path
+      =nav_link "Подкатегории", admin_subcategories_path
+      =nav_link "Статичные страницы", admin_static_pages_path
 
-  %ul.nav.nav-sidebar
-    =nav_link "Тэги", admin_tags_path
-    =nav_link "Аксессуары (тэги)", admin_accessoire_tags_path
-    =nav_link "Производители", admin_manufacturers_path
-    =nav_link "Доставка", admin_deliveries_path
+    %ul.nav.nav-sidebar
+      =nav_link "Тэги", admin_tags_path
+      =nav_link "Аксессуары (тэги)", admin_accessoire_tags_path
+      =nav_link "Производители", admin_manufacturers_path
+      =nav_link "Доставка", admin_deliveries_path
 
-  %ul.nav.nav-sidebar
-    =nav_link "Настройки", edit_admin_setting_path(Setting.first)
+    %ul.nav.nav-sidebar
+      =nav_link "Настройки", edit_admin_setting_path(Setting.first)

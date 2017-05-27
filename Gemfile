@@ -73,6 +73,9 @@ gem 'will_paginate'
 # Only puma gets us right!
 gem 'puma'
 
+# Handle users
+gem 'devise'
+
 # Use Capistrano for deployment
 group :development do
     gem 'capistrano',         require: false
