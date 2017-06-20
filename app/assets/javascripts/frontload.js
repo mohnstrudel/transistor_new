@@ -46,4 +46,6 @@
 //= require plugins/list.min
 //= require docs
 
+//= require front/social_scripts
+
 
