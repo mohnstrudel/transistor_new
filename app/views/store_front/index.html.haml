@@ -70,14 +70,12 @@
                   .content
                     .fp-table.text-left
                       .fp-table-cell
-                        %h2.upper
+                        %h2.upper.word-break
                           =category.name
                         %p.margin-bottom-50
                           =category.description
                         =link_to 'Все товары', products_path(category: category.name), class: 'btn btn-sm btn-outline btn-white'
-                / /.awe-media-overlay
-              / /.awe-media-header
-            / /.awe-media
+
           =style_second_div(index) do
             .products.owl-carousel{"data-items" => "3"}
               -category.products.each do |product|
@@ -88,16 +86,6 @@
                         =image_or_default(product, thumb: :store_front, which_one: 'first', class: 'current' )
                         =image_or_default(product, thumb: :store_front, which_one: 'second')
                         
-                    / .product-hover
-                    /   .product-actions
-                    /     %a.awe-button.product-add-cart{"data-toggle" => "tooltip", :href => "#", :title => "Add to cart"}
-                    /       %i.icon.icon-shopping-bag
-                    /     %a.awe-button.product-quick-whistlist{"data-toggle" => "tooltip", :href => "#", :title => "Add to whistlist"}
-                    /       %i.icon.icon-star
-                    /     %a.awe-button.product-quick-view{"data-toggle" => "tooltip", :href => "product-quick-view.html", :title => "Quickview"}
-                    /       %i.icon.icon-eye
-                    / /.product-hover
-                  / /.product-media
                   .product-body
                     %h2.product-name
                       =link_to product.name, product, title: product.name, method: :get
@@ -108,9 +96,7 @@
                     .product-price
                       %span.amount
                         =price_or_default(product)
-                    / /.product-price
-                  / /.product-body
-                / /.product
+
 .container
   .divider
 %section
@@ -128,17 +114,6 @@
                   =link_to product, method: :get do
                     =image_or_default(product, thumb: :store_front, which_one: 'first', class: 'current' )
                     =image_or_default(product, thumb: :store_front, which_one: 'second')
-                / /.product-thumbnail
-                .product-hover
-                  .product-actions
-                    %a.awe-button.product-add-cart{"data-toggle" => "tooltip", :href => "#", :title => "Add to cart"}
-                      %i.icon.icon-shopping-bag
-                    %a.awe-button.product-quick-whistlist{"data-toggle" => "tooltip", :href => "#", :title => "Add to whistlist"}
-                      %i.icon.icon-star
-                    %a.awe-button.product-quick-view{"data-toggle" => "tooltip", :href => "product-quick-view.html", :title => "Quickview"}
-                      %i.icon.icon-eye
-                / /.product-hover
-              / /.product-media
               .product-body
                 %h2.product-name
                   =link_to product.name, product, title: product.name

@@ -22,20 +22,20 @@
 				=f.label 'О магазине (показывается в подвале, слева)'
 				=f.text_area :about
 			%p
-				=f.label 'Телефон 1 (показывается в подвале)'
+				=f.label 'Телефон 1 (показывается в шапке)'
 				=f.text_field :phone1
 			%p
-				=f.label 'Телефон 2 (показывается в подвале)'
+				=f.label 'Телефон 2 (показывается в шапке)'
 				=f.text_field :phone2
 			%p
-				=f.label 'Почта магазина (показывается в подвале)'
+				=f.label 'Почта магазина (на нее будут приходить заказы)'
 				=f.text_field :mail
 			%p
-				=f.label 'Время открытия (показывается в подвале - вводить в свободной форме, например: 10:00 - 20:00 или 09:00 до 21:30)'
+				=f.label 'Время открытия (вводить в свободной форме, например: 10:00 - 20:00 или 09:00 до 21:30)'
 				=f.text_field :opening
 			%p
-				=f.label 'Телефон 1 (показывается в подвале)'
-				=f.text_field :phone1
+				=f.label "Текст для области 'как вам помочь?' в подвале"
+				=f.bootsy_area :how_may_we_help, class: 'form-control', rows: 8
 			%p
 				=f.label 'Соцсети'
 				=f.fields_for :social_media, OpenStruct.new(@setting.social_media) do |d|

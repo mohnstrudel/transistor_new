@@ -731,7 +731,8 @@ CREATE TABLE settings (
     description text,
     title character varying,
     site character varying,
-    delivery_and_payment text
+    delivery_and_payment text,
+    how_may_we_help text
 );
 
 
@@ -1676,6 +1677,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170524061920'),
 ('20170524063710'),
 ('20170527164351'),
-('20170527165416');
+('20170527165416'),
+('20170620093754');
 
 

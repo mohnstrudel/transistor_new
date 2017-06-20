@@ -21,18 +21,8 @@
             .widget
               %h3.widget-title КАК ВАМ ПОМОЧЬ?
               .widget-content
-                %p 
-                  Тел. 1:
-                  =setting("phone1")
-                %p 
-                  Тел. 2:
-                  =setting("phone2")
-                %p 
-                  Время работы :
-                  =setting("opening")
-                %p 
-                  Почта:
-                  =setting("mail")
+                =setting("how_may_we_help").html_safe
+                
           .col-md-3
             .widget
               %h3.widget-title Мы в соцсетях
