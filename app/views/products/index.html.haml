@@ -86,7 +86,7 @@
 										%span.star
 								.product-description
 									%p
-										=truncate(product.description.html_safe, length: 400)
+										=article_description(product, 400)
 								.product-list-actions
 									/ %button.btn.btn-lg.btn-primary Add to cart
 									=link_to product do

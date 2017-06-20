@@ -1,9 +1,9 @@
 module ApplicationHelper
 
-	def article_description article
+	def article_description(article, length=200)
 		# desc = sanitize(article.description.html_safe)
 		# output = truncate(desc, length: 200, escape: false)
-	  output = h truncate(article.description, length: 200, omission: ' ... ', escape: false)
+	  output = h truncate(article.description, length: length, omission: ' ... ', escape: false)
 	  output += link_to('(более подробно)', '#description') if article.description.size > 200
 	  output.html_safe
 	end

@@ -1,11 +1,7 @@
 .footer-copyright
   .container
-    / Yandex.Metrika informer
-    %a{:href => "https://metrika.yandex.ru/stat/?id=45005131&from=informer", :rel => "nofollow", :target => "_blank"}
-      %img.ym-advanced-informer{:alt => "Яндекс.Метрика", "data-cid" => "45005131", "data-lang" => "ru", :src => "https://informer.yandex.ru/informer/45005131/3_1_FFFFFFFF_EFEFEFFF_0_pageviews", :style => "width:88px; height:31px; border:0;", :title => "Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)"}/
-      / /Yandex.Metrika informer
     .copyright
-      %p="Все права защищены &copy; 2017 #{Setting.first.title}."
+      %p="Все права защищены #{"\u00A9".html_safe} 2017 #{Setting.first.title}."
     .footer-nav
       %nav
         %ul
