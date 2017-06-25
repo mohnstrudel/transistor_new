@@ -42,6 +42,25 @@
                     =f.bootsy_area :body, class: 'form-control', rows: 8
                 .hr-line-dashed
 
+              -if object.respond_to?(:description)
+                .form-group
+                  %label.col-sm-2.control-label
+                    Описание
+                  .col-sm-10
+                    =f.bootsy_area :description, class: 'form-control', rows: 8
+                .hr-line-dashed
+
+              -if object.respond_to?(:logo)
+                .form-group
+                  %label.col-sm-2.control-label
+                    Заглавная картинка
+                  .col-sm-10
+                    =f.file_field :logo, class: 'form-control'
+                    -unless object.logo.try(:file).nil?
+                      -if object.logo.file.exists?
+                        =image_tag object.logo.url(:thumb_mini)
+                .hr-line-dashed
+
               =render partial: "admin/shared/form/static_page_fields", locals: { object: object, f: f }
               =render partial: "admin/shared/form/delivery_fields", locals: { object: object, f: f }
               =render partial: "admin/shared/form/order_fields", locals: { object: object, f: f }

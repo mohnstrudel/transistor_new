@@ -830,7 +830,8 @@ CREATE TABLE subcategories (
     category_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    product_id integer
+    product_id integer,
+    logo character varying
 );
 
 
@@ -1678,6 +1679,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170524063710'),
 ('20170527164351'),
 ('20170527165416'),
-('20170620093754');
+('20170620093754'),
+('20170625194925');
 
 

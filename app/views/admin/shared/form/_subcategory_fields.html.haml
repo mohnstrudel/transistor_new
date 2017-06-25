@@ -1,0 +1,8 @@
+-if object.respond_to?(:category_id)
+  .form-group
+    %label.col-sm-2.control-label
+      Выбрать категорию
+    .col-sm-10
+      =f.collection_select :category_id, Category.all, :id, :name, { prompt: 'Выбрать категорию' }, class: 'form-control'
+  .hr-line-dashed
+

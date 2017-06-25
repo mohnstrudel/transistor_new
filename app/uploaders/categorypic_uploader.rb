@@ -36,6 +36,14 @@ class CategorypicUploader < CarrierWave::Uploader::Base
   #   process :resize_to_fit => [50, 50]
   # end
 
+  version :thumb_mini do
+    process resize_to_fill: [64, 64]
+  end
+
+  version :thumb_header do
+    process :resize_to_fill => [208, 130]
+  end
+
   version :vertical_thumb do
     process :resize_to_fill => [262, 476]
   end

@@ -1,6 +1,7 @@
 !!!
 %html
   %head
+    =javascript_include_tag 'front/head_js_files.js', :cache => 'social_files'
     = metamagic site: Setting.first.title, title: [:site, :title], separator: " — ", keywords: [:keywords, Setting.first.keywords], description: Setting.first.description
     %meta{:charset => "utf-8"}
     %meta{:content => "ie=edge", "http-equiv" => "x-ua-compatible"}
@@ -12,6 +13,7 @@
     = csrf_meta_tags
 
   %body{class: "#{controller_name} #{action_name}"}
+    =render 'layouts/social'
     =render 'layouts/loading'
     =render 'layouts/header'
 

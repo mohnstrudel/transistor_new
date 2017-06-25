@@ -1,3 +1,1 @@
-=render partial: 'admin/shared/header', locals: { item: 'покатегория'}
-=render partial: 'admin/shared/listing_items', collection: @subcategories, as: :item
-=render partial: 'admin/shared/footer', locals: { item: 'subcategory' }
+=render partial: "admin/shared/listing/list_items", locals: {object: @subcategories}

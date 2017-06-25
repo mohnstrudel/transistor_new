@@ -45,7 +45,7 @@ class Admin::SubcategoriesController < AdminController
   private
 
   def subcategory_params
-    params.require(:subcategory).permit(:name, :category_id, :vertical_image, :remove_vertical_image, :description)
+    params.require(:subcategory).permit(Subcategory.attribute_names.map(&:to_sym))
   end
 
   def find_subcategory
